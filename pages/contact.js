@@ -53,7 +53,7 @@ export default function Home() {
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                     <img src="/assets/images/icon3.png" alt="Icon" />
                                     <h1>Let’s work <span>together.</span></h1>
-                                    <form>
+                                    <form action={"https://formspree.io/f/xrbonjeb"} method="POST">
                                         <div className="alert alert-success messenger-box-contact__msg" style={{ display: 'none' }} role="alert">
                                             Your message was sent successfully.
                                         </div>
