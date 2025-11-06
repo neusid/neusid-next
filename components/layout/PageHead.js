@@ -7,6 +7,7 @@ const PageHead = ({ headTitle }) => {
                 <title>
                     {headTitle ? headTitle : "NeusID - Personal Portofolio"}
                 </title>
+                <link rel='icon' href='/assets/images/NID.svg'/>
             </Head>
         </>
     )
