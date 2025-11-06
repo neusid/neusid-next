@@ -60,7 +60,10 @@ export default function Home() {
                                     {data.slice(4, 6).map((item, i) => (
                                         <div data-aos="zoom-in" className="flex-1">
                                             <div className="project-item shadow-box">
-                                                <Link className="overlay-link" href={`/project/${item.id}`} />
+                                                {
+                                                    item.clickable ? (<Link className="overlay-link" href={`/project/${item.id}`} />):
+                                                    (<div className="overlay-link not-clickable"/>)
+                                                }
                                                 <img src="/assets/images/bg1.png" alt="BG" className="bg-img" />
                                                 <div className="project-img">
                                                     <img src={`/assets/images/${item.img}`} alt="Project" />

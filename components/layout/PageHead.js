@@ -5,7 +5,7 @@ const PageHead = ({ headTitle }) => {
         <>
             <Head>
                 <title>
-                    {headTitle ? headTitle : "Gridx - Personal Portfolio HTML Template"}
+                    {headTitle ? headTitle : "NeusID - Personal Portofolio"}
                 </title>
             </Head>
         </>

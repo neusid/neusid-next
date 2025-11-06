@@ -4,7 +4,7 @@ export default function Home() {
 
     return (
         <>
-             <Layout  maincls="main-homepage">
+            <Layout  maincls="main-homepage">
                 <section className="service-area">
                     <div className="container">
                         <h1 className="section-heading" data-aos="fade-up"><img src="/assets/images/star-2.png" alt="Star" /> My Offerings <img src="/assets/images/star-2.png" alt="Star" /></h1>

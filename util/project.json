@@ -3,48 +3,56 @@
         "id": 1,
         "title": "Polichili",
         "img": "project1.jpeg",
-        "category": "MOBILE DEVELOPMENT"
+        "category": "MOBILE DEVELOPMENT",
+        "clickable": true
     },
     {
         "id": 2,
         "title": "RegizAI",
         "img": "project2.jpeg",
-        "category": "MOBILE DEVELOPMENT"
+        "category": "MOBILE DEVELOPMENT",
+        "clickable": true
     },
     {
         "id": 3,
         "title": "VAS DMS MOBILE",
         "img": "project3.jpeg",
-        "category": "MOBILE DEVELOPMENT"
+        "category": "MOBILE DEVELOPMENT",
+        "clickable": true
     },
     {
         "id": 4,
         "title": "Smartfarm",
         "img": "project4.jpeg",
-        "category": "MOBILE DEVELOPMENT"
+        "category": "MOBILE DEVELOPMENT",
+        "clickable": true
     },
     {
         "id": 5,
         "title": "Vince Ruz Style",
         "img": "project5.jpeg",
-        "category": "GRAPHIC DESIGN"
+        "category": "GRAPHIC DESIGN",
+        "clickable": false
     },
     {
         "id": 6,
         "title": "Vector Style",
         "img": "project6.jpeg",
-        "category": "GRAPHIC DESIGN"
+        "category": "GRAPHIC DESIGN",
+        "clickable": false
     },
     {
         "id": 7,
         "title": "Accessible",
         "img": "project7.jpeg",
-        "category": "Movie"
+        "category": "Movie",
+        "clickable": true
     },
     {
         "id": 8,
         "title": "Observable",
         "img": "project8.jpeg",
-        "category": "Sports"
+        "category": "Sports",
+        "clickable": true
     }
 ]
