@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "title": "Polichili",
+        "img": "project1.jpeg",
+        "category": "MOBILE DEVELOPMENT"
+    },
+    {
+        "id": 2,
+        "title": "RegizAI",
+        "img": "project2.jpeg",
+        "category": "MOBILE DEVELOPMENT"
+    },
+    {
+        "id": 3,
+        "title": "VAS DMS MOBILE",
+        "img": "project3.jpeg",
+        "category": "MOBILE DEVELOPMENT"
+    },
+    {
+        "id": 4,
+        "title": "Smartfarm",
+        "img": "project4.jpeg",
+        "category": "MOBILE DEVELOPMENT"
+    },
+    {
+        "id": 5,
+        "title": "Vince Ruz Style",
+        "img": "project5.jpeg",
+        "category": "GRAPHIC DESIGN"
+    },
+    {
+        "id": 6,
+        "title": "Vector Style",
+        "img": "project6.jpeg",
+        "category": "GRAPHIC DESIGN"
+    },
+    {
+        "id": 7,
+        "title": "Accessible",
+        "img": "project7.jpeg",
+        "category": "Movie"
+    },
+    {
+        "id": 8,
+        "title": "Observable",
+        "img": "project8.jpeg",
+        "category": "Sports"
+    }
+]
