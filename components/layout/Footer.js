@@ -16,7 +16,7 @@ export default function Footer() {
                             <li><Link href="/contact">Contact</Link></li>
                         </ul>
                         <p className="copyright">
-                            © All rights reserved by <span>WordPress River</span>
+                            © All rights reserved by <span>Neusisco</span>
                         </p>
                     </div>
                 </div>
