@@ -20,7 +20,7 @@ export default function ProjectDetails() {
                     <>
                         {/* {project.title} */}
                         <section className="project-details-wrap">
-                            <div className="project-details-img" data-aos="zoom-in">
+                            <div className="project-details-img fullwidth-image" data-aos="zoom-in">
                                 <img src="/assets/images/project-dt-1.jpeg" alt="Project Details" />
                             </div>
                             <div className="container">
