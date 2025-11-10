@@ -4,28 +4,80 @@
         "title": "Polichili",
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": true
+        "clickable": true,
+        "images" : [
+            "policili1.jpeg",
+            "policili2.jpeg",
+            "policili3.jpeg",
+            "policili4.jpeg"
+        ],
+        "data": [
+            {
+                "description": ""
+            },
+            {
+                "year": "2024-2025",
+                "services": "Mobile Development",
+                "stack": "Flutter, Python, C, MySql & Node.js"
+            }
+        ]
     },
     {
         "id": 2,
         "title": "RegizAI",
         "img": "project2.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": true
+        "clickable": true,
+        "images" : [
+            "policili1.png",
+            "policili2.png",
+            "policili3.png",
+            "policili4.png"
+        ],
+        "data": [
+            {
+                "description": ""
+            },
+            {
+                "year": "2024",
+                "services": "Mobile Development & Web Development",
+                "stack": "Flutter, Python, MySql & Laravel"
+            }
+        ]
     },
     {
         "id": 3,
         "title": "VAS DMS MOBILE",
         "img": "project3.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": true
+        "clickable": true,
+        "data": [
+            {
+                "description": ""
+            },
+            {
+                "year": "2024",
+                "services": "Mobile Development",
+                "stack": "Flutter"
+            }
+        ]
     },
     {
         "id": 4,
         "title": "Smartfarm",
         "img": "project4.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": true
+        "clickable": true,
+        "data": [
+            {
+                "description": ""
+            },
+            {
+                "year":2022,
+                "services": "Mobile Development",
+                "stack": "Flutter, C & MySql"
+            }
+        ]
     },
     {
         "id": 5,
