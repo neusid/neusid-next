@@ -5,6 +5,7 @@
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
+        "background": "project-dt-1",
         "images" : [
             "policili1.jpeg",
             "policili2.jpeg",
@@ -13,7 +14,7 @@
         ],
         "data": [
             {
-                "description": ""
+                "description": "Policili adalah aplikasi Android berbasis Flutter yang dirancang untuk membantu petani menentukan tanaman pendamping cabai yang optimal dalam sistem polikultur. Aplikasi ini terintegrasi dengan teknologi IoT yang berfungsi untuk mengumpulkan data lingkungan, seperti pH tanah, suhu, serta kelembapan tanah dan udara. Data tersebut kemudian diolah untuk menghasilkan rekomendasi tanaman pendamping yang sesuai dengan kondisi lahan pengguna. \n\nSelain fitur utama rekomendasi, Policili juga menyediakan fitur Sign In/Sign Up untuk autentikasi pengguna, History Rekomendasi untuk melihat hasil sebelumnya, serta Edit Profile agar pengguna dapat menyesuaikan data pribadi dan preferensi mereka. Dengan kombinasi teknologi IoT dan antarmuka modern Flutter, Policili menghadirkan solusi cerdas dan praktis bagi petani dalam mengoptimalkan produktivitas lahan cabai secara berkelanjutan."
             },
             {
                 "year": "2024-2025",
@@ -27,7 +28,8 @@
         "title": "RegizAI",
         "img": "project2.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": true,
+        "clickable": false,
+        "background": "project-dt-2",
         "images" : [
             "policili1.png",
             "policili2.png",
@@ -51,9 +53,16 @@
         "img": "project3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
+        "background": "project-dt-3",
+        "images" : [
+            "vas1.jpeg",
+            "vas2.jpeg",
+            "vas3.jpeg",
+            "vas4.jpeg"
+        ],
         "data": [
             {
-                "description": ""
+                "description": "VAS Mobile adalah aplikasi Android berbasis Flutter yang berfungsi sebagai Document Management System (DMS) sekaligus platform untuk melakukan stamping e-Materai, e-Sign, dan tera secara digital. Aplikasi ini dirancang untuk mempermudah pengguna dalam mengelola dokumen penting secara aman, cepat, dan efisien langsung melalui perangkat mobile. Melalui fitur penandatanganan elektronik (e-signature), serta penerapan e-materai dan tera digital, VAS Mobile mendukung proses administrasi tanpa kertas (paperless) dan memastikan keaslian serta legalitas setiap dokumen. Aplikasi ini juga dilengkapi dengan fitur autentikasi pengguna (Sign In/Sign Up), riwayat aktivitas dokumen, dan pengelolaan profil, menjadikan VAS Mobile solusi terpadu untuk kebutuhan manajemen dokumen digital yang modern dan terpercaya."
             },
             {
                 "year": "2024",
@@ -67,7 +76,7 @@
         "title": "Smartfarm",
         "img": "project4.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": true,
+        "clickable": false,
         "data": [
             {
                 "description": ""

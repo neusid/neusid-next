@@ -16,6 +16,7 @@ export default function ProjectDetails() {
     if (!project) return null
 
     const details = project.data?.[1] || {}
+    const background = project.background || "project-dt-1.jpeg"
     const images = project.images || "project4.jpeg"
     const description = project.data?.[0]?.description || "No description available."
 
@@ -27,7 +28,7 @@ export default function ProjectDetails() {
                         {/* {project.title} */}
                         <section className="project-details-wrap">
                             <div className="project-details-img fullwidth-image" data-aos="zoom-in">
-                                <img src="/assets/images/project-dt-1.jpeg" alt="Project Details" />
+                                <img src={`/assets/images/${background}.jpeg`} alt="Project Details" />
                             </div>
                             <div className="container">
                                 <div className="row mb-24">
@@ -75,16 +76,16 @@ export default function ProjectDetails() {
                                         </div>
                                         <div className="right-details">
                                             <h3>Description</h3>
-                                            <p>{description}</p>
+                                            {description.split("\n\n").map((para, index)=>(<p key={index}>{para}</p>))}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="project-details-img" data-aos="zoom-in">
-                                <img src="/assets/images/project-dt-1.jpeg" alt="Project Details" />
+                                <img src={`/assets/images/${background}.jpeg`} alt="Project Details" />
                             </div>
                             <div className="container d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                                <Link href="#" className="big-btn shadow-box">
+                                <Link href="/project/3" className="big-btn shadow-box">
                                     Next Project
                                 </Link>
                             </div>
