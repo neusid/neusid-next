@@ -4,8 +4,7 @@ export default function Home() {
 
     return (
         <>
-           <Layout  maincls="main-homepage">
-
+            <Layout  maincls="main-homepage">
                 <section className="about-area">
                     <div className="container">
                         <div className="row">
@@ -80,14 +79,15 @@ export default function Home() {
                                     <div data-aos="zoom-in">
                                         <div className="about-blog-box info-box shadow-box h-full">
                                             <Link href="/blog" className="overlay-link" />
-                                            <img src="/assets/images/bg1.png" alt="BG" className="bg-img" />
+                                            {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                             <img src="/assets/images/gfonts.png" alt="GFonts" />
                                             <div className="d-flex align-items-center justify-content-between">
                                                 <div className="infos">
                                                     <h4>Blog</h4>
                                                     <h1>GFonts</h1>
                                                 </div>
-                                                <Link href="/blog" className="about-btn">
+                                                {/* <Link href="/blog" className="about-btn"> */}
+                                                <Link href="#" className="about-btn">
                                                     <img src="/assets/images/icon.svg" alt="Button" />
                                                 </Link>
                                             </div>
