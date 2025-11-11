@@ -78,7 +78,8 @@ export default function Home() {
                                 <div className="blog-service-profile-wrap d-flex gap-24">
                                     <div data-aos="zoom-in">
                                         <div className="about-blog-box info-box shadow-box h-full">
-                                            <Link href="/blog" className="overlay-link" />
+                                            {/* <Link href="/blog" className="overlay-link" /> */}
+                                            <Link href="#" className="overlay-link" />
                                             {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                             <img src="/assets/images/gfonts.png" alt="GFonts" />
                                             <div className="d-flex align-items-center justify-content-between">
