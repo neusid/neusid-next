@@ -30,7 +30,7 @@ export default function Home() {
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-edc-exp about-experience shadow-box">
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                    <h3>EXPERIENCE</h3>
+                                    <h3>Recent Work</h3>
                                     <ul>
                                         <li>
                                             <p className="date">2024 - 2025</p>
