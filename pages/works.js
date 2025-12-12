@@ -3,6 +3,10 @@ import Link from "next/link"
 import data from "../util/project.json"
 export default function Home() {
 
+    const handleClick = () => {
+        sessionStorage.setItem("fromWorks", "true")
+      }
+
     return (
         <>
             <Layout  maincls="main-workspage">
@@ -14,7 +18,7 @@ export default function Home() {
                                 {data.slice(0, 2).map((item, i) => (
                                     <div data-aos="zoom-in">
                                         <div className="project-item shadow-box">
-                                            {item.clickable? (<Link className="overlay-link" href={`/project/${item.id}`} />):(<div className="overlay-link not-clickable"/>)}
+                                            {item.clickable? (<Link className="overlay-link" href={`/project/${item.id}`} onClick={handleClick} />):(<div className="overlay-link not-clickable"/>)}
                                             {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                             <div className="project-img">
                                                 <img src={`/assets/images/${item.img}`} alt="Project" />
@@ -24,7 +28,7 @@ export default function Home() {
                                                     <p>{item.category}</p>
                                                     <h1>{item.title}</h1>
                                                 </div>
-                                                <Link href={`/project/${item.id}`} className="project-btn">
+                                                <Link href={`/project/${item.id}`} onClick={handleClick} className="project-btn">
                                                     <img src="/assets/images/icon.svg" alt="Button" />
                                                 </Link>
                                             </div>
@@ -40,7 +44,7 @@ export default function Home() {
                                             <div className="project-item shadow-box">
                                                 {
                                                     item.clickable? 
-                                                    (<Link className="overlay-link" href={`/project/${item.id}`} />):
+                                                    (<Link className="overlay-link" href={`/project/${item.id}`} onClick={handleClick} />):
                                                     (<div className="overlay-link not-clickable"/>)
                                                 }
                                                 {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
@@ -52,7 +56,7 @@ export default function Home() {
                                                         <p>{item.category}</p>
                                                         <h1>{item.title}</h1>
                                                     </div>
-                                                    <Link href={`/project/${item.id}`} className="project-btn">
+                                                    <Link href={`/project/${item.id}`} onClick={handleClick} className="project-btn">
                                                         <img src="/assets/images/icon.svg" alt="Button" />
                                                     </Link>
                                                 </div>
@@ -65,7 +69,7 @@ export default function Home() {
                                         <div data-aos="zoom-in" className="flex-1">
                                             <div className="project-item shadow-box">
                                                 {
-                                                    item.clickable ? (<Link className="overlay-link" href={`/project/${item.id}`} />):
+                                                    item.clickable ? (<Link className="overlay-link" href={`/project/${item.id}`} onClick={handleClick} />):
                                                     (<div className="overlay-link not-clickable"/>)
                                                 }
                                                 <img src="/assets/images/bg1.png" alt="BG" className="bg-img" />
@@ -77,7 +81,7 @@ export default function Home() {
                                                         <p>{item.category}</p>
                                                         <h1>{item.title}</h1>
                                                     </div>
-                                                    <Link href={`/project/${item.id}`} className="project-btn">
+                                                    <Link href={`/project/${item.id}`} onClick={handleClick} className="project-btn">
                                                         <img src="/assets/images/icon.svg" alt="Button" />
                                                     </Link>
                                                 </div>

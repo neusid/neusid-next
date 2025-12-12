@@ -10,6 +10,17 @@ export default function ProjectDetails() {
     const { id } = Router.query
 
     useEffect(() => {
+        
+        if (!Router.isReady) return
+
+        const sessionWorks = sessionStorage.getItem("fromWorks")
+        if (!sessionWorks) {
+            Router.replace("/blocked")
+            return
+        }
+
+        sessionStorage.removeItem("fromWorks")
+
         setProject(data.find((data) => data.id == id))
     }, [id])
 

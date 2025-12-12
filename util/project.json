@@ -25,8 +25,8 @@
     },
     {
         "id": 2,
-        "title": "RegizAI",
-        "img": "project2.jpeg",
+        "title": "Mierp",
+        "img": "project2ver2.png",
         "category": "MOBILE DEVELOPMENT",
         "clickable": false,
         "background": "project-dt-2",
@@ -41,9 +41,9 @@
                 "description": ""
             },
             {
-                "year": "2024",
-                "services": "Mobile Development & Web Development",
-                "stack": "Flutter, Python, MySql & Laravel"
+                "year": "2025 - Now",
+                "services": "Mobile Development",
+                "stack": "Flutter & Firebase."
             }
         ]
     },
