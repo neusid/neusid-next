@@ -1,5 +1,29 @@
 [
     {
+        "id": 1,
+        "title": "Mierp (Mini ERP)",
+        "img": "project2ver2.jpeg",
+        "category": "MOBILE DEVELOPMENT (Underdevelopment)",
+        "clickable": false,
+        "background": "project-dt-2",
+        "images" : [
+            "policili1.png",
+            "policili2.png",
+            "policili3.png",
+            "policili4.png"
+        ],
+        "data": [
+            {
+                "description": ""
+            },
+            {
+                "year": "2025 - Now",
+                "services": "Mobile Development",
+                "stack": "Flutter & Firebase."
+            }
+        ]
+    },
+    {
         "id": 2,
         "title": "Polichili",
         "img": "project1.jpeg",
@@ -20,30 +44,6 @@
                 "year": "2024-2025",
                 "services": "Mobile Development",
                 "stack": "Flutter, Python, C, MySql & Node.js"
-            }
-        ]
-    },
-    {
-        "id": 1,
-        "title": "Mierp",
-        "img": "project2ver2.jpeg",
-        "category": "MOBILE DEVELOPMENT",
-        "clickable": false,
-        "background": "project-dt-2",
-        "images" : [
-            "policili1.png",
-            "policili2.png",
-            "policili3.png",
-            "policili4.png"
-        ],
-        "data": [
-            {
-                "description": ""
-            },
-            {
-                "year": "2025 - Now",
-                "services": "Mobile Development",
-                "stack": "Flutter & Firebase."
             }
         ]
     },
