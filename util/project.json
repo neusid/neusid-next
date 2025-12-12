@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 2,
         "title": "Polichili",
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
@@ -24,9 +24,9 @@
         ]
     },
     {
-        "id": 2,
+        "id": 1,
         "title": "Mierp",
-        "img": "project2ver2.png",
+        "img": "project2ver2.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": false,
         "background": "project-dt-2",
