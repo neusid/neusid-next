@@ -57,7 +57,7 @@ export default function Home() {
                                             <div className="about-project-box info-box shadow-box h-full">
                                                 <Link className="overlay-link" href="/works" />
                                                 {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                                <img src="/assets/images/my-works.png" alt="My Works" />
+                                                <img src="/assets/images/my-works.png" alt="My Works"  width={224} height={126}/>
                                                 <div className="d-flex align-items-center justify-content-between">
                                                     <div className="infos">
                                                         <h4>SHOWCASE</h4>
