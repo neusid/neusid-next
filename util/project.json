@@ -4,20 +4,20 @@
         "title": "Mierp (Mini ERP)",
         "img": "project2ver2.jpeg",
         "category": "MOBILE DEVELOPMENT",
-        "clickable": false,
-        "background": "project-dt-2",
+        "clickable": true,
+        "background": "project-dt-04",
         "images" : [
-            "policili1.png",
-            "policili2.png",
-            "policili3.png",
-            "policili4.png"
+            "mierp1.png",
+            "mierp2.jpg",
+            "mierp3.jpg",
+            "mierp4.jpg"
         ],
         "data": [
             {
-                "description": ""
+                "description": "MiERP merupakan aplikasi Android berbasis Flutter yang dirancang untuk membantu pengelolaan operasional bisnis melalui sistem ERP terintegrasi. Aplikasi ini memiliki dua peran utama, yaitu Finance untuk melakukan approval transaksi dan Warehouse untuk mengelola stok serta membuat order. Dengan sistem yang terstruktur, MiERP membantu meningkatkan efisiensi kerja, mempermudah pengelolaan inventaris, serta memastikan proses bisnis berjalan lebih cepat, akurat, dan terorganisir."
             },
             {
-                "year": "2025 - Now",
+                "year": "2025 - January 2026",
                 "services": "Mobile Development",
                 "stack": "Flutter & Firebase."
             }
@@ -29,7 +29,7 @@
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-1",
+        "background": "project-dt-01",
         "images" : [
             "policili1.jpeg",
             "policili2.jpeg",
@@ -53,7 +53,7 @@
         "img": "project3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-3",
+        "background": "project-dt-03",
         "images" : [
             "vas1.jpeg",
             "vas2.jpeg",

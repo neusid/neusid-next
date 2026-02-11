@@ -19,7 +19,7 @@ export default function ProjectDetails() {
             return
         }
 
-        sessionStorage.removeItem("fromWorks")
+        // sessionStorage.removeItem("fromWorks")
 
         setProject(data.find((data) => data.id == id))
     }, [id])
