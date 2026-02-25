@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import data from "../../util/project.json"
+import BlogDetails from "../blog/[id]"
 
 export default function ProjectDetails() {
     let Router = useRouter()
@@ -30,6 +31,7 @@ export default function ProjectDetails() {
     const background = project.background || "project-dt-1.jpeg"
     const images = project.images || "project4.jpeg"
     const description = project.data?.[0]?.description || "No description available."
+    const page =  project.data?.[2].next || 1;
 
     return (
         <>
@@ -111,11 +113,15 @@ export default function ProjectDetails() {
                             <div className="project-details-img" data-aos="zoom-in">
                                 <img src={`/assets/images/${background}.jpeg`} alt="Project Details" />
                             </div>
-                            <div className="container d-flex align-items-center justify-content-center" data-aos="zoom-in">
-                                <Link href="/project/3" className="big-btn shadow-box">
-                                    Next Project
-                                </Link>
-                            </div>
+                            {
+                                id != 3 && (
+                                    <div className="container d-flex align-items-center justify-content-center" data-aos="zoom-in">
+                                        <Link href={`/project/${page}`} className="big-btn shadow-box">
+                                            Next Project
+                                        </Link>
+                                    </div>
+                                ) 
+                            }
                         </section>
                     </>
                 )}

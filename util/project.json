@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "Mierp (Mini ERP)",
-        "img": "project2ver3.png",
+        "img": "project2ver3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
         "background": "project-dt-04",
@@ -22,6 +22,9 @@
                 "stack": "Flutter & Firebase.",
                 "playstore": "https://play.google.com/store/apps/details?id=com.neusisco.mierp_apps",
                 "github": "https://github.com/Malikibrahim10203/mierp"
+            },
+            {
+                "next": "2"
             }
         ]
     },
@@ -46,6 +49,9 @@
                 "year": "2024-2025",
                 "services": "Mobile Development",
                 "stack": "Flutter, Python, C, MySql & Node.js"
+            },
+            {
+                "next": "3"
             }
         ]
     },
@@ -70,6 +76,9 @@
                 "year": "2024",
                 "services": "Mobile Development",
                 "stack": "Flutter"
+            },
+            {
+                "next": "3"
             }
         ]
     },
