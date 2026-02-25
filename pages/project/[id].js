@@ -83,6 +83,22 @@ export default function ProjectDetails() {
                                                     <p>Stack</p>
                                                     <h4>{details.stack}</h4>
                                                 </li>
+                                                {details.playstore && (
+                                                    <li>
+                                                        <p>Playstore</p>
+                                                        <h4>
+                                                            <a href={details.playstore} target="_blank" rel="noopener noreferrer">View App</a>
+                                                        </h4>
+                                                    </li>
+                                                )}
+                                                {details.github && (
+                                                    <li>
+                                                        <p>Github</p>
+                                                        <h4>
+                                                            <a href={details.github} target="_blank" rel="noopener noreferrer">View Repository</a>
+                                                        </h4>
+                                                    </li>
+                                                )}
                                             </ul>
                                         </div>
                                         <div className="right-details">
@@ -108,3 +124,13 @@ export default function ProjectDetails() {
     )
 }
 
+const linkify = (text) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+    return text.split(urlRegex).map((part, index) => {
+        if(part.match(urlRegex)) {
+            return (<a key={index} href={part} target="_blank" rel="noopener noreferrer">{part}</a>)
+        }
+        return part;
+    });
+}

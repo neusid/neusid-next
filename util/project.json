@@ -19,7 +19,9 @@
             {
                 "year": "2025 - January 2026",
                 "services": "Mobile Development",
-                "stack": "Flutter & Firebase."
+                "stack": "Flutter & Firebase.",
+                "playstore": "https://play.google.com/store/apps/details?id=com.neusisco.mierp_apps",
+                "github": "https://github.com/Malikibrahim10203/mierp"
             }
         ]
     },
