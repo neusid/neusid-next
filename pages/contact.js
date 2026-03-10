@@ -100,9 +100,6 @@ export default function Home() {
                                     <img src="/assets/images/icon3.png" alt="Icon" />
                                     <h1>Let’s work <span>together.</span></h1>
                                     <form onSubmit={handleSubmit}>
-                                        <div className="alert alert-success messenger-box-contact__msg" style={{ display: 'none' }} role="alert">
-                                            Your message was sent successfully.
-                                        </div>
                                         <div className="input-group">
                                             <input type="text" name="fullname" id="full-name" placeholder="Name *" value={form.fullname} onChange={handleChange}/>
                                         </div>
