@@ -30,8 +30,8 @@ export default function Home() {
                             <div className="credential-content flex-1">
                                 <div className="credential-about" data-aos="zoom-in">
                                     <h2>About Me</h2>
-                                    <p>Creative and adaptable Software Engineer with a passion for building impactful applications across mobile and web platforms. Skilled in Flutter (GetX), Laravel, API integration, and UI/UX design, with a solid foundation in backend development and documentation.</p>
-                                    <p>Experienced in leading projects, collaborating with diverse teams, and turning ideas into functional, user-friendly solutions. Known for bringing fresh ideas, working well with others, and staying focused to deliver quality results.</p>
+                                    <p>Flutter Developer with hands-on experience building scalable and user-friendly mobile applications. Experienced in state management (GetX, BLoC), implementing responsive UI based on design requirement and REST API integration.</p>
+                                    <p>Strong understanding of mobile app architecture, debugging, and performance opmization. Detail-oriented and eager to contribute building stable, high-quality applications in collaborative team environments.</p>
                                 </div>
                                 <div className="credential-edc-exp credential-experience">
                                     <h2 data-aos="fade-up">Experience</h2>
@@ -99,7 +99,7 @@ export default function Home() {
                                             <p>Non enim praesent</p>
                                         </div>
                                         <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Adobe Photoshop</h3>
+                                            <h3 className="name">Dart</h3>
                                             <p>Non enim praesent</p>
                                         </div>
                                     </div>
@@ -108,9 +108,14 @@ export default function Home() {
                                     <h2 data-aos="fade-up">Certificate</h2>
                                     <div className="d-grid skill-items gap-24 flex-wrap">
                                         <div className="skill-item" data-aos="zoom-in">
+                                            <span className="percent">Feb 2026</span>
+                                            <h3 className="name">English Course Beginner Program</h3>
+                                            <p>Kampung Inggris EM</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
                                             <span className="percent">May 2024</span>
                                             <h3 className="name">Classify Images with TensorFlow Convolutional Neural Networks</h3>
-                                            <p>EDX Alumni</p>
+                                            <p>Coursera</p>
                                         </div>
                                         <div className="skill-item" data-aos="zoom-in">
                                             <span className="percent">Nov 2022</span>

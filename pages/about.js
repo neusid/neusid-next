@@ -22,7 +22,7 @@ export default function Home() {
                                 <div className="about-details-inner shadow-box">
                                     <img src="/assets/images/icon2.png" alt="Star" />
                                     <h1>Malik Ibrahim</h1>
-                                    <p>Creative and adaptable Software Engineer skilled in Flutter (GetX), Laravel, API integration, and UI/UX design. Experienced in leading projects, collaborating across teams, and delivering impactful, user-friendly web and mobile applications.</p>
+                                    <p>Flutter Developer with hands-on experience building scalable and user-friendly mobile applications.</p>
                                 </div>
                             </div>
                         </div>
@@ -33,14 +33,14 @@ export default function Home() {
                                     <h3>Recent Work</h3>
                                     <ul>
                                         <li>
+                                            <p className="date">2025 - 2026</p>
+                                            <h2>Mierp (Mini ERP)</h2>
+                                            <p className="type">Mobile Application for Business Management</p>
+                                        </li>
+                                        <li>
                                             <p className="date">2024 - 2025</p>
                                             <h2>Full Stack Flutter Developer & UI/UX</h2>
                                             <p className="type">IoT-Based Companion Plant Recommendation Application for Mixed Chili Cultivation</p>
-                                        </li>
-                                        <li>
-                                            <p className="date">2024</p>
-                                            <h2>Mobile Developer & UI/UX (Intern)</h2>
-                                            <p className="type">Mobile Application for Document Management, e-Signature, and Tera</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -71,12 +71,12 @@ export default function Home() {
                                         <div className="about-profile-box info-box shadow-box h-full">
                                             {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                             <div className="inner-profile-icons shadow-box">
-                                                <Link href="www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer">
+                                                <a href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer">
                                                     <i className="iconoir-linkedin" />
-                                                </Link>
-                                                <Link href="https://web.facebook.com/profile.php?id=100009292241278" rel="noopener noreferrer">
+                                                </a>
+                                                <a href="https://web.facebook.com/profile.php?id=100009292241278" target="_blank"  rel="noopener noreferrer">
                                                     <i className="iconoir-facebook" />
-                                                </Link>
+                                                </a>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">
                                                 <div className="infos">

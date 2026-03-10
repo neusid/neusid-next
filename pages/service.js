@@ -54,7 +54,7 @@ export default function Home() {
                                             </div>
                                             <div className="service-item">
                                                 <h3>Mobile Development</h3>
-                                                <p>Providing mobile development services using Flutter framework, focusing on building responsive, high-performance applications with clean architecture and efficient state management powered by GetX.</p>
+                                                <p>Providing mobile development services using Flutter framework, focusing on building responsive, high-performance applications with clean architecture and state management powered by GetX and BLoC.</p>
                                             </div>
                                         </div>
                                     </div>

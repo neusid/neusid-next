@@ -84,7 +84,7 @@
     },
     {
         "id": 4,
-        "title": "Smartfarm",
+        "title": "Scantivo",
         "img": "project4.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": false,
@@ -93,9 +93,9 @@
                 "description": ""
             },
             {
-                "year":2022,
+                "year":2026,
                 "services": "Mobile Development",
-                "stack": "Flutter, C & MySql"
+                "stack": "Flutter"
             }
         ]
     },
