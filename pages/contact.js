@@ -1,6 +1,52 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import { useState } from "react"
+import ModalSuccess from "@/components/ModalSuccess";
+
+
 export default function Home() {
+
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const [form, setForm] = useState({
+        fullname: "",
+        email: "",
+        subject: "",
+        message: ""
+    });
+    
+    const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        });
+    };
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const res = await fetch("https://formspree.io/f/xrbonjeb", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(form)
+        });
+    
+        if (res.ok) {
+            handleOpen();
+            
+            setForm({
+                fullname: "",
+                email: "",
+                subject: "",
+                message: ""
+            })
+        } 
+    }
 
     return (
         <>
@@ -53,26 +99,27 @@ export default function Home() {
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                     <img src="/assets/images/icon3.png" alt="Icon" />
                                     <h1>Let’s work <span>together.</span></h1>
-                                    <form action={"https://formspree.io/f/xrbonjeb"} method="POST">
+                                    <form onSubmit={handleSubmit}>
                                         <div className="alert alert-success messenger-box-contact__msg" style={{ display: 'none' }} role="alert">
                                             Your message was sent successfully.
                                         </div>
                                         <div className="input-group">
-                                            <input type="text" name="full-name" id="full-name" placeholder="Name *" />
+                                            <input type="text" name="fullname" id="full-name" placeholder="Name *" value={form.fullname} onChange={handleChange}/>
                                         </div>
                                         <div className="input-group">
-                                            <input type="email" name="email" id="email" placeholder="Email *" />
+                                            <input type="email" name="email" id="email" placeholder="Email *" value={form.email} onChange={handleChange}/>
                                         </div>
                                         <div className="input-group">
-                                            <input type="text" name="subject" id="subject" placeholder="Your Subject *" />
+                                            <input type="text" name="subject" id="subject" placeholder="Your Subject *" value={form.subject} onChange={handleChange}/>
                                         </div>
                                         <div className="input-group">
-                                            <textarea name="message" id="message" placeholder="Your Message *" />
+                                            <textarea name="message" id="message" placeholder="Your Message *" value={form.message} onChange={handleChange}/>
                                         </div>
                                         <div className="input-group">
                                             <button className="theme-btn submit-btn" name="submit" type="submit">Send Message</button>
                                         </div>
                                     </form>
+                                    <ModalSuccess open={open} handleClose={handleClose} />
                                 </div>
                             </div>
                         </div>
