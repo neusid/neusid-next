@@ -122,8 +122,8 @@ export default function Home() {
                                                 <Link href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer">
                                                     <i className="iconoir-linkedin" />
                                                 </Link>
-                                                <Link href="https://web.facebook.com/profile.php?id=100009292241278" target="_blank" rel="noopener noreferrer">
-                                                    <i className="iconoir-facebook" />
+                                                <Link href="https://github.com/Malikibrahim10203" target="_blank" rel="noopener noreferrer">
+                                                    <i className="iconoir-github" />
                                                 </Link>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">
