@@ -13,7 +13,7 @@ export default function Home() {
                                     <Link className="overlay-link" href="/about" />
                                     {/*<img src="/assets/images/bg1.png" alt="BG" className="bg-img" />*/}
                                     <div className="img-box">
-                                        <img src="/assets/images/me.png" alt="About Me" />
+                                        <img src="/assets/images/me.jpeg" alt="About Me" />
                                     </div>
                                     <div className="infos">
                                         <h4>A Full Stack Developer & UI/UX Designer</h4>

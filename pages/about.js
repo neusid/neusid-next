@@ -13,7 +13,7 @@ export default function Home() {
                                 <div className="about-image-box shadow-box">
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                     <div className="image-inner">
-                                        <img src="/assets/images/me2.png" alt="About Me" />
+                                        <img src="/assets/images/me.jpeg" alt="About Me" />
                                     </div>
                                 </div>
                             </div>
