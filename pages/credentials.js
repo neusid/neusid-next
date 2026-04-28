@@ -13,7 +13,7 @@ export default function Home() {
                                     <div className="shadow-box">
                                         {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
                                         <div className="img-box">
-                                            <img src="/assets/images/me2.png" alt="About Me" />
+                                            <img src="/assets/images/me.jpeg" alt="About Me" />
                                         </div>
                                         <h2>Malik Ibrahim</h2>
                                         <p>@neusisco</p>
