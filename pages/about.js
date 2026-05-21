@@ -74,7 +74,7 @@ export default function Home() {
                                                 <a href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer">
                                                     <i className="iconoir-linkedin" />
                                                 </a>
-                                                <Link href="https://github.com/Malikibrahim10203" target="_blank" rel="noopener noreferrer">
+                                                <Link href="https://github.com/neusid" target="_blank" rel="noopener noreferrer">
                                                     <i className="iconoir-github" />
                                                 </Link>
                                             </div>
