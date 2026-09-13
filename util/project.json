@@ -5,7 +5,7 @@
         "img": "project2ver3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-04-x.jpeg",
+        "background": "project-dt-03.svg",
         "images": [
             "mierp1.png",
             "mierp2.jpg",
@@ -34,7 +34,7 @@
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-01.png",
+        "background": "project-dt-01.svg",
         "images": [
             "policili1.jpeg",
             "policili2.jpeg",
@@ -61,7 +61,7 @@
         "img": "project3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-03.png",
+        "background": "project-dt-02.svg",
         "images": [
             "vas1.jpeg",
             "vas2.jpeg",
