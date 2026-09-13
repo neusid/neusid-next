@@ -20,37 +20,37 @@ export default function Home() {
                             <div className="about-details" data-aos="zoom-in">
                                 <h1 className="section-heading" data-aos="fade-up"><img src="/assets/images/star-2.png" alt="Star" /> Self-summary <img src="/assets/images/star-2.png" alt="Star" /></h1>
                                 <div className="about-details-inner shadow-box">
-                                    <img src="/assets/images/icon2.png" alt="Star" />
-                                    <h1>Malik Ibrahim</h1>
-                                    <p>Mobile Developer berpengalaman dalam membangun aplikasi Android & iOS menggunakan Flutter, Dart, dan React Native. Menguasai arsitektur MVVM, Clean Architecture, BLoC, GetX, REST API, serta QA testing & debugging.</p>
-                                </div>
+                                     <img src="/assets/images/icon2.png" alt="Star" />
+                                     <h1>Malik Ibrahim</h1>
+                                     <p>Mobile Developer with experience building Android and iOS applications using Flutter, Dart, and React Native. Proficient in MVVM, Clean Architecture, BLoC, GetX, REST APIs, and QA testing & debugging.</p>
+                                 </div>
                             </div>
                         </div>
                         <div className="row mt-24">
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-edc-exp about-experience shadow-box">
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                    <h3>Pengalaman Kerja</h3>
+                                    <h3>Work Experience</h3>
                                     <ul>
                                         <li>
-                                            <p className="date">Juni 2026 - Sekarang</p>
+                                            <p className="date">June 2026 - Present</p>
                                             <h2>Mobile Developer & QA</h2>
-                                            <p className="type">PT Lincah Cipta Harapan (Magang) - Bandung</p>
+                                            <p className="type">PT Lincah Cipta Harapan (Internship) - Bandung</p>
                                         </li>
                                         <li>
-                                            <p className="date">Mei 2026 - Juli 2026</p>
+                                            <p className="date">May 2026 - July 2026</p>
                                             <h2>Mobile Developer & UI/UX</h2>
-                                            <p className="type">Mobile Developer Freelance (Mingda Absensi)</p>
+                                            <p className="type">Mobile Developer Freelance (Mingda Attendance)</p>
                                         </li>
                                         <li>
-                                            <p className="date">Juli 2024 - Desember 2024</p>
+                                            <p className="date">July 2024 - December 2024</p>
                                             <h2>Mobile Developer & UI/UX (Intern)</h2>
                                             <p className="type">PT Digital Logistics Internasional - Jakarta</p>
                                         </li>
                                         <li>
-                                            <p className="date">Desember 2024 - Agustus 2025</p>
-                                            <h2>IoT & Mobile Developer (Skripsi)</h2>
-                                            <p className="type">Rekomendasi Tanaman Polikultur Cabai Berbasis IoT</p>
+                                            <p className="date">December 2024 - August 2025</p>
+                                            <h2>IoT & Mobile Developer (Thesis)</h2>
+                                            <p className="type">IoT-Based Companion Plant Recommendation for Chili Polyculture</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -58,16 +58,16 @@ export default function Home() {
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-edc-exp about-education shadow-box">
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                    <h3>PENDIDIKAN</h3>
+                                    <h3>EDUCATION</h3>
                                     <ul>
                                         <li>
                                             <p className="date">2021 - 2025</p>
-                                            <h2>Sarjana Terapan Rekayasa Perangkat Lunak - IPK 3.7</h2>
+                                            <h2>Bachelor of Applied Science in Software Engineering - GPA 3.7</h2>
                                             <p className="type">Politeknik Negeri Indramayu</p>
                                         </li>
                                         <li>
                                             <p className="date">2019 - 2021</p>
-                                            <h2>SMK Rekayasa Perangkat Lunak</h2>
+                                            <h2>Vocational High School in Software Engineering</h2>
                                             <p className="type">SMK Negeri 1 Cirebon</p>
                                         </li>
                                     </ul>
