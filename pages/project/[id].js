@@ -41,7 +41,7 @@ export default function ProjectDetails() {
                         {/* {project.title} */}
                         <section className="project-details-wrap">
                             <div className="project-details-img fullwidth-image" data-aos="zoom-in">
-                                <img src={`/assets/images/${background}.jpeg`} alt="Project Details" />
+                                <img src={`/assets/images/${background}`} alt="Project Details" />
                             </div>
                             <div className="container">
                                 <div className="row mb-24">
@@ -111,7 +111,7 @@ export default function ProjectDetails() {
                                 </div>
                             </div>
                             <div className="project-details-img" data-aos="zoom-in">
-                                <img src={`/assets/images/${background}.jpeg`} alt="Project Details" />
+                                <img src={`/assets/images/${background}`} alt="Project Details" />
                             </div>
                             {
                                 id != 3 && (

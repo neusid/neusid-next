@@ -5,8 +5,8 @@
         "img": "project2ver3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-04",
-        "images" : [
+        "background": "project-dt-02.svg",
+        "images": [
             "mierp1.png",
             "mierp2.jpg",
             "mierp3.jpg",
@@ -34,8 +34,8 @@
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-01",
-        "images" : [
+        "background": "project-dt-01.svg",
+        "images": [
             "policili1.jpeg",
             "policili2.jpeg",
             "policili3.jpeg",
@@ -61,8 +61,8 @@
         "img": "project3.jpeg",
         "category": "MOBILE DEVELOPMENT",
         "clickable": true,
-        "background": "project-dt-03",
-        "images" : [
+        "background": "project-dt-03.svg",
+        "images": [
             "vas1.jpeg",
             "vas2.jpeg",
             "vas3.jpeg",
@@ -93,7 +93,7 @@
                 "description": ""
             },
             {
-                "year":2026,
+                "year": 2026,
                 "services": "Mobile Development",
                 "stack": "Flutter"
             }
@@ -112,19 +112,5 @@
         "img": "project6.jpeg",
         "category": "GRAPHIC DESIGN",
         "clickable": false
-    },
-    {
-        "id": 7,
-        "title": "Accessible",
-        "img": "project7.jpeg",
-        "category": "Movie",
-        "clickable": true
-    },
-    {
-        "id": 8,
-        "title": "Observable",
-        "img": "project8.jpeg",
-        "category": "Sports",
-        "clickable": true
     }
 ]

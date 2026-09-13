@@ -644,68 +644,88 @@ ol {
 /* # Project */
 .projects-area {
     padding-top: 65px;
+    padding-bottom: 60px;
 }
 .projects-area .container > .section-heading {
-    display: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
 }
 .projects-area .section-heading {
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .projects-area .project-item {
-    margin-bottom: 24px;
-    padding: 16px 16px 26px 16px;
+    margin-bottom: 0;
+    padding: 20px 20px 24px 20px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.projects-area .project-item:hover {
+    transform: translateY(-4px);
 }
 .projects-area .project-item .project-img {
-    border-radius: 30px;
-    margin-bottom: 13px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    width: 100%;
 }
 .projects-area .project-item .project-img img {
     display: block;
-    border-radius: 30px;
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.projects-area .project-item:hover .project-img img {
+    transform: scale(1.03);
 }
 .projects-area .project-item .project-info p {
     color: #BCBCBC;
     opacity: 0.5;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
-    margin-bottom: 2px;
-    margin-top: 5px;
+    margin-bottom: 4px;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
 }
 .projects-area .project-item .project-info h1 {
-    font-size: 22px;
+    font-size: 20px;
     color: #ffffff;
-    opacity: 0.9;
+    opacity: 0.95;
     font-weight: 500;
     margin: 0;
+    line-height: 1.3;
 }
 .projects-area .project-item .project-btn {
-    opacity: 0.2;
+    opacity: 0.3;
     transition: .3s;
     display: inline-block;
+    flex-shrink: 0;
 }
 .projects-area .project-item:hover .project-btn {
     opacity: 1;
+}
+.projects-area .project-item .project-btn.not-clickable {
+    cursor: default;
+    opacity: 0.15;
 }
 
 
 
 /* # Project Details */
 .project-details-wrap .project-details-img {
-    height: 550px;
     position: relative;
-    margin-bottom: 15vw;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    overflow: hidden;
 }
 .project-details-wrap .project-details-img img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-
-    /* width: auto;
     height: auto;
-    object-fit: fill;
-    display: block; */
+    display: block;
+    border-radius: 20px;
 }
 .project-details-wrap .project-infos-wrap {
     position: relative;
@@ -1646,7 +1666,8 @@ ol {
     }
     .about-area .container > .row:nth-child(2) .blog-service-profile-wrap > div:nth-child(2) {
         order: 3;
-
+        width: 100%;
+        margin-top: 0;
     }
     .info-box.about-services-box .icon-boxes {
         gap: 40px;
@@ -1768,16 +1789,11 @@ ol {
     .about-area .about-experience {
         margin-bottom: 24px;
     }
-    .projects-area .container > .row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .project-details-wrap .project-about-2,
-    .projects-area .container > .row .col-md-8 > .d-flex {
+    .project-details-wrap .project-about-2 {
         flex-direction: column;
     }
     .project-details-wrap .project-details-img {
-        height: 300px;
+        margin-bottom: 24px;
     }
     .breadcrumb-area .breadcrumb-content .section-heading {
         font-size: 36px;
@@ -1873,7 +1889,6 @@ ol {
         margin-top: 40px;
     }
 
-    .projects-area .container > .row,
     .profile-contact-credentials-wrap {
         grid-template-columns: 1fr;
     }
@@ -1892,11 +1907,7 @@ ol {
         padding-top: 80px;
     }
     .projects-area .container > .section-heading {
-        display: flex;
-        margin-bottom: 40px;
-    }
-    .projects-area .col-md-8 .section-heading {
-        display: none;
+        margin-bottom: 24px;
     }
     .breadcrumb-area .breadcrumb-content .section-heading {
         font-size: 24px;
@@ -1939,32 +1950,50 @@ ol {
 }
 @media (max-width: 425px) {
     .about-area .about-me-box .infos h1 {
-        font-size: 30px;
+        font-size: 28px;
     }
     .about-area .about-me-box .infos {
-        padding-right: 20px;
+        padding-right: 0;
     }
     .info-box.about-services-box .icon-boxes {
-        gap: 25px;
+        gap: 20px;
     }
     .info-box.about-services-box .icon-boxes i {
-        font-size: 30px;
+        font-size: 28px;
     }
     .credential-area .skills-wrap .skill-items,
     .info-box.about-client-box .clients {
         grid-template-columns: 1fr;
     }
     .footer-area .footer-content .footer-menu {
-        gap: 24px;
+        gap: 20px;
     }
     .credential-area .credential-content .credential-about {
         padding-bottom: 70px;
     }
     .contact-area .contact-form h1 {
-        font-size: 30px;
+        font-size: 28px;
     }
     .info-box.about-client-box .clients .client-item {
         width: 100%;
+        padding: 24px 15px;
+    }
+    .info-box.about-client-box .clients .client-item h1 {
+        font-size: 28px;
+        margin-bottom: 6px;
+    }
+    .section-heading {
+        font-size: 22px;
+    }
+    .section-heading img {
+        width: 20px;
+        height: 20px;
+    }
+    .projects-area .project-item {
+        padding: 16px;
+    }
+    .projects-area .project-item .project-info h1 {
+        font-size: 18px;
     }
     .blog-details-area .blog-details-content .comments-and-form-wrap .comments .comment-list {
         flex-direction: column;
