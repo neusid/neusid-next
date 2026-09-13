@@ -30,77 +30,91 @@ export default function Home() {
                             <div className="credential-content flex-1">
                                 <div className="credential-about" data-aos="zoom-in">
                                     <h2>About Me</h2>
-                                    <p>Flutter Developer with hands-on experience building scalable and user-friendly mobile applications. Experienced in state management (GetX, BLoC), implementing responsive UI based on design requirement and REST API integration.</p>
-                                    <p>Strong understanding of mobile app architecture, debugging, and performance opmization. Detail-oriented and eager to contribute building stable, high-quality applications in collaborative team environments.</p>
+                                    <p>Mobile Developer dengan pengalaman mengembangkan aplikasi menggunakan Flutter, Dart, dan React Native. Berpengalaman dalam REST API, BLoC, GetX, MVVM, Clean Architecture, Firebase, serta testing dan debugging.</p>
+                                    <p>Terbiasa mengembangkan aplikasi dari requirement hingga deployment dan bekerja secara kolaboratif dalam tim Agile/Scrum. Berfokus pada pembangunan aplikasi yang skalabel, stabil, dan berorientasi pada pengalaman pengguna.</p>
                                 </div>
                                 <div className="credential-edc-exp credential-experience">
                                     <h2 data-aos="fade-up">Experience</h2>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2024 - 2025</h4>
-                                        <h3>Full Stack Developer (IoT & Mobile Application)</h3>
-                                        <h5>IoT-Based Companion Plant Recommendation Application for Mixed Chili Cultivation</h5>
-                                        <p>Designed and implemented an IoT-enabled mobile system for chili polyculture management, encompassing environmental data collection, backend and database development, machine learning integration (Random Forest Classifier, 87% accuracy), UI/UX design, and comprehensive documentation.</p>
+                                        <h4>Juni 2026 - Sekarang</h4>
+                                        <h3>Mobile Developer & QA</h3>
+                                        <h5>PT Lincah Cipta Harapan (Magang) - Bandung</h5>
+                                        <p>Mengembangkan dan memelihara aplikasi Flutter dan React Native. Berkolaborasi erat dengan developer lintas fungsi untuk menjaga stabilitas dan fungsionalitas aplikasi. Melakukan validasi fitur, identifikasi bug, dan regression testing sistematis untuk menjaga kualitas setiap rilis, serta aktif dalam code review dan issue tracking.</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2024</h4>
+                                        <h4>Mei 2026 – Juli 2026</h4>
+                                        <h3>Mobile Developer & UI/UX</h3>
+                                        <h5>Mobile Developer Freelance (Mingda Absensi)</h5>
+                                        <p>Merancang layout UI/UX mobile yang selaras dengan platform web eksisting, bekerja sama langsung dengan web developer. Membangun aplikasi mobile dari nol hingga rilis, mengimplementasikan desain yang telah disetujui klien untuk operasional harian.</p>
+                                    </div>
+                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
+                                        <h4>Juli 2024 - Desember 2024</h4>
                                         <h3>Mobile Developer & UI/UX (Intern)</h3>
-                                        <h5>Mobile Application for Document Management, e-Signature, and Tera</h5>
-                                        <p>Developed a mobile application for digital signature and electronic stamping, designed and prototyped the complete UI/UX in Figma to ensure usability and accessibility, and authored comprehensive technical documentation and user manuals for system deployment.</p>
+                                        <h5>PT Digital Logistics Internasional - Jakarta</h5>
+                                        <p>Membangun aplikasi mobile untuk tanda tangan digital (e-signature) dan electronic stamping (e-stamping) berbasis Flutter. Merancang prototipe UI/UX lengkap di Figma dengan alur kerja intuitif, serta menyusun dokumentasi teknis dan user manual.</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2024</h4>
-                                        <h3>Full Stack Developer</h3>
-                                        <h5>Mobile Aplication for Food Nutrition Detection</h5>
-                                        <p>Leading and actively contributing to the development of a mobile application for food nutrition detection, including end-to-end UI/UX design in Figma, building and integrating the YOLOv8 object detection model for real-time inference, and coordinating development sprints with the team.</p>
+                                        <h4>Desember 2024 – Agustus 2025</h4>
+                                        <h3>IoT & Mobile Developer (Penelitian Skripsi)</h3>
+                                        <h5>Rekomendasi Tanaman Pendamping Polikultur Cabai Berbasis IoT</h5>
+                                        <p>Membangun perangkat IoT pengumpul data parameter lingkungan real-time, mengembangkan backend server, melatih model Machine Learning Random Forest Classifier (akurasi 87%), dan mengintegrasikan model ke aplikasi Flutter serta merancang UI/UX di Figma.</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2023</h4>
-                                        <h3>Mobile Developer</h3>
-                                        <h5>Mobile Aplication for Smartfarm</h5>
-                                        <p>Led a team in developing a mobile application for smart farming systems, designing the complete UI/UX in Figma, contributing to Flutter development, collaborating with backend and IoT teams, and authoring comprehensive technical documentation and user manuals.</p>
+                                        <h4>Juni 2023 - 2024</h4>
+                                        <h3>Full Stack Mobile Developer & UI/UX</h3>
+                                        <h5>Aplikasi Deteksi Nutrisi Makanan (Akademik)</h5>
+                                        <p>Memimpin tim pengembangan aplikasi mobile & web untuk deteksi nutrisi makanan berbasis gambar. Merancang prototipe UI/UX di Figma, melatih model object detection YOLOv8, dan mengintegrasikannya ke aplikasi untuk inferensi real-time.</p>
                                     </div>
                                 </div>
                                 <div className="credential-edc-exp credential-education">
                                     <h2 data-aos="fade-up">Education</h2>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2019 - 2021</h4>
-                                        <h3>Vocational High School of Software Engineering</h3>
-                                        <h5>SMKN 1 Cirebon</h5>
-                                        <p>A graduate of Software Engineering from SMKN 1 Cirebon with experience in Laravel-based website development and graphic design using Adobe Photoshop.</p>
+                                        <h4>2021 - 2025</h4>
+                                        <h3>Sarjana Terapan Rekayasa Perangkat Lunak - IPK 3.7</h3>
+                                        <h5>Politeknik Negeri Indramayu</h5>
+                                        <p>Lulusan Rekayasa Perangkat Lunak dengan spesialisasi pengembangan aplikasi mobile Flutter, web development, dan UI/UX design. Aktif dalam proyek riset IoT dan machine learning.</p>
                                     </div>
                                     <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2021 - 2025</h4>
-                                        <h3>Bachelor of Software Engineering - GPA 3.7</h3>
-                                        <h5>Politeknik Negeri Indramayu</h5>
-                                        <p>Software Engineering graduate from Indramayu State Polytechnic with hands-on experience in Laravel web development, Flutter mobile applications, and UI/UX design. Proficient in Adobe Photoshop and skilled in creating user-focused digital products.</p>
+                                        <h4>2019 - 2021</h4>
+                                        <h3>Sekolah Menengah Kejuruan Rekayasa Perangkat Lunak</h3>
+                                        <h5>SMK Negeri 1 Cirebon</h5>
+                                        <p>Fokus pada dasar-dasar pemrograman perangkat lunak, pengembangan web berbasis Laravel, serta desain grafis.</p>
                                     </div>
                                 </div>
                                 <div className="skills-wrap">
                                     <h2 data-aos="fade-up">Skills</h2>
                                     <div className="d-grid skill-items gap-24 flex-wrap">
                                         <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">JavaScript</h3>
-                                            <p>Non enim praesent</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Python</h3>
-                                            <p>Non enim praesent</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Figma</h3>
-                                            <p>Non enim praesent</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Laravel</h3>
-                                            <p>Non enim praesent</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
                                             <h3 className="name">Flutter</h3>
-                                            <p>Non enim praesent</p>
+                                            <p>BLoC, GetX, Clean Architecture</p>
                                         </div>
                                         <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Dart</h3>
-                                            <p>Non enim praesent</p>
+                                            <h3 className="name">React Native</h3>
+                                            <p>Cross-platform, Zustand</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
+                                            <h3 className="name">Dart & JavaScript</h3>
+                                            <p>Core Mobile & Web Languages</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
+                                            <h3 className="name">TypeScript & React</h3>
+                                            <p>Modern Frontend Development</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
+                                            <h3 className="name">Backend & API</h3>
+                                            <p>REST API, Laravel, Firebase</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
+                                            <h3 className="name">Figma & UI/UX</h3>
+                                            <p>Prototyping, User-Centered Design</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
+                                            <h3 className="name">Database</h3>
+                                            <p>PostgreSQL, MySQL, Firestore</p>
+                                        </div>
+                                        <div className="skill-item" data-aos="zoom-in">
+                                            <h3 className="name">QA & Testing</h3>
+                                            <p>Debugging, Regression, Git Agile</p>
                                         </div>
                                     </div>
                                 </div>

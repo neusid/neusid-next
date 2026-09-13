@@ -16,7 +16,7 @@ export default function Home() {
                                         <img src="/assets/images/me.jpeg" alt="About Me" />
                                     </div>
                                     <div className="infos">
-                                        <h4>A Full Stack Developer & UI/UX Designer</h4>
+                                        <h4>Mobile Developer (Flutter & React Native)</h4>
                                         <h1>Malik Ibrahim.</h1>
                                         <p>Based in Cirebon.</p>
                                         <Link href="#" className="about-btn">

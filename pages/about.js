@@ -22,7 +22,7 @@ export default function Home() {
                                 <div className="about-details-inner shadow-box">
                                     <img src="/assets/images/icon2.png" alt="Star" />
                                     <h1>Malik Ibrahim</h1>
-                                    <p>Flutter Developer with hands-on experience building scalable and user-friendly mobile applications.</p>
+                                    <p>Mobile Developer berpengalaman dalam membangun aplikasi Android & iOS menggunakan Flutter, Dart, dan React Native. Menguasai arsitektur MVVM, Clean Architecture, BLoC, GetX, REST API, serta QA testing & debugging.</p>
                                 </div>
                             </div>
                         </div>
@@ -30,17 +30,27 @@ export default function Home() {
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-edc-exp about-experience shadow-box">
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                    <h3>Recent Work</h3>
+                                    <h3>Pengalaman Kerja</h3>
                                     <ul>
                                         <li>
-                                            <p className="date">2025 - 2026</p>
-                                            <h2>Mierp (Mini ERP)</h2>
-                                            <p className="type">Mobile Application for Business Management</p>
+                                            <p className="date">Juni 2026 - Sekarang</p>
+                                            <h2>Mobile Developer & QA</h2>
+                                            <p className="type">PT Lincah Cipta Harapan (Magang) - Bandung</p>
                                         </li>
                                         <li>
-                                            <p className="date">2024 - 2025</p>
-                                            <h2>Full Stack Flutter Developer & UI/UX</h2>
-                                            <p className="type">IoT-Based Companion Plant Recommendation Application for Mixed Chili Cultivation</p>
+                                            <p className="date">Mei 2026 - Juli 2026</p>
+                                            <h2>Mobile Developer & UI/UX</h2>
+                                            <p className="type">Mobile Developer Freelance (Mingda Absensi)</p>
+                                        </li>
+                                        <li>
+                                            <p className="date">Juli 2024 - Desember 2024</p>
+                                            <h2>Mobile Developer & UI/UX (Intern)</h2>
+                                            <p className="type">PT Digital Logistics Internasional - Jakarta</p>
+                                        </li>
+                                        <li>
+                                            <p className="date">Desember 2024 - Agustus 2025</p>
+                                            <h2>IoT & Mobile Developer (Skripsi)</h2>
+                                            <p className="type">Rekomendasi Tanaman Polikultur Cabai Berbasis IoT</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -48,17 +58,17 @@ export default function Home() {
                             <div className="col-md-6" data-aos="zoom-in">
                                 <div className="about-edc-exp about-education shadow-box">
                                     {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                    <h3>EDUCATION</h3>
+                                    <h3>PENDIDIKAN</h3>
                                     <ul>
                                         <li>
-                                            <p className="date">2019 - 2021</p>
-                                            <h2>Vocational High School of Software Engineering</h2>
-                                            <p className="type">SMKN 1 Cirebon</p>
+                                            <p className="date">2021 - 2025</p>
+                                            <h2>Sarjana Terapan Rekayasa Perangkat Lunak - IPK 3.7</h2>
+                                            <p className="type">Politeknik Negeri Indramayu</p>
                                         </li>
                                         <li>
-                                            <p className="date">2021 - 2025</p>
-                                            <h2>Bachelor of Software Engineering - GPA 3.7</h2>
-                                            <p className="type">Politeknik Negeri Indramayu</p>
+                                            <p className="date">2019 - 2021</p>
+                                            <h2>SMK Rekayasa Perangkat Lunak</h2>
+                                            <p className="type">SMK Negeri 1 Cirebon</p>
                                         </li>
                                     </ul>
                                 </div>
