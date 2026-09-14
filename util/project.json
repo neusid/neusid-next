@@ -2,7 +2,7 @@
     {
         "id": 7,
         "title": "Mingda Absensi",
-        "img": "project-7-mingda-absesnsi-thumb.jpeg",
+        "img": "project-7-mingda-absensi-thumb-1789370293515.svg",
         "category": "MOBILE DEVELOPMENT",
         "badge": "Freelance",
         "badgeType": "enterprise",
@@ -35,7 +35,7 @@
     {
         "id": 1,
         "title": "Mierp (Mini ERP)",
-        "img": "project2ver3.jpeg",
+        "img": "project-1-mierp-mini-erp-thumb-1789370497610.svg",
         "category": "MOBILE DEVELOPMENT",
         "badge": "Play Store · Live",
         "badgeType": "live",
@@ -58,7 +58,7 @@
                 "description": "MiERP is a Flutter-based enterprise resource planning (ERP) mobile application designed to streamline internal business workflows. The platform features two core user roles: Finance for transaction authorization and fiscal oversight, and Warehouse for real-time inventory management, stock tracking, and purchase order fulfillment. Engineered with clean architecture and Firebase cloud integration, MiERP boosts operational efficiency, mitigates logistical bottlenecks, and guarantees fast, accurate, and transparent business operations."
             },
             {
-                "year": "2025 - January 2026",
+                "year": "2025 - 2026",
                 "services": "Mobile Development",
                 "stack": "Flutter & Firebase.",
                 "playstore": "https://play.google.com/store/apps/details?id=com.neusisco.mierp_apps",
@@ -107,7 +107,7 @@
     {
         "id": 3,
         "title": "VAS DMS MOBILE",
-        "img": "project3.jpeg",
+        "img": "project-3-vas-dms-mobile-thumb-1789370517789.svg",
         "category": "MOBILE DEVELOPMENT",
         "badge": "Enterprise",
         "badgeType": "enterprise",
