@@ -1,5 +1,4 @@
-import fs from "fs"
-import path from "path"
+import { getProjects, saveProjects } from "@/util/projectsData"
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -13,13 +12,7 @@ export default async function handler(req, res) {
             return res.status(400).json({ success: false, message: "orderedIds array is required." })
         }
 
-        const projectJsonPath = path.join(process.cwd(), "util", "project.json")
-        if (!fs.existsSync(projectJsonPath)) {
-            return res.status(404).json({ success: false, message: "project.json not found." })
-        }
-
-        const fileContent = fs.readFileSync(projectJsonPath, "utf8")
-        const currentProjects = JSON.parse(fileContent)
+        const currentProjects = await getProjects()
 
         // Create a map by ID for fast lookup
         const projectMap = new Map()
@@ -42,8 +35,8 @@ export default async function handler(req, res) {
             reordered.push(remainingItem)
         })
 
-        // Save to project.json
-        fs.writeFileSync(projectJsonPath, JSON.stringify(reordered, null, 4), "utf8")
+        // Save updated projects
+        await saveProjects(reordered)
 
         return res.status(200).json({
             success: true,

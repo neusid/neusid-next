@@ -2,9 +2,10 @@ import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/router"
-import initialProjects from "../util/project.json"
+import { getProjects } from "@/util/projectsData"
+import { getProjectImageUrl } from "@/util/imageHelper"
 
-export default function WorkUpload() {
+export default function WorkUpload({ initialProjects = [] }) {
     const router = useRouter()
     const editId = router.query.id
     const isEditMode = Boolean(editId)
@@ -46,49 +47,61 @@ export default function WorkUpload() {
     useEffect(() => {
         if (!router.isReady || !editId) return
 
+        const populateData = (proj) => {
+            setTitle(proj.title || "")
+            const standardCats = ["MOBILE DEVELOPMENT", "GRAPHIC DESIGN", "WEB DEVELOPMENT", "IOT & EMBEDDED"]
+            if (standardCats.includes(proj.category)) {
+                setCategory(proj.category)
+                setCustomCategory("")
+            } else {
+                setCategory("CUSTOM")
+                setCustomCategory(proj.category || "")
+            }
+
+            setBadge(proj.badge || "")
+            setBadgeType(proj.badgeType || "live")
+            setTags(Array.isArray(proj.tags) ? proj.tags.join(", ") : (proj.tags || ""))
+            setYear(proj.year || "")
+            setClickable(proj.clickable !== false)
+            setDescription(proj.data?.[0]?.description || "")
+            setServices(proj.data?.[1]?.services || "")
+            setStack(proj.data?.[1]?.stack || "")
+            setPlaystore(proj.data?.[1]?.playstore || "")
+            setGithub(proj.data?.[1]?.github || "")
+
+            if (proj.img) {
+                setThumbnailPreview(getProjectImageUrl(proj.img))
+                setThumbnailName(proj.img)
+            }
+            if (proj.background) {
+                setBackgroundPreview(getProjectImageUrl(proj.background))
+                setBackgroundName(proj.background)
+            }
+            if (Array.isArray(proj.images) && proj.images.length > 0) {
+                setGallery(
+                    proj.images.map((imgName) => ({
+                        preview: getProjectImageUrl(imgName),
+                        name: imgName,
+                        base64: null,
+                    }))
+                )
+            }
+        }
+
         const proj = initialProjects.find((p) => String(p.id) === String(editId))
-        if (!proj) {
-            setErrorMsg(`Project with ID #${editId} not found in database.`)
-            return
-        }
-
-        setTitle(proj.title || "")
-        const standardCats = ["MOBILE DEVELOPMENT", "GRAPHIC DESIGN", "WEB DEVELOPMENT", "IOT & EMBEDDED"]
-        if (standardCats.includes(proj.category)) {
-            setCategory(proj.category)
-            setCustomCategory("")
+        if (proj) {
+            populateData(proj)
         } else {
-            setCategory("CUSTOM")
-            setCustomCategory(proj.category || "")
-        }
-
-        setBadge(proj.badge || "")
-        setBadgeType(proj.badgeType || "live")
-        setTags(Array.isArray(proj.tags) ? proj.tags.join(", ") : (proj.tags || ""))
-        setYear(proj.year || "")
-        setClickable(proj.clickable !== false)
-        setDescription(proj.data?.[0]?.description || "")
-        setServices(proj.data?.[1]?.services || "")
-        setStack(proj.data?.[1]?.stack || "")
-        setPlaystore(proj.data?.[1]?.playstore || "")
-        setGithub(proj.data?.[1]?.github || "")
-
-        if (proj.img) {
-            setThumbnailPreview(`/assets/images/${proj.img}`)
-            setThumbnailName(proj.img)
-        }
-        if (proj.background) {
-            setBackgroundPreview(`/assets/images/${proj.background}`)
-            setBackgroundName(proj.background)
-        }
-        if (Array.isArray(proj.images) && proj.images.length > 0) {
-            setGallery(
-                proj.images.map((imgName) => ({
-                    preview: `/assets/images/${imgName}`,
-                    name: imgName,
-                    base64: null,
-                }))
-            )
+            fetch("/api/projects")
+                .then((r) => r.json())
+                .then((d) => {
+                    if (d.projects) {
+                        const found = d.projects.find((p) => String(p.id) === String(editId))
+                        if (found) populateData(found)
+                        else setErrorMsg(`Project with ID #${editId} not found in database.`)
+                    }
+                })
+                .catch(() => setErrorMsg(`Project with ID #${editId} not found in database.`))
         }
     }, [router.isReady, editId])
 
@@ -752,3 +765,22 @@ export default function WorkUpload() {
         </>
     )
 }
+
+export async function getServerSideProps() {
+    try {
+        const initialProjects = await getProjects()
+        return {
+            props: {
+                initialProjects: JSON.parse(JSON.stringify(initialProjects)),
+            },
+        }
+    } catch (error) {
+        console.error("Error in getServerSideProps for work-upload:", error)
+        return {
+            props: {
+                initialProjects: [],
+            },
+        }
+    }
+}
+

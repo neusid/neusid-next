@@ -1,24 +1,25 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useState } from "react"
-import data from "../util/project.json"
+import { getProjects } from "@/util/projectsData"
+import { getProjectImageUrl } from "@/util/imageHelper"
 
-export default function Works() {
+export default function Works({ initialProjects = [] }) {
     const [activeFilter, setActiveFilter] = useState("all")
 
     const handleClick = () => {
         sessionStorage.setItem("fromWorks", "true")
     }
 
-    const filteredProjects = data.filter((item) => {
+    const filteredProjects = initialProjects.filter((item) => {
         if (activeFilter === "mobile") return item.category === "MOBILE DEVELOPMENT"
         if (activeFilter === "design") return item.category === "GRAPHIC DESIGN"
         return true
     })
 
-    const totalCount = data.length
-    const mobileCount = data.filter((d) => d.category === "MOBILE DEVELOPMENT").length
-    const designCount = data.filter((d) => d.category === "GRAPHIC DESIGN").length
+    const totalCount = initialProjects.length
+    const mobileCount = initialProjects.filter((d) => d.category === "MOBILE DEVELOPMENT").length
+    const designCount = initialProjects.filter((d) => d.category === "GRAPHIC DESIGN").length
 
     return (
         <>
@@ -83,7 +84,7 @@ export default function Works() {
                                                 {item.year && (
                                                     <span className="project-card-year">{item.year}</span>
                                                 )}
-                                                <img src={`/assets/images/${item.img}`} alt={item.title} />
+                                                <img src={getProjectImageUrl(item.img)} alt={item.title} />
                                             </div>
 
                                             {item.tags && item.tags.length > 0 && (
@@ -179,4 +180,22 @@ export default function Works() {
             </Layout>
         </>
     )
+}
+
+export async function getServerSideProps() {
+    try {
+        const initialProjects = await getProjects()
+        return {
+            props: {
+                initialProjects: JSON.parse(JSON.stringify(initialProjects)),
+            },
+        }
+    } catch (error) {
+        console.error("Error in getServerSideProps for works:", error)
+        return {
+            props: {
+                initialProjects: [],
+            },
+        }
+    }
 }

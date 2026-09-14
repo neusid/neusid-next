@@ -1,7 +1,6 @@
-import fs from "fs"
-import path from "path"
+import { getProjects, saveProjects } from "@/util/projectsData"
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
     if (req.method !== "POST" && req.method !== "DELETE") {
         return res.status(405).json({ message: "Method not allowed. Use POST or DELETE." })
     }
@@ -13,22 +12,16 @@ export default function handler(req, res) {
             return res.status(400).json({ success: false, message: "Project ID is required." })
         }
 
-        const projectJsonPath = path.join(process.cwd(), "util", "project.json")
-        if (!fs.existsSync(projectJsonPath)) {
-            return res.status(404).json({ success: false, message: "project.json not found." })
-        }
-
-        const fileContent = fs.readFileSync(projectJsonPath, "utf8")
-        let projects = JSON.parse(fileContent)
+        const projects = await getProjects()
 
         const initialLength = projects.length
-        projects = projects.filter((p) => String(p.id) !== String(id))
+        const updatedProjects = projects.filter((p) => String(p.id) !== String(id))
 
-        if (projects.length === initialLength) {
+        if (updatedProjects.length === initialLength) {
             return res.status(404).json({ success: false, message: `Project with ID #${id} not found.` })
         }
 
-        fs.writeFileSync(projectJsonPath, JSON.stringify(projects, null, 4), "utf8")
+        await saveProjects(updatedProjects)
 
         return res.status(200).json({
             success: true,

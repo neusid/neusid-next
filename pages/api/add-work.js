@@ -1,5 +1,6 @@
-import fs from "fs"
 import path from "path"
+import { uploadBase64Image } from "@/util/blobStorage"
+import { getProjects, saveProjects } from "@/util/projectsData"
 
 export const config = {
     api: {
@@ -7,23 +8,6 @@ export const config = {
             sizeLimit: "25mb",
         },
     },
-}
-
-function saveBase64File(base64Data, filename) {
-    if (!base64Data) return null
-    // Matches data:[<mediatype>];base64,<data>
-    const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/)
-    const rawData = matches ? matches[2] : base64Data
-    const buffer = Buffer.from(rawData, "base64")
-    const imagesDir = path.join(process.cwd(), "public", "assets", "images")
-
-    if (!fs.existsSync(imagesDir)) {
-        fs.mkdirSync(imagesDir, { recursive: true })
-    }
-
-    const filePath = path.join(imagesDir, filename)
-    fs.writeFileSync(filePath, buffer)
-    return filename
 }
 
 export default async function handler(req, res) {
@@ -56,16 +40,7 @@ export default async function handler(req, res) {
             return res.status(400).json({ message: "Title and Category are required." })
         }
 
-        const projectJsonPath = path.join(process.cwd(), "util", "project.json")
-        let projects = []
-        if (fs.existsSync(projectJsonPath)) {
-            const fileContent = fs.readFileSync(projectJsonPath, "utf8")
-            try {
-                projects = JSON.parse(fileContent)
-            } catch (e) {
-                projects = []
-            }
-        }
+        const projects = await getProjects()
 
         // Calculate next ID
         const existingIds = projects.map((p) => Number(p.id) || 0)
@@ -76,12 +51,13 @@ export default async function handler(req, res) {
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/^-|-$/g, "")
 
-        // 1. Save Thumbnail Image
-        let savedThumbnail = "project1.jpeg" // fallback
+        // 1. Save Thumbnail Image (Vercel Blob / Local fallback)
+        let savedThumbnail = "project1.jpeg"
         if (thumbnailBase64) {
             const ext = thumbnailName ? path.extname(thumbnailName) || ".jpg" : ".jpg"
             const filename = `project-${newId}-${safeSlug}-thumb${ext}`
-            savedThumbnail = saveBase64File(thumbnailBase64, filename) || savedThumbnail
+            const uploaded = await uploadBase64Image(thumbnailBase64, filename)
+            if (uploaded) savedThumbnail = uploaded
         } else if (thumbnailName) {
             savedThumbnail = thumbnailName
         }
@@ -91,7 +67,8 @@ export default async function handler(req, res) {
         if (backgroundBase64) {
             const ext = backgroundName ? path.extname(backgroundName) || ".svg" : ".svg"
             const filename = `project-${newId}-${safeSlug}-bg${ext}`
-            savedBg = saveBase64File(backgroundBase64, filename) || savedBg
+            const uploaded = await uploadBase64Image(backgroundBase64, filename)
+            if (uploaded) savedBg = uploaded
         } else if (backgroundName) {
             savedBg = backgroundName
         }
@@ -99,16 +76,17 @@ export default async function handler(req, res) {
         // 3. Save Gallery Images
         let savedGallery = []
         if (Array.isArray(galleryImages) && galleryImages.length > 0) {
-            galleryImages.forEach((imgObj, idx) => {
+            for (let idx = 0; idx < galleryImages.length; idx++) {
+                const imgObj = galleryImages[idx]
                 if (imgObj.base64) {
                     const ext = imgObj.name ? path.extname(imgObj.name) || ".jpg" : ".jpg"
                     const filename = `project-${newId}-${safeSlug}-screen-${idx + 1}${ext}`
-                    const saved = saveBase64File(imgObj.base64, filename)
+                    const saved = await uploadBase64Image(imgObj.base64, filename)
                     if (saved) savedGallery.push(saved)
                 } else if (imgObj.name) {
                     savedGallery.push(imgObj.name)
                 }
-            })
+            }
         }
 
         if (savedGallery.length === 0) {
@@ -158,11 +136,9 @@ export default async function handler(req, res) {
             ],
         }
 
-        // Append to projects
+        // Append to projects and persist
         projects.push(newProject)
-
-        // Write back to util/project.json
-        fs.writeFileSync(projectJsonPath, JSON.stringify(projects, null, 4), "utf8")
+        await saveProjects(projects)
 
         return res.status(200).json({
             success: true,

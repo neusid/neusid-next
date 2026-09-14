@@ -1,10 +1,11 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
-import { useState } from "react"
-import initialData from "../util/project.json"
+import { useState, useEffect } from "react"
+import { getProjects } from "@/util/projectsData"
+import { getProjectImageUrl } from "@/util/imageHelper"
 
-export default function WorkAdmin() {
-    const [projects, setProjects] = useState(initialData)
+export default function WorkAdmin({ initialProjects = [] }) {
+    const [projects, setProjects] = useState(initialProjects)
     const [activeFilter, setActiveFilter] = useState("all")
     const [deletingId, setDeletingId] = useState(null)
     const [actionLoading, setActionLoading] = useState(false)
@@ -354,7 +355,7 @@ export default function WorkAdmin() {
                                                 {item.year && (
                                                     <span className="project-card-year">{item.year}</span>
                                                 )}
-                                                <img src={`/assets/images/${item.img}`} alt={item.title} />
+                                                <img src={getProjectImageUrl(item.img)} alt={item.title} />
                                             </div>
 
                                             {item.tags && item.tags.length > 0 && (
@@ -401,3 +402,22 @@ export default function WorkAdmin() {
         </>
     )
 }
+
+export async function getServerSideProps() {
+    try {
+        const initialProjects = await getProjects()
+        return {
+            props: {
+                initialProjects: JSON.parse(JSON.stringify(initialProjects)),
+            },
+        }
+    } catch (error) {
+        console.error("Error in getServerSideProps for work-admin:", error)
+        return {
+            props: {
+                initialProjects: [],
+            },
+        }
+    }
+}
+
