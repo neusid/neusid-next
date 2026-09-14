@@ -1,153 +1,223 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
-export default function Home() {
 
+const experiences = [
+    {
+        date: "June 2026 \u2013 Present",
+        role: "Mobile Developer & QA",
+        company: "PT Lincah Cipta Harapan (Internship) \u00b7 Bandung",
+        active: true,
+        desc: "Developed and maintained Flutter and React Native mobile applications. Collaborated closely with cross-functional developers across the development lifecycle to ensure stability and functionality. Performed systematic feature validation, bug identification, and regression testing to maintain release quality, while actively contributing to code reviews and issue tracking.",
+    },
+    {
+        date: "May 2026 \u2013 July 2026",
+        role: "Mobile Developer & UI/UX",
+        company: "Mobile Developer Freelance \u00b7 Mingda Attendance",
+        active: false,
+        desc: "Designed mobile UI/UX layouts aligned with existing web platforms in direct collaboration with web developers. Built the mobile application from scratch to production release, implementing client-approved designs for daily operations.",
+    },
+    {
+        date: "July 2024 \u2013 December 2024",
+        role: "Mobile Developer & UI/UX (Intern)",
+        company: "PT Digital Logistics Internasional \u00b7 Jakarta",
+        active: false,
+        desc: "Engineered a Flutter mobile application for digital signature (e-signature) and electronic stamping (e-stamping). Designed and prototyped the complete UI/UX in Figma with intuitive user flows, and authored technical documentation and user manuals for system adoption.",
+    },
+    {
+        date: "December 2024 \u2013 August 2025",
+        role: "IoT & Mobile Developer (Undergraduate Thesis)",
+        company: "IoT-Based Companion Plant Recommendation for Chili Polyculture",
+        active: false,
+        desc: "Built custom IoT devices to gather real-time environmental data, developed backend servers and database architecture, trained a Random Forest Classifier ML model (87% accuracy), integrated the model into a Flutter app, and designed the UI/UX in Figma.",
+    },
+    {
+        date: "June 2023 \u2013 2024",
+        role: "Full Stack Mobile Developer & UI/UX",
+        company: "Food Nutrition Detection Mobile App (Academic)",
+        active: false,
+        desc: "Led development of an image-based food nutrition detection mobile and web application. Crafted complete Figma UI/UX prototypes, trained YOLOv8 object detection models, and integrated models into the app for real-time inference.",
+    },
+]
+
+const education = [
+    {
+        date: "2021 \u2013 2025",
+        degree: "Bachelor of Applied Science in Software Engineering",
+        gpa: "GPA 3.7",
+        school: "Politeknik Negeri Indramayu",
+        desc: "Software Engineering graduate with specialization in Flutter mobile development, web development, and UI/UX design. Actively engaged in IoT and machine learning research initiatives.",
+    },
+    {
+        date: "2019 \u2013 2021",
+        degree: "Vocational High School in Software Engineering",
+        gpa: null,
+        school: "SMKN 1 Cirebon",
+        desc: "Focused on software programming fundamentals, Laravel-based web development, and graphic design.",
+    },
+]
+
+const skills = [
+    { name: "Flutter", detail: "BLoC, GetX, Clean Architecture" },
+    { name: "React Native", detail: "Cross-platform, Zustand" },
+    { name: "Dart & JavaScript", detail: "Core Mobile & Web Languages" },
+    { name: "TypeScript & React", detail: "Modern Frontend Development" },
+    { name: "Backend & API", detail: "REST API, Laravel, Firebase" },
+    { name: "Figma & UI/UX", detail: "Prototyping, User-Centered Design" },
+    { name: "Database", detail: "PostgreSQL, MySQL, Firestore" },
+    { name: "QA & Testing", detail: "Debugging, Regression, Git Agile" },
+]
+
+const certificates = [
+    { date: "Feb 2026", name: "English Course Beginner Program", issuer: "Kampung Inggris EM" },
+    { date: "May 2024", name: "Classify Images with TensorFlow Convolutional Neural Networks", issuer: "Coursera" },
+    { date: "Nov 2022", name: "Pemrograman Mobile Pertama", issuer: "Lembaga Sertifikasi Profesi Teknologi Digital" },
+    { date: "Oct 2022", name: "Junior Web Developer", issuer: "PT. Inixindo Persada Rekayasa Komputer" },
+]
+
+export default function Credentials() {
     return (
         <>
-            <Layout  maincls="main-aboutpage">
-                <section className="credential-area">
+            <Layout maincls="main-aboutpage">
+                <section className="cred-area-v2">
                     <div className="container">
-                        <div className="gx-row d-flex">
-                            <div className="credential-sidebar-wrap" data-aos="zoom-in">
-                                <div className="credential-sidebar text-center">
-                                    <div className="shadow-box">
-                                        {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                        <div className="img-box">
-                                            <img src="/assets/images/me.jpeg" alt="About Me" />
-                                        </div>
-                                        <h2>Malik Ibrahim</h2>
-                                        <p>@neusisco</p>
-                                        <ul className="social-links d-flex justify-content-center">
-                                            <li><Link href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer"><i className="iconoir-linkedin" /></Link></li>
-                                            <li><Link href="#"><i className="iconoir-twitter" /></Link></li>
-                                            <li><Link href="#"><i className="iconoir-instagram" /></Link></li>
-                                            <li><Link href="https://web.facebook.com/profile.php?id=100009292241278" target="_blank" rel="noopener noreferrer"><i className="iconoir-facebook-tag" /></Link></li>
-                                        </ul>
-                                        <Link href="/contact" className="theme-btn">Contact Me</Link>
+                        <div className="cred-layout">
+
+                            {/* ── Sidebar ── */}
+                            <aside className="cred-sidebar" data-aos="zoom-in">
+                                <div className="cred-sidebar-card glass-card">
+                                    <div className="cred-sidebar-glow" />
+                                    <div className="cred-avatar-wrap">
+                                        <img src="/assets/images/me.jpeg" alt="Malik Ibrahim" />
+                                    </div>
+                                    <h2 className="cred-sidebar-name">Malik Ibrahim</h2>
+                                    <p className="cred-sidebar-handle">@neusisco</p>
+                                    <div className="cred-sidebar-divider" />
+                                    <ul className="cred-social-list">
+                                        <li>
+                                            <Link href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer" className="cred-social-btn" aria-label="LinkedIn">
+                                                <i className="iconoir-linkedin" />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#" className="cred-social-btn" aria-label="Twitter">
+                                                <i className="iconoir-twitter" />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#" className="cred-social-btn" aria-label="Instagram">
+                                                <i className="iconoir-instagram" />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="https://web.facebook.com/profile.php?id=100009292241278" target="_blank" rel="noopener noreferrer" className="cred-social-btn" aria-label="Facebook">
+                                                <i className="iconoir-facebook-tag" />
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                    <Link href="/contact" className="cred-contact-btn">
+                                        <i className="iconoir-send-mail" />
+                                        Contact Me
+                                    </Link>
+                                </div>
+                            </aside>
+
+                            {/* ── Main Content ── */}
+                            <div className="cred-main">
+
+                                {/* About Me */}
+                                <div className="cred-section glass-card" data-aos="fade-up">
+                                    <div className="cred-section-header">
+                                        <i className="iconoir-user" />
+                                        <h2>About Me</h2>
+                                    </div>
+                                    <p className="cred-about-text">Mobile Developer with hands-on experience developing mobile applications using Flutter, Dart, and React Native. Proficient in REST API integration, BLoC, GetX, MVVM, Clean Architecture, Firebase, as well as testing and debugging.</p>
+                                    <p className="cred-about-text">Experienced in delivering applications from requirement analysis to deployment and collaborating effectively within Agile/Scrum teams. Passionate about crafting scalable, robust, and user-centric mobile solutions.</p>
+                                </div>
+
+                                {/* Experience */}
+                                <div className="cred-section glass-card" data-aos="fade-up">
+                                    <div className="cred-section-header">
+                                        <i className="iconoir-briefcase" />
+                                        <h2>Experience</h2>
+                                    </div>
+                                    <ul className="cred-timeline">
+                                        {experiences.map((exp, i) => (
+                                            <li key={i} className={`cred-timeline-item${exp.active ? " active" : ""}`} data-aos="zoom-in" data-aos-delay={i * 60}>
+                                                <div className="cred-tl-dot" />
+                                                <div className="cred-tl-body">
+                                                    <span className="cred-tl-date">{exp.date}</span>
+                                                    <h3 className="cred-tl-role">{exp.role}</h3>
+                                                    <p className="cred-tl-company">{exp.company}</p>
+                                                    <p className="cred-tl-desc">{exp.desc}</p>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Education */}
+                                <div className="cred-section glass-card" data-aos="fade-up">
+                                    <div className="cred-section-header">
+                                        <i className="iconoir-graduation-cap" />
+                                        <h2>Education</h2>
+                                    </div>
+                                    <ul className="cred-timeline">
+                                        {education.map((edu, i) => (
+                                            <li key={i} className="cred-timeline-item" data-aos="zoom-in" data-aos-delay={i * 80}>
+                                                <div className="cred-tl-dot" />
+                                                <div className="cred-tl-body">
+                                                    <span className="cred-tl-date">{edu.date}</span>
+                                                    <h3 className="cred-tl-role">
+                                                        {edu.degree}
+                                                        {edu.gpa && <span className="gpa-badge">{edu.gpa}</span>}
+                                                    </h3>
+                                                    <p className="cred-tl-company">{edu.school}</p>
+                                                    <p className="cred-tl-desc">{edu.desc}</p>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Skills */}
+                                <div className="cred-section glass-card" data-aos="fade-up">
+                                    <div className="cred-section-header">
+                                        <i className="iconoir-lightning" />
+                                        <h2>Skills</h2>
+                                    </div>
+                                    <div className="cred-skills-grid">
+                                        {skills.map((skill, i) => (
+                                            <div key={i} className="cred-skill-item" data-aos="zoom-in" data-aos-delay={i * 50}>
+                                                <h4 className="cred-skill-name">{skill.name}</h4>
+                                                <p className="cred-skill-detail">{skill.detail}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
-                            </div>
-                            <div className="credential-content flex-1">
-                                <div className="credential-about" data-aos="zoom-in">
-                                    <h2>About Me</h2>
-                                    <p>Mobile Developer with hands-on experience developing mobile applications using Flutter, Dart, and React Native. Proficient in REST API integration, BLoC, GetX, MVVM, Clean Architecture, Firebase, as well as testing and debugging.</p>
-                                    <p>Experienced in delivering applications from requirement analysis to deployment and collaborating effectively within Agile/Scrum teams. Passionate about crafting scalable, robust, and user-centric mobile solutions.</p>
-                                </div>
-                                <div className="credential-edc-exp credential-experience">
-                                    <h2 data-aos="fade-up">Experience</h2>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>June 2026 - Present</h4>
-                                        <h3>Mobile Developer & QA</h3>
-                                        <h5>PT Lincah Cipta Harapan (Internship) - Bandung</h5>
-                                        <p>Developed and maintained Flutter and React Native mobile applications. Collaborated closely with cross-functional developers across the development lifecycle to ensure stability and functionality. Performed systematic feature validation, bug identification, and regression testing to maintain release quality, while actively contributing to code reviews and issue tracking.</p>
+
+                                {/* Certificates */}
+                                <div className="cred-section glass-card" data-aos="fade-up">
+                                    <div className="cred-section-header">
+                                        <i className="iconoir-medal" />
+                                        <h2>Certificates</h2>
                                     </div>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>May 2026 – July 2026</h4>
-                                        <h3>Mobile Developer & UI/UX</h3>
-                                        <h5>Mobile Developer Freelance (Mingda Attendance)</h5>
-                                        <p>Designed mobile UI/UX layouts aligned with existing web platforms in direct collaboration with web developers. Built the mobile application from scratch to production release, implementing client-approved designs for daily operations.</p>
-                                    </div>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>July 2024 - December 2024</h4>
-                                        <h3>Mobile Developer & UI/UX (Intern)</h3>
-                                        <h5>PT Digital Logistics Internasional - Jakarta</h5>
-                                        <p>Engineered a Flutter mobile application for digital signature (e-signature) and electronic stamping (e-stamping). Designed and prototyped the complete UI/UX in Figma with intuitive user flows, and authored technical documentation and user manuals for system adoption.</p>
-                                    </div>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>December 2024 – August 2025</h4>
-                                        <h3>IoT & Mobile Developer (Undergraduate Thesis)</h3>
-                                        <h5>IoT-Based Companion Plant Recommendation for Chili Polyculture</h5>
-                                        <p>Built custom IoT devices to gather real-time environmental data, developed backend servers and database architecture, trained a Random Forest Classifier ML model (87% accuracy), integrated the model into a Flutter app, and designed the UI/UX in Figma.</p>
-                                    </div>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>June 2023 - 2024</h4>
-                                        <h3>Full Stack Mobile Developer & UI/UX</h3>
-                                        <h5>Food Nutrition Detection Mobile App (Academic)</h5>
-                                        <p>Led development of an image-based food nutrition detection mobile and web application. Crafted complete Figma UI/UX prototypes, trained YOLOv8 object detection models, and integrated models into the app for real-time inference.</p>
+                                    <div className="cred-cert-list">
+                                        {certificates.map((cert, i) => (
+                                            <div key={i} className="cred-cert-item" data-aos="zoom-in" data-aos-delay={i * 60}>
+                                                <span className="cred-cert-date">{cert.date}</span>
+                                                <div className="cred-cert-info">
+                                                    <h4 className="cred-cert-name">{cert.name}</h4>
+                                                    <p className="cred-cert-issuer">{cert.issuer}</p>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
-                                <div className="credential-edc-exp credential-education">
-                                    <h2 data-aos="fade-up">Education</h2>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2021 - 2025</h4>
-                                        <h3>Bachelor of Applied Science in Software Engineering - GPA 3.7</h3>
-                                        <h5>Politeknik Negeri Indramayu</h5>
-                                        <p>Software Engineering graduate with specialization in Flutter mobile development, web development, and UI/UX design. Actively engaged in IoT and machine learning research initiatives.</p>
-                                    </div>
-                                    <div className="credential-edc-exp-item" data-aos="zoom-in">
-                                        <h4>2019 - 2021</h4>
-                                        <h3>Vocational High School in Software Engineering</h3>
-                                        <h5>SMKN 1 Cirebon</h5>
-                                        <p>Focused on software programming fundamentals, Laravel-based web development, and graphic design.</p>
-                                    </div>
-                                </div>
-                                <div className="skills-wrap">
-                                    <h2 data-aos="fade-up">Skills</h2>
-                                    <div className="d-grid skill-items gap-24 flex-wrap">
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Flutter</h3>
-                                            <p>BLoC, GetX, Clean Architecture</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">React Native</h3>
-                                            <p>Cross-platform, Zustand</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Dart & JavaScript</h3>
-                                            <p>Core Mobile & Web Languages</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">TypeScript & React</h3>
-                                            <p>Modern Frontend Development</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Backend & API</h3>
-                                            <p>REST API, Laravel, Firebase</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Figma & UI/UX</h3>
-                                            <p>Prototyping, User-Centered Design</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">Database</h3>
-                                            <p>PostgreSQL, MySQL, Firestore</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <h3 className="name">QA & Testing</h3>
-                                            <p>Debugging, Regression, Git Agile</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="skills-wrap awards-wrap">
-                                    <h2 data-aos="fade-up">Certificate</h2>
-                                    <div className="d-grid skill-items gap-24 flex-wrap">
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <span className="percent">Feb 2026</span>
-                                            <h3 className="name">English Course Beginner Program</h3>
-                                            <p>Kampung Inggris EM</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <span className="percent">May 2024</span>
-                                            <h3 className="name">Classify Images with TensorFlow Convolutional Neural Networks</h3>
-                                            <p>Coursera</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <span className="percent">Nov 2022</span>
-                                            <h3 className="name">Pemrograman Mobile Pertama</h3>
-                                            <p>Lembaga Sertifikasi Profesi Teknologi Digital</p>
-                                        </div>
-                                        <div className="skill-item" data-aos="zoom-in">
-                                            <span className="percent">Oct 2022</span>
-                                            <h3 className="name">Junior Web Developer</h3>
-                                            <p>PT. Inixindo Persada Rekayasa Komputer</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </section>
-
             </Layout>
         </>
     )

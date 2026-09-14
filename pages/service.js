@@ -1,124 +1,131 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
-export default function Home() {
 
+const services = [
+    {
+        id: "graphic-design",
+        icon: "iconoir-adobe-photoshop",
+        title: "Graphic Design",
+        color: "#31A8FF",
+        desc: "Offering professional graphic design services with expertise in Adobe Photoshop and vector-based illustration. I create visually engaging artworks, ranging from realistic edits to stylized vector illustrations inspired by Vince Ruz's clean and expressive aesthetic.",
+        tags: ["Adobe Photoshop", "Illustrator", "Vector Art"],
+    },
+    {
+        id: "uiux-design",
+        icon: "iconoir-figma",
+        title: "UI/UX Design",
+        color: "#F24E1E",
+        desc: "Providing UI/UX design services for both web and mobile platforms, focusing on creating intuitive, user-centered interfaces with consistent visual identity and seamless user experience.",
+        tags: ["Figma", "Prototyping", "User Research"],
+    },
+    {
+        id: "web-development",
+        icon: "iconoir-dev-mode-laptop",
+        title: "Web Development",
+        color: "#5B78F6",
+        desc: "Building dynamic and responsive websites using Laravel, focusing on clean architecture, performance, and maintainable code.",
+        tags: ["Laravel", "React", "REST API"],
+    },
+    {
+        id: "mobile-development",
+        icon: "iconoir-dev-mode-phone",
+        title: "Mobile Development",
+        color: "#54C5F8",
+        desc: "Providing mobile development services using Flutter framework, focusing on building responsive, high-performance applications with clean architecture and state management powered by GetX and BLoC.",
+        tags: ["Flutter", "React Native", "Dart"],
+    },
+]
+
+export default function Service() {
     return (
         <>
-            <Layout  maincls="main-homepage">
-                <section className="service-area">
+            <Layout maincls="main-homepage">
+                <section className="svc-area-v2">
                     <div className="container">
-                        <h1 className="section-heading" data-aos="fade-up"><img src="/assets/images/star-2.png" alt="Star" /> My Offerings <img src="/assets/images/star-2.png" alt="Star" /></h1>
-                        <div className="row">
-                            {/* Sidebar */}
-                            <div className="col-md-4">
-                                <div className="service-sidebar" data-aos="fade-right">
-                                    <div className="service-sidebar-inner shadow-box">
-                                        <ul>
-                                            <li>
-                                                <i className="iconoir-adobe-photoshop icon" />
-                                                Graphic Design
-                                            </li>
-                                            <li>
-                                                <i className="iconoir-figma icon" />
-                                                UI/UX Designing
-                                            </li>
-                                            <li>
-                                                <i className="iconoir-dev-mode-laptop icon" />
-                                                Web Development
-                                            </li>
-                                            <li>
-                                                <i className="iconoir-dev-mode-phone icon" />
-                                                Mobile Development
-                                            </li>
-                                        </ul>
+
+                        {/* Page heading */}
+                        <div className="svc-heading" data-aos="fade-up">
+                            <img src="/assets/images/star-2.png" alt="star" />
+                            <h1>My Offerings</h1>
+                            <img src="/assets/images/star-2.png" alt="star" />
+                        </div>
+
+                        {/* Services grid */}
+                        <div className="svc-grid">
+                            {services.map((svc, i) => (
+                                <div
+                                    key={svc.id}
+                                    className="svc-card glass-card"
+                                    style={{ "--svc-color": svc.color }}
+                                    data-aos="zoom-in"
+                                    data-aos-delay={i * 80}
+                                >
+                                    <div className="svc-card-glow" />
+                                    <div className="svc-icon-wrap">
+                                        <i className={svc.icon} />
+                                    </div>
+                                    <h3 className="svc-card-title">{svc.title}</h3>
+                                    <p className="svc-card-desc">{svc.desc}</p>
+                                    <div className="svc-tags">
+                                        {svc.tags.map((tag, j) => (
+                                            <span key={j} className="svc-tag">{tag}</span>
+                                        ))}
                                     </div>
                                 </div>
-                            </div>
-                            {/* Content */}
-                            <div className="col-md-8">
-                                <h1 className="section-heading" data-aos="fade-up"><img src="/assets/images/star-2.png" alt="Star" /> My Offerings <img src="/assets/images/star-2.png" alt="Star" /></h1>
-                                <div className="service-content-wrap" data-aos="zoom-in">
-                                    <div className="service-content-inner shadow-box">
-                                        <div className="service-items">
-                                            <div className="service-item">
-                                                <h3>Graphic Design</h3>
-                                                <p>Offering professional graphic design services with expertise in Adobe Photoshop and vector-based illustration. I create visually engaging artworks, ranging from realistic edits to stylized vector illustrations inspired by Vince Ruz’s clean and expressive aesthetic.</p>
-                                            </div>
-                                            <div className="service-item">
-                                                <h3>UI/UX Design</h3>
-                                                <p>Providing UI/UX design services for both web and mobile platforms, focusing on creating intuitive, user-centered interfaces with consistent visual identity and seamless user experience.</p>
-                                            </div>
-                                            <div className="service-item">
-                                                <h3>Web Development</h3>
-                                                <p>Building dynamic and responsive websites using Laravel, focusing on clean architecture, performance, and maintainable code.</p>
-                                            </div>
-                                            <div className="service-item">
-                                                <h3>Mobile Development</h3>
-                                                <p>Providing mobile development services using Flutter framework, focusing on building responsive, high-performance applications with clean architecture and state management powered by GetX and BLoC.</p>
-                                            </div>
-                                        </div>
+                            ))}
+                        </div>
+
+                        {/* Bottom CTA Row */}
+                        <div className="about-cta-row" style={{ marginTop: "32px" }}>
+                            <div className="about-cta-card glass-card" data-aos="zoom-in" data-aos-delay="150">
+                                <div className="cta-inner-icons">
+                                    <Link href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer" className="cta-icon-btn">
+                                        <i className="iconoir-linkedin" />
+                                    </Link>
+                                    <Link href="https://web.facebook.com/profile.php?id=100009292241278" target="_blank" rel="noopener noreferrer" className="cta-icon-btn">
+                                        <i className="iconoir-facebook-tag" />
+                                    </Link>
+                                </div>
+                                <div className="cta-card-footer">
+                                    <div>
+                                        <p className="cta-card-sub">Stay with me</p>
+                                        <h2 className="cta-card-title">Profiles</h2>
                                     </div>
+                                    <Link href="/contact" className="cta-arrow-btn">
+                                        <img src="/assets/images/icon.svg" alt="Arrow" />
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className="about-cta-card about-cta-main glass-card" data-aos="zoom-in" data-aos-delay="250">
+                                <Link className="overlay-link" href="/contact" />
+                                <div className="cta-main-glow" />
+                                <img src="/assets/images/icon2.png" alt="Star" className="cta-star-icon" />
+                                <h2 className="cta-main-heading">
+                                    Let&apos;s <br />work <span>together.</span>
+                                </h2>
+                                <Link href="/contact" className="cta-arrow-btn">
+                                    <img src="/assets/images/icon.svg" alt="Arrow" />
+                                </Link>
+                            </div>
+
+                            <div className="about-cta-card glass-card" data-aos="zoom-in" data-aos-delay="350">
+                                <Link className="overlay-link" href="/credentials" />
+                                <img src="/assets/images/sign.png" alt="Signature" className="cta-sign-img" />
+                                <div className="cta-card-footer">
+                                    <div>
+                                        <p className="cta-card-sub">more about me</p>
+                                        <h2 className="cta-card-title">Credentials</h2>
+                                    </div>
+                                    <Link href="/credentials" className="cta-arrow-btn">
+                                        <img src="/assets/images/icon.svg" alt="Arrow" />
+                                    </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="row mt-24">
-                            <div className="col-md-12">
-                                <div className="d-flex profile-contact-credentials-wrap gap-24">
-                                    <div data-aos="zoom-in">
-                                        <div className="about-profile-box info-box shadow-box h-full">
-                                            {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                            <div className="inner-profile-icons shadow-box">
-                                                <Link href="https://www.linkedin.com/in/malik-ibrahim-063922169" target="_blank" rel="noopener noreferrer">
-                                                    <i className="iconoir-linkedin" />
-                                                </Link>
-                                                <Link href="https://web.facebook.com/profile.php?id=100009292241278" target="_blank" rel="noopener noreferrer">
-                                                    <i className="iconoir-facebook" />
-                                                </Link>
-                                            </div>
-                                            <div className="d-flex align-items-center justify-content-between">
-                                                <div className="infos">
-                                                    <h4>Stay with me</h4>
-                                                    <h1>Profiles</h1>
-                                                </div>
-                                                <Link href="/contact" className="about-btn">
-                                                    <img src="/assets/images/icon.svg" alt="Button" />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div data-aos="zoom-in" className="flex-1">
-                                        <div className="about-contact-box info-box shadow-box">
-                                            <Link className="overlay-link" href="/contact" />
-                                            {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                            <img src="/assets/images/icon2.png" alt="Icon" className="star-icon" />
-                                            <h1>Let's <br />work <span>together.</span></h1>
-                                            <Link href="/contact" className="about-btn">
-                                                <img src="/assets/images/icon.svg" alt="Button" />
-                                            </Link>
-                                        </div>
-                                    </div>
-                                    <div data-aos="zoom-in" className="h-full">
-                                        <div className="about-crenditials-box info-box shadow-box">
-                                            <Link className="overlay-link" href="/credentials" />
-                                            {/* <img src="/assets/images/bg1.png" alt="BG" className="bg-img" /> */}
-                                            <img src="/assets/images/sign.png" alt="Sign" />
-                                            <div className="d-flex align-items-center justify-content-between">
-                                                <div className="infos">
-                                                    <h4>more about me</h4>
-                                                    <h1>Credentials</h1>
-                                                </div>
-                                                <Link href="/credentials" className="about-btn">
-                                                    <img src="/assets/images/icon.svg" alt="Button" />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </section>
-
             </Layout>
         </>
     )
