@@ -37,10 +37,10 @@ export default function Home() {
 
                                     {/* Marquee */}
                                     <div>
-                                        <div className="banner glass-card" style={{ padding: "17px 25px", marginBottom: "24px" }}>
+                                        <div className="banner glass-card">
                                             <div className="marquee">
                                                 <div>
-                                                    <span>LATEST WORK AND <b>FEATURED</b> <img src="/assets/images/star1.svg" alt="Star" /> LATEST WORK AND <b>FEATURED</b> <img src="/assets/images/star1.svg" alt="Star" /> LATEST WORK AND <b>FEATURED</b> <img src="/assets/images/star1.svg" alt="Star" /> LATEST WORK AND <b>FEATURED</b> <img src="/assets/images/star1.svg" alt="Star" /></span>
+                                                    <span>LATEST WORK AND <b>FEATURED</b> <span className="marquee-dot">✦</span> LATEST WORK AND <b>FEATURED</b> <span className="marquee-dot">✦</span> LATEST WORK AND <b>FEATURED</b> <span className="marquee-dot">✦</span> LATEST WORK AND <b>FEATURED</b> <span className="marquee-dot">✦</span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,18 +107,18 @@ export default function Home() {
                                     <div data-aos="zoom-in" className="home-services-col d-flex">
                                         <div className="about-services-box info-box glass-card w-100">
                                             <Link href="/service" className="overlay-link" />
-                                            <div className="icon-boxes">
-                                                <div className="svc-icon-wrap" style={{ "--svc-color": "#31A8FF" }} title="Graphic Design">
-                                                    <i className="iconoir-adobe-photoshop" style={{ color: "#31A8FF" }} />
+                                            <div className="svc-icon-flow">
+                                                <div className="svc-item svc-photoshop" title="Graphic Design">
+                                                    <i className="iconoir-adobe-photoshop" />
                                                 </div>
-                                                <div className="svc-icon-wrap" style={{ "--svc-color": "#F24E1E" }} title="UI/UX Design">
-                                                    <i className="iconoir-figma" style={{ color: "#F24E1E" }} />
+                                                <div className="svc-item svc-figma" title="UI/UX Design">
+                                                    <i className="iconoir-figma" />
                                                 </div>
-                                                <div className="svc-icon-wrap" style={{ "--svc-color": "#5B78F6" }} title="Web Development">
-                                                    <i className="iconoir-dev-mode-laptop" style={{ color: "#5B78F6" }} />
+                                                <div className="svc-item svc-web" title="Web Development">
+                                                    <i className="iconoir-dev-mode-laptop" />
                                                 </div>
-                                                <div className="svc-icon-wrap" style={{ "--svc-color": "#54C5F8" }} title="Mobile Development">
-                                                    <i className="iconoir-dev-mode-phone" style={{ color: "#54C5F8" }} />
+                                                <div className="svc-item svc-mobile" title="Mobile Development">
+                                                    <i className="iconoir-dev-mode-phone" />
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-between">

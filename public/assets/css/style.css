@@ -537,22 +537,43 @@ ol {
     width: 100%;
     max-width: 100%;
     height: 19px;
-    overflow-x: hidden;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+.marquee::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .marquee div {
-    
     position: absolute;
     white-space: nowrap;
     will-change: transform;
-    font-size: 12px;
-
-    animation: marquee 8s linear infinite;
+    font-size: 11.5px;
+    line-height: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    overflow: hidden !important;
+    animation: marquee 9s linear infinite;
 }
 
 .about-area .about-credentials-wrap .banner .marquee b {
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
+}
+.marquee-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.4);
+    vertical-align: middle;
 }
 .about-area .about-credentials-wrap .banner .marquee img {
     display: inline-block;
@@ -2539,6 +2560,81 @@ ol {
     border-radius: 22px !important;
     min-height: 155px !important;
 }
+
+/* Services Icons in Bento Row 2 */
+.about-services-box .svc-icon-flow {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    width: fit-content !important;
+    margin-top: 4px !important;
+    margin-bottom: 12px !important;
+    padding: 8px 14px !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.about-services-box .svc-item {
+    position: relative !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 14px !important;
+    font-size: 22px !important;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    flex-shrink: 0 !important;
+    z-index: 2;
+}
+
+/* Services Brand Colors (visible idle state matching /service) */
+.about-services-box .svc-item.svc-photoshop {
+    color: #31A8FF !important;
+    background: rgba(49, 168, 255, 0.08) !important;
+    border: 1px solid rgba(49, 168, 255, 0.28) !important;
+}
+.about-services-box .svc-item.svc-figma {
+    color: #F24E1E !important;
+    background: rgba(242, 78, 30, 0.08) !important;
+    border: 1px solid rgba(242, 78, 30, 0.28) !important;
+}
+.about-services-box .svc-item.svc-web {
+    color: #5B78F6 !important;
+    background: rgba(91, 120, 246, 0.08) !important;
+    border: 1px solid rgba(91, 120, 246, 0.28) !important;
+}
+.about-services-box .svc-item.svc-mobile {
+    color: #54C5F8 !important;
+    background: rgba(84, 197, 248, 0.08) !important;
+    border: 1px solid rgba(84, 197, 248, 0.28) !important;
+}
+
+/* Hover States: Smooth elevation & soft controlled glow */
+.about-services-box .svc-item:hover {
+    transform: translateY(-3px) scale(1.08) !important;
+}
+.about-services-box .svc-item.svc-photoshop:hover {
+    background: rgba(49, 168, 255, 0.18) !important;
+    border-color: #31A8FF !important;
+    box-shadow: 0 4px 14px rgba(49, 168, 255, 0.35) !important;
+}
+.about-services-box .svc-item.svc-figma:hover {
+    background: rgba(242, 78, 30, 0.18) !important;
+    border-color: #F24E1E !important;
+    box-shadow: 0 4px 14px rgba(242, 78, 30, 0.35) !important;
+}
+.about-services-box .svc-item.svc-web:hover {
+    background: rgba(91, 120, 246, 0.18) !important;
+    border-color: #5B78F6 !important;
+    box-shadow: 0 4px 14px rgba(91, 120, 246, 0.35) !important;
+}
+.about-services-box .svc-item.svc-mobile:hover {
+    background: rgba(84, 197, 248, 0.18) !important;
+    border-color: #54C5F8 !important;
+    box-shadow: 0 4px 14px rgba(84, 197, 248, 0.35) !important;
+}
+
 .about-profile-box .inner-profile-icons {
     display: flex !important;
     align-items: center !important;
@@ -3090,28 +3186,65 @@ ol {
         gap: 6px !important;
     }
     .about-services-box .svc-icon-wrap,
-    .info-box.about-services-box .svc-icon-wrap {
-        width: 46px !important;
-        height: 46px !important;
-        border-radius: 12px;
+    .info-box.about-services-box .svc-icon-wrap,
+    .about-services-box .home-svc-item,
+    .about-services-box .svc-item {
+        width: 42px !important;
+        height: 42px !important;
+        border-radius: 12px !important;
+        font-size: 19px !important;
     }
     .about-services-box .svc-icon-wrap i,
     .info-box.about-services-box .svc-icon-wrap i {
-        font-size: 22px !important;
+        font-size: 20px !important;
     }
 }
 
 @media (max-width: 380px) {
     .about-services-box .svc-icon-wrap,
-    .info-box.about-services-box .svc-icon-wrap {
-        width: 38px !important;
-        height: 38px !important;
-        border-radius: 10px;
+    .info-box.about-services-box .svc-icon-wrap,
+    .about-services-box .home-svc-item,
+    .about-services-box .svc-item {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 10px !important;
+        font-size: 16px !important;
     }
     .about-services-box .svc-icon-wrap i,
     .info-box.about-services-box .svc-icon-wrap i {
-        font-size: 18px !important;
+        font-size: 16px !important;
     }
 }
+
+/* Back to top button styling */
+.scroll__top {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: rgba(25, 25, 30, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    z-index: 9999 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+.scroll__top:hover {
+    background: rgba(91, 140, 255, 0.25) !important;
+    border-color: #5b8cff !important;
+    color: #5b8cff !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 24px rgba(91, 140, 255, 0.3) !important;
+}
+
 
 
