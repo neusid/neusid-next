@@ -3797,5 +3797,201 @@ ol {
     color: #ffffff;
 }
 
+/* ============================================
+   # Work Admin Page & Card Actions
+   ============================================ */
+.admin-badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #f87171;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.admin-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+.admin-top-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: 100px;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.admin-top-upload-btn:hover {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
+}
+.admin-card-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 10;
+}
+.admin-card-id {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+.admin-card-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.admin-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+.admin-action-btn.edit {
+    background: rgba(91, 140, 255, 0.15);
+    border: 1px solid rgba(91, 140, 255, 0.35);
+    color: #93c5fd;
+}
+.admin-action-btn.edit:hover {
+    background: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.45);
+    transform: translateY(-1px);
+}
+.admin-action-btn.delete {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #fca5a5;
+}
+.admin-action-btn.delete:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.45);
+    transform: translateY(-1px);
+}
+.admin-confirm-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.admin-confirm-btn {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+.admin-confirm-btn.yes {
+    background: #ef4444;
+    color: #fff;
+}
+.admin-confirm-btn.no {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Drag & Drop Reordering Styles */
+.admin-drag-handle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: grab;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+.admin-drag-handle:hover {
+    color: #00d2ff;
+    background: rgba(0, 210, 255, 0.12);
+    border-color: rgba(0, 210, 255, 0.35);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+}
+.admin-drag-handle:active {
+    cursor: grabbing;
+}
+.project-item.draggable-card {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, border-color 0.2s ease;
+    position: relative;
+}
+.project-item.is-dragging {
+    opacity: 0.35 !important;
+    transform: scale(0.96) !important;
+    border: 2px dashed #00d2ff !important;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3) !important;
+}
+.project-item.is-drag-over {
+    transform: translateY(-6px) scale(1.02) !important;
+    border: 2px solid #00d2ff !important;
+    box-shadow: 0 14px 34px rgba(0, 210, 255, 0.4) !important;
+}
+.admin-reorder-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 210, 255, 0.9);
+    background: rgba(0, 210, 255, 0.08);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+}
+.admin-reorder-saving {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #34d399;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+
 
 

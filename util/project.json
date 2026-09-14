@@ -1,5 +1,38 @@
 [
     {
+        "id": 7,
+        "title": "Mingda Absensi",
+        "img": "project-7-mingda-absesnsi-thumb.jpeg",
+        "category": "MOBILE DEVELOPMENT",
+        "badge": "Freelance",
+        "badgeType": "enterprise",
+        "tags": [
+            "Flutter",
+            "Firebase",
+            "BLoC",
+            "Clean Architecture"
+        ],
+        "year": "2026",
+        "clickable": false,
+        "background": "project-dt-01.svg",
+        "images": [
+            "project-7-mingda-absesnsi-thumb.jpeg"
+        ],
+        "data": [
+            {
+                "description": "Mingda Absensi is an enterprise mobile application designed to streamline employee attendance and administrative operations. The app provides comprehensive features for automated attendance check-ins, leave and permission requests, and attendance records integrated directly with the corporate backend. Adapted from the existing web platform with responsive mobile UI/UX, the application delivers a seamless, practical attendance management experience on mobile devices."
+            },
+            {
+                "year": "2026",
+                "services": "Mobile Development",
+                "stack": "Flutter & Firebase"
+            },
+            {
+                "next": "1"
+            }
+        ]
+    },
+    {
         "id": 1,
         "title": "Mierp (Mini ERP)",
         "img": "project2ver3.jpeg",
@@ -175,39 +208,6 @@
                 "year": "2023",
                 "services": "Graphic Design & Vector Art",
                 "stack": "Adobe Illustrator & Figma"
-            }
-        ]
-    },
-    {
-        "id": 7,
-        "title": "Mingda Absensi",
-        "img": "project-7-mingda-absesnsi-thumb.jpeg",
-        "category": "MOBILE DEVELOPMENT",
-        "badge": "Freelance",
-        "badgeType": "enterprise",
-        "tags": [
-            "Flutter",
-            "Firebase",
-            "BLoC",
-            "Clean Architecture"
-        ],
-        "year": "2026",
-        "clickable": false,
-        "background": "project-dt-01.svg",
-        "images": [
-            "project-7-mingda-absesnsi-thumb.jpeg"
-        ],
-        "data": [
-            {
-                "description": "Mingda Absensi is an enterprise mobile application designed to streamline employee attendance and administrative operations. The app provides comprehensive features for automated attendance check-ins, leave and permission requests, and attendance records integrated directly with the corporate backend. Adapted from the existing web platform with responsive mobile UI/UX, the application delivers a seamless, practical attendance management experience on mobile devices."
-            },
-            {
-                "year": "2026",
-                "services": "Mobile Development",
-                "stack": "Flutter & Firebase"
-            },
-            {
-                "next": "1"
             }
         ]
     }

@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" fill="none">
+    <defs>
+        <!-- Background Gradient -->
+        <linearGradient id="bg-grad" x1="0" y1="0" x2="1280" y2="800" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#08090d"/>
+            <stop offset="50%" stop-color="#0e111a"/>
+            <stop offset="100%" stop-color="#090b12"/>
+        </linearGradient>
+
+        <!-- Ambient Cyan Glow -->
+        <radialGradient id="glow-cyan" cx="640" cy="400" r="450" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.22"/>
+            <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Accent Purple Glow -->
+        <radialGradient id="glow-purple" cx="820" cy="320" r="380" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.18"/>
+            <stop offset="60%" stop-color="#6366f1" stop-opacity="0.05"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Floor Shadow for 3D Phone -->
+        <radialGradient id="phone-shadow" cx="640" cy="710" rx="280" ry="40" fx="640" fy="710" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#000000" stop-opacity="0.85"/>
+            <stop offset="60%" stop-color="#000000" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Glassmorphism Gradient for Phone Body -->
+        <linearGradient id="phone-bezel" x1="450" y1="110" x2="830" y2="690" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2a2e3d"/>
+            <stop offset="100%" stop-color="#12141c"/>
+        </linearGradient>
+
+        <!-- Screen Placeholder Gradient -->
+        <linearGradient id="screen-grad" x1="465" y1="125" x2="815" y2="675" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#141824"/>
+            <stop offset="50%" stop-color="#1e2436"/>
+            <stop offset="100%" stop-color="#0f121b"/>
+        </linearGradient>
+
+        <!-- Glass Floating Card Gradient -->
+        <linearGradient id="glass-card-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0.03"/>
+        </linearGradient>
+
+        <!-- Clip Path for Screen Content -->
+        <clipPath id="screen-clip">
+            <rect x="470" y="130" width="340" height="540" rx="36"/>
+        </clipPath>
+    </defs>
+
+    <!-- ===================================================
+         GROUP: BACKGROUND & AMBIENT ATMOSPHERE
+         =================================================== -->
+    <g id="Background-Layer">
+        <!-- Solid Base -->
+        <rect width="1280" height="800" fill="url(#bg-grad)"/>
+
+        <!-- Perspective 3D Grid Overlay -->
+        <g id="Perspective-Grid" opacity="0.18">
+            <line x1="100" y1="800" x2="400" y2="460" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="280" y1="800" x2="480" y2="460" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="460" y1="800" x2="560" y2="460" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="640" y1="800" x2="640" y2="460" stroke="#00d2ff" stroke-width="1.5"/>
+            <line x1="820" y1="800" x2="720" y2="460" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="1000" y1="800" x2="800" y2="460" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="1180" y1="800" x2="880" y2="460" stroke="#00d2ff" stroke-width="1.2"/>
+
+            <!-- Horizontal depth lines -->
+            <line x1="380" y1="480" x2="900" y2="480" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="320" y1="530" x2="960" y2="530" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="240" y1="600" x2="1040" y2="600" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="140" y1="690" x2="1140" y2="690" stroke="#00d2ff" stroke-width="1.2"/>
+            <line x1="0" y1="800" x2="1280" y2="800" stroke="#00d2ff" stroke-width="1.5"/>
+        </g>
+
+        <!-- Ambient Glow Spheres -->
+        <circle cx="640" cy="400" r="450" fill="url(#glow-cyan)"/>
+        <circle cx="820" cy="320" r="380" fill="url(#glow-purple)"/>
+
+        <!-- Ground Contact Shadow -->
+        <ellipse cx="640" cy="700" rx="300" ry="40" fill="url(#phone-shadow)"/>
+    </g>
+
+    <!-- ===================================================
+         GROUP: 3D DEVICE FRAME (SMARTPHONE MOCKUP)
+         =================================================== -->
+    <g id="Device-Mockup-Group" transform="rotate(-3 640 400)">
+
+        <!-- Outer Phone Shell & Metallic Border -->
+        <rect x="450" y="110" width="380" height="580" rx="50" fill="url(#phone-bezel)" stroke="rgba(255,255,255,0.18)" stroke-width="3" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.6))"/>
+        <rect x="452" y="112" width="376" height="576" rx="48" fill="none" stroke="rgba(0, 210, 255, 0.3)" stroke-width="1.5"/>
+
+        <!-- Inner Bezel -->
+        <rect x="466" y="126" width="348" height="548" rx="40" fill="#000000"/>
+
+        <!-- Screen Display Area (Figma Mask / Screen Replace Target) -->
+        <g id="Screen-Content-Area" clip-path="url(#screen-clip)">
+            <!-- Screen Background Placeholder -->
+            <rect x="470" y="130" width="340" height="540" fill="url(#screen-grad)"/>
+
+            <!-- Screen UI Mockup Visuals -->
+            <!-- Header bar inside phone -->
+            <rect x="495" y="185" width="160" height="20" rx="6" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="775" cy="195" r="16" fill="rgba(0,210,255,0.2)"/>
+
+            <!-- Hero Graphic/Card in screen -->
+            <rect x="495" y="230" width="290" height="150" rx="20" fill="linear-gradient(135deg, rgba(0,210,255,0.18), rgba(59,130,246,0.1))" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <rect x="520" y="260" width="130" height="16" rx="5" fill="#ffffff" opacity="0.8"/>
+            <rect x="520" y="288" width="180" height="12" rx="4" fill="rgba(255,255,255,0.4)"/>
+            <rect x="520" y="325" width="90" height="30" rx="100" fill="#00d2ff"/>
+
+            <!-- Data Rows inside screen -->
+            <rect x="495" y="405" width="290" height="60" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+            <circle cx="525" cy="435" r="16" fill="#3b82f6" opacity="0.3"/>
+            <rect x="555" y="425" width="120" height="12" rx="4" fill="rgba(255,255,255,0.7)"/>
+            <rect x="555" y="443" width="70" height="9" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+            <rect x="495" y="480" width="290" height="60" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+            <circle cx="525" cy="510" r="16" fill="#10b981" opacity="0.3"/>
+            <rect x="555" y="500" width="140" height="12" rx="4" fill="rgba(255,255,255,0.7)"/>
+            <rect x="555" y="518" width="85" height="9" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+            <rect x="495" y="555" width="290" height="60" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+            <circle cx="525" cy="585" r="16" fill="#8b5cf6" opacity="0.3"/>
+            <rect x="555" y="575" width="110" height="12" rx="4" fill="rgba(255,255,255,0.7)"/>
+            <rect x="555" y="593" width="60" height="9" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+            <!-- Center Instruction watermark for Figma users -->
+            <rect x="515" y="320" width="250" height="70" rx="14" fill="rgba(0,0,0,0.75)" stroke="#00d2ff" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="640" y="348" fill="#00d2ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">PASTE SCREENSHOT HERE</text>
+            <text x="640" y="370" fill="rgba(255,255,255,0.6)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">Frame Size: 340 x 540 (or 9:16 ratio)</text>
+        </g>
+
+        <!-- Dynamic Island / Camera Pill -->
+        <rect x="585" y="142" width="110" height="24" rx="12" fill="#000000"/>
+        <circle cx="678" cy="154" r="5" fill="#0b1a2e" stroke="#1c2d42" stroke-width="1"/>
+        <circle cx="610" cy="154" r="4" fill="#06121f"/>
+
+        <!-- Phone Glare Reflection (Diagonal Glass Shine) -->
+        <path d="M470 130 L700 130 L550 670 L470 670 Z" fill="url(#glass-card-grad)" opacity="0.25" pointer-events="none"/>
+    </g>
+
+    <!-- ===================================================
+         GROUP: FLOATING GLASSMORPHISM ACCENTS (3D DEPTH)
+         =================================================== -->
+    <!-- Left Floating Card: Status / Live Metric -->
+    <g id="Floating-Card-Left" transform="translate(180, 310) rotate(-6)">
+        <rect width="260" height="120" rx="20" fill="#0e1320" fill-opacity="0.85" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" filter="drop-shadow(0 16px 32px rgba(0,0,0,0.5))"/>
+        <rect x="1.5" y="1.5" width="257" height="117" rx="18.5" fill="none" stroke="rgba(0,210,255,0.3)" stroke-width="1"/>
+
+        <!-- Card content -->
+        <circle cx="45" cy="45" r="22" fill="rgba(16, 185, 129, 0.15)"/>
+        <!-- Check icon -->
+        <path d="M38 45 L43 50 L53 39" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="80" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">Production Ready</text>
+        <text x="80" y="60" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600">Active · Google Play</text>
+
+        <!-- Metric bar -->
+        <rect x="25" y="85" width="210" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+        <rect x="25" y="85" width="165" height="8" rx="4" fill="linear-gradient(90deg, #10b981, #00d2ff)"/>
+    </g>
+
+    <!-- Right Floating Card: Tech Pill -->
+    <g id="Floating-Card-Right" transform="translate(860, 240) rotate(8)">
+        <rect width="250" height="105" rx="20" fill="#0e1320" fill-opacity="0.85" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" filter="drop-shadow(0 16px 32px rgba(0,0,0,0.5))"/>
+        <rect x="1.5" y="1.5" width="247" height="102" rx="18.5" fill="none" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
+
+        <!-- Card content -->
+        <circle cx="42" cy="40" r="18" fill="rgba(91, 140, 255, 0.18)"/>
+        <text x="42" y="46" fill="#00d2ff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="800" text-anchor="middle">⚡</text>
+        <text x="75" y="38" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700">High Performance</text>
+        <text x="75" y="56" fill="rgba(255,255,255,0.55)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Clean Architecture</text>
+
+        <!-- Tag pills inside -->
+        <rect x="25" y="72" width="60" height="20" rx="6" fill="rgba(255,255,255,0.08)"/>
+        <text x="55" y="86" fill="rgba(255,255,255,0.8)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Flutter</text>
+        <rect x="92" y="72" width="68" height="20" rx="6" fill="rgba(255,255,255,0.08)"/>
+        <text x="126" y="86" fill="rgba(255,255,255,0.8)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Firebase</text>
+    </g>
+
+    <!-- ===================================================
+         GROUP: SAFE ZONE GUIDES (IMPORTANT FOR FIGMA)
+         Toggle this group OFF before final PNG export
+         =================================================== -->
+    <g id="SAFE-ZONES-OVERLAY-GUIDES" opacity="0.95">
+
+        <!-- Top-Left Safe Zone: Status Badge -->
+        <g id="Guide-Top-Left-Badge" transform="translate(36, 36)">
+            <rect width="210" height="46" rx="100" fill="rgba(239, 68, 68, 0.12)" stroke="#f87171" stroke-width="2" stroke-dasharray="6 4"/>
+            <circle cx="24" cy="23" r="5" fill="#34d399"/>
+            <text x="38" y="28" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">⚠️ BADGE SAFE ZONE</text>
+            <text x="105" y="65" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-anchor="middle">(Don't put text/icons here)</text>
+        </g>
+
+        <!-- Top-Right Safe Zone: Year Pill -->
+        <g id="Guide-Top-Right-Year" transform="translate(1080, 36)">
+            <rect width="164" height="42" rx="100" fill="rgba(239, 68, 68, 0.12)" stroke="#f87171" stroke-width="2" stroke-dasharray="6 4"/>
+            <text x="82" y="26" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.5">⚠️ YEAR ZONE</text>
+            <text x="82" y="62" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-anchor="middle">(Leave area clean)</text>
+        </g>
+
+        <!-- Bottom Tag Zone Marker -->
+        <g id="Guide-Bottom-Tags" transform="translate(36, 730)">
+            <rect width="360" height="34" rx="8" fill="rgba(59, 130, 246, 0.1)" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="180" y="22" fill="#93c5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🏷️ Tech Tags Safe Area (Overlaid in card)</text>
+        </g>
+
+        <!-- Center 16:10 Ratio Watermark Info -->
+        <g id="Guide-Info-Header" transform="translate(640, 56)">
+            <rect x="-240" y="0" width="480" height="32" rx="16" fill="rgba(0,0,0,0.6)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="0" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+                📐 1280 × 800 px (16:10) · Portfolio Work Card Template
+            </text>
+        </g>
+    </g>
+
+</svg>

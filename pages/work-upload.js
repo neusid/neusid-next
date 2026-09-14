@@ -1,10 +1,14 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/router"
+import initialProjects from "../util/project.json"
 
 export default function WorkUpload() {
     const router = useRouter()
+    const editId = router.query.id
+    const isEditMode = Boolean(editId)
+
     const [title, setTitle] = useState("")
     const [category, setCategory] = useState("MOBILE DEVELOPMENT")
     const [customCategory, setCustomCategory] = useState("")
@@ -37,6 +41,56 @@ export default function WorkUpload() {
     const thumbInputRef = useRef(null)
     const bgInputRef = useRef(null)
     const galleryInputRef = useRef(null)
+
+    // Pre-populate data when in edit mode
+    useEffect(() => {
+        if (!router.isReady || !editId) return
+
+        const proj = initialProjects.find((p) => String(p.id) === String(editId))
+        if (!proj) {
+            setErrorMsg(`Project with ID #${editId} not found in database.`)
+            return
+        }
+
+        setTitle(proj.title || "")
+        const standardCats = ["MOBILE DEVELOPMENT", "GRAPHIC DESIGN", "WEB DEVELOPMENT", "IOT & EMBEDDED"]
+        if (standardCats.includes(proj.category)) {
+            setCategory(proj.category)
+            setCustomCategory("")
+        } else {
+            setCategory("CUSTOM")
+            setCustomCategory(proj.category || "")
+        }
+
+        setBadge(proj.badge || "")
+        setBadgeType(proj.badgeType || "live")
+        setTags(Array.isArray(proj.tags) ? proj.tags.join(", ") : (proj.tags || ""))
+        setYear(proj.year || "")
+        setClickable(proj.clickable !== false)
+        setDescription(proj.data?.[0]?.description || "")
+        setServices(proj.data?.[1]?.services || "")
+        setStack(proj.data?.[1]?.stack || "")
+        setPlaystore(proj.data?.[1]?.playstore || "")
+        setGithub(proj.data?.[1]?.github || "")
+
+        if (proj.img) {
+            setThumbnailPreview(`/assets/images/${proj.img}`)
+            setThumbnailName(proj.img)
+        }
+        if (proj.background) {
+            setBackgroundPreview(`/assets/images/${proj.background}`)
+            setBackgroundName(proj.background)
+        }
+        if (Array.isArray(proj.images) && proj.images.length > 0) {
+            setGallery(
+                proj.images.map((imgName) => ({
+                    preview: `/assets/images/${imgName}`,
+                    name: imgName,
+                    base64: null,
+                }))
+            )
+        }
+    }, [router.isReady, editId])
 
     const fileToBase64 = (file) =>
         new Promise((resolve, reject) => {
@@ -111,7 +165,7 @@ export default function WorkUpload() {
             return
         }
 
-        if (!thumbnailBase64) {
+        if (!thumbnailBase64 && !thumbnailPreview) {
             setErrorMsg("Please upload a Main Thumbnail image for the card.")
             return
         }
@@ -120,6 +174,7 @@ export default function WorkUpload() {
 
         try {
             const payload = {
+                ...(isEditMode ? { id: editId } : {}),
                 title,
                 category: effectiveCategory,
                 badge,
@@ -139,7 +194,8 @@ export default function WorkUpload() {
                 galleryImages: gallery.map((g) => ({ base64: g.base64, name: g.name })),
             }
 
-            const res = await fetch("/api/add-work", {
+            const endpoint = isEditMode ? "/api/edit-work" : "/api/add-work"
+            const res = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -148,7 +204,7 @@ export default function WorkUpload() {
             const data = await res.json()
 
             if (!res.ok || !data.success) {
-                throw new Error(data.message || "Failed to add project.")
+                throw new Error(data.message || (isEditMode ? "Failed to update project." : "Failed to add project."))
             }
 
             setSuccessData(data.project)
@@ -196,23 +252,55 @@ export default function WorkUpload() {
                 <section className="upload-work-area">
                     <div className="container" style={{ maxWidth: "880px" }}>
 
+                        {/* Top Back Link to Admin */}
+                        <div style={{ marginBottom: "24px" }} data-aos="fade-up">
+                            <Link
+                                href="/work-admin"
+                                style={{
+                                    color: "rgba(255,255,255,0.65)",
+                                    fontSize: "13.5px",
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                    textDecoration: "none",
+                                    padding: "6px 12px",
+                                    borderRadius: "8px",
+                                    background: "rgba(255,255,255,0.05)",
+                                    border: "1px solid rgba(255,255,255,0.08)",
+                                    transition: "all 0.2s ease"
+                                }}
+                            >
+                                <i className="iconoir-arrow-left" /> Back to Admin Manager
+                            </Link>
+                        </div>
+
                         {/* Hero Header */}
                         <div className="upload-hero" data-aos="fade-up">
                             <span className="upload-secret-tag">
-                                <i className="iconoir-sparks" /> Secret Management URL
+                                {isEditMode ? (
+                                    <>
+                                        <i className="iconoir-edit-pencil" /> Admin Edit Mode · ID #{editId}
+                                    </>
+                                ) : (
+                                    <>
+                                        <i className="iconoir-sparks" /> Secret Management URL
+                                    </>
+                                )}
                             </span>
-                            <h1>Upload New Work</h1>
+                            <h1>{isEditMode ? `Edit Project #${editId}` : "Upload New Work"}</h1>
                             <p>
-                                Add a new production showcase, academic research project, or graphic art piece to your portfolio.
+                                {isEditMode
+                                    ? `Update case study specifications, live links, or visual assets for "${title || `Project #${editId}`}".`
+                                    : "Add a new production showcase, academic research project, or graphic art piece to your portfolio."}
                             </p>
                         </div>
 
                         {/* Success Message Banner */}
                         {successData && (
                             <div className="upload-success-modal" data-aos="zoom-in">
-                                <h3>🎉 Project Successfully Published!</h3>
+                                <h3>🎉 {isEditMode ? "Project Successfully Updated!" : "Project Successfully Published!"}</h3>
                                 <p>
-                                    <strong>&quot;{successData.title}&quot;</strong> has been saved to your portfolio database (ID: #{successData.id}).
+                                    <strong>&quot;{successData.title}&quot;</strong> has been {isEditMode ? "updated in" : "saved to"} your portfolio database (ID: #{successData.id}).
                                 </p>
                                 <div className="upload-success-actions">
                                     <button
@@ -222,16 +310,21 @@ export default function WorkUpload() {
                                     >
                                         View Case Study Page →
                                     </button>
+                                    <Link href="/work-admin" className="upload-action-btn secondary">
+                                        Back to Admin Manager
+                                    </Link>
                                     <Link href="/works" className="upload-action-btn secondary">
                                         View in Works Gallery
                                     </Link>
-                                    <button
-                                        type="button"
-                                        className="upload-action-btn secondary"
-                                        onClick={handleReset}
-                                    >
-                                        + Upload Another Project
-                                    </button>
+                                    {!isEditMode && (
+                                        <button
+                                            type="button"
+                                            className="upload-action-btn secondary"
+                                            onClick={handleReset}
+                                        >
+                                            + Upload Another Project
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         )}
@@ -251,7 +344,7 @@ export default function WorkUpload() {
                             </div>
                         )}
 
-                        {/* Upload Form Card */}
+                        {/* Form Card */}
                         {!successData && (
                             <div className="upload-form-card" data-aos="fade-up" data-aos-delay="100">
                                 <form onSubmit={handleSubmit}>
@@ -474,9 +567,29 @@ export default function WorkUpload() {
 
                                     {/* Main Thumbnail */}
                                     <div className="upload-field-group">
-                                        <label className="upload-label">
-                                            Main Card Thumbnail * <span className="optional">(Recommended aspect ratio 16:10 or 16:9)</span>
-                                        </label>
+                                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "8px", flexWrap: "wrap", gap: "8px" }}>
+                                            <label className="upload-label" style={{ margin: 0 }}>
+                                                Main Card Thumbnail * <span className="optional">(Recommended ratio 16:10 · 1280×800)</span>
+                                            </label>
+                                            <Link
+                                                href="/figma-template"
+                                                target="_blank"
+                                                style={{
+                                                    color: "#00d2ff",
+                                                    fontSize: "12px",
+                                                    textDecoration: "none",
+                                                    display: "inline-flex",
+                                                    alignItems: "center",
+                                                    gap: "5px",
+                                                    padding: "2px 8px",
+                                                    background: "rgba(0, 210, 255, 0.08)",
+                                                    border: "1px solid rgba(0, 210, 255, 0.2)",
+                                                    borderRadius: "6px"
+                                                }}
+                                            >
+                                                <i className="iconoir-figma" /> Get Figma Template (.SVG) ↗
+                                            </Link>
+                                        </div>
 
                                         {thumbnailPreview ? (
                                             <div className="upload-preview-box">
@@ -490,7 +603,7 @@ export default function WorkUpload() {
                                                         setThumbnailName("")
                                                         if (thumbInputRef.current) thumbInputRef.current.value = ""
                                                     }}
-                                                    title="Remove Image"
+                                                    title="Remove / Change Image"
                                                 >
                                                     ✕
                                                 </button>
@@ -533,7 +646,7 @@ export default function WorkUpload() {
                                                             setBackgroundName("")
                                                             if (bgInputRef.current) bgInputRef.current.value = ""
                                                         }}
-                                                        title="Remove Image"
+                                                        title="Remove / Change Image"
                                                     >
                                                         ✕
                                                     </button>
@@ -618,12 +731,12 @@ export default function WorkUpload() {
                                             {submitting ? (
                                                 <>
                                                     <i className="iconoir-restart" style={{ animation: "spin-slow 1s linear infinite" }} />
-                                                    Publishing Project...
+                                                    {isEditMode ? "Saving Changes..." : "Publishing Project..."}
                                                 </>
                                             ) : (
                                                 <>
-                                                    <i className="iconoir-check" />
-                                                    Publish New Work to Portfolio
+                                                    <i className={isEditMode ? "iconoir-floppy-disk" : "iconoir-check"} />
+                                                    {isEditMode ? `Save Changes to Project #${editId}` : "Publish New Work to Portfolio"}
                                                 </>
                                             )}
                                         </button>

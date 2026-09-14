@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" fill="none">
+    <defs>
+        <!-- Background Gradient -->
+        <linearGradient id="bg-grad-2" x1="0" y1="0" x2="1280" y2="800" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#07080c"/>
+            <stop offset="50%" stop-color="#12101e"/>
+            <stop offset="100%" stop-color="#0a0814"/>
+        </linearGradient>
+
+        <!-- Ambient Orange/Amber Glow for Design -->
+        <radialGradient id="glow-amber" cx="640" cy="400" r="480" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+            <stop offset="50%" stop-color="#ec4899" stop-opacity="0.10"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Radial Purple Accent -->
+        <radialGradient id="glow-purple-2" cx="360" cy="300" r="350" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </radialGradient>
+
+        <!-- Artboard Clip Paths -->
+        <clipPath id="artboard-main-clip">
+            <rect x="390" y="160" width="500" height="480" rx="28"/>
+        </clipPath>
+        <clipPath id="artboard-left-clip">
+            <rect x="180" y="210" width="340" height="400" rx="24"/>
+        </clipPath>
+        <clipPath id="artboard-right-clip">
+            <rect x="760" y="210" width="340" height="400" rx="24"/>
+        </clipPath>
+    </defs>
+
+    <!-- ===================================================
+         BACKGROUND LAYER
+         =================================================== -->
+    <g id="Background">
+        <rect width="1280" height="800" fill="url(#bg-grad-2)"/>
+
+        <!-- Ambient Glows -->
+        <circle cx="640" cy="400" r="480" fill="url(#glow-amber)"/>
+        <circle cx="360" cy="300" r="350" fill="url(#glow-purple-2)"/>
+
+        <!-- Subtle Dot Matrix Background -->
+        <g id="Dot-Matrix" opacity="0.12" fill="#ffffff">
+            <circle cx="100" cy="150" r="2"/><circle cx="140" cy="150" r="2"/><circle cx="180" cy="150" r="2"/><circle cx="220" cy="150" r="2"/>
+            <circle cx="100" cy="190" r="2"/><circle cx="140" cy="190" r="2"/><circle cx="180" cy="190" r="2"/><circle cx="220" cy="190" r="2"/>
+            <circle cx="100" cy="230" r="2"/><circle cx="140" cy="230" r="2"/><circle cx="180" cy="230" r="2"/><circle cx="220" cy="230" r="2"/>
+            <circle cx="1060" cy="550" r="2"/><circle cx="1100" cy="550" r="2"/><circle cx="1140" cy="550" r="2"/><circle cx="1180" cy="550" r="2"/>
+            <circle cx="1060" cy="590" r="2"/><circle cx="1100" cy="590" r="2"/><circle cx="1140" cy="590" r="2"/><circle cx="1180" cy="590" r="2"/>
+            <circle cx="1060" cy="630" r="2"/><circle cx="1100" cy="630" r="2"/><circle cx="1140" cy="630" r="2"/><circle cx="1180" cy="630" r="2"/>
+        </g>
+    </g>
+
+    <!-- ===================================================
+         GRAPHIC / BRANDING ARTBOARDS (3-LAYER STACK)
+         =================================================== -->
+    <!-- Left Angled Artboard -->
+    <g id="Artboard-Left-Group" transform="rotate(-8 350 410)">
+        <rect x="180" y="210" width="340" height="400" rx="24" fill="#141122" stroke="rgba(255,255,255,0.12)" stroke-width="2" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.6))"/>
+        <g clip-path="url(#artboard-left-clip)">
+            <!-- Artboard placeholder UI -->
+            <rect x="200" y="235" width="300" height="180" rx="16" fill="rgba(236, 72, 153, 0.15)"/>
+            <circle cx="350" cy="325" r="40" fill="rgba(236, 72, 153, 0.3)"/>
+            <rect x="220" y="445" width="180" height="18" rx="6" fill="rgba(255,255,255,0.6)"/>
+            <rect x="220" y="475" width="220" height="12" rx="4" fill="rgba(255,255,255,0.3)"/>
+            <rect x="220" y="495" width="160" height="12" rx="4" fill="rgba(255,255,255,0.3)"/>
+        </g>
+    </g>
+
+    <!-- Right Angled Artboard -->
+    <g id="Artboard-Right-Group" transform="rotate(8 930 410)">
+        <rect x="760" y="210" width="340" height="400" rx="24" fill="#141122" stroke="rgba(255,255,255,0.12)" stroke-width="2" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.6))"/>
+        <g clip-path="url(#artboard-right-clip)">
+            <rect x="780" y="235" width="300" height="180" rx="16" fill="rgba(245, 158, 11, 0.15)"/>
+            <polygon points="930,275 970,355 890,355" fill="rgba(245, 158, 11, 0.3)"/>
+            <rect x="800" y="445" width="180" height="18" rx="6" fill="rgba(255,255,255,0.6)"/>
+            <rect x="800" y="475" width="220" height="12" rx="4" fill="rgba(255,255,255,0.3)"/>
+            <rect x="800" y="495" width="160" height="12" rx="4" fill="rgba(255,255,255,0.3)"/>
+        </g>
+    </g>
+
+    <!-- Center Dominant Artboard (Main Showcase Target) -->
+    <g id="Artboard-Main-Center">
+        <rect x="390" y="160" width="500" height="480" rx="28" fill="#181528" stroke="rgba(255,255,255,0.22)" stroke-width="2.5" filter="drop-shadow(0 30px 60px rgba(0,0,0,0.7))"/>
+        <rect x="392" y="162" width="496" height="476" rx="26" fill="none" stroke="rgba(245, 158, 11, 0.4)" stroke-width="1.5"/>
+
+        <g clip-path="url(#artboard-main-clip)">
+            <!-- Artboard Header bar -->
+            <rect x="390" y="160" width="500" height="44" fill="rgba(0,0,0,0.35)"/>
+            <circle cx="420" cy="182" r="6" fill="#f87171"/>
+            <circle cx="440" cy="182" r="6" fill="#fbbf24"/>
+            <circle cx="460" cy="182" r="6" fill="#34d399"/>
+            <text x="640" y="187" fill="rgba(255,255,255,0.6)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">design-system-showcase.fig</text>
+
+            <!-- Main Artboard Graphic Target Area -->
+            <rect x="420" y="230" width="440" height="260" rx="18" fill="linear-gradient(135deg, rgba(245,158,11,0.2), rgba(236,72,153,0.15))" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+            <!-- Center Watermark for Figma -->
+            <rect x="470" y="320" width="340" height="80" rx="16" fill="rgba(0,0,0,0.8)" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5"/>
+            <text x="640" y="352" fill="#f59e0b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" text-anchor="middle" letter-spacing="1">PASTE GRAPHIC / UI POSTER HERE</text>
+            <text x="640" y="378" fill="rgba(255,255,255,0.7)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Optimal Dimension: 500 × 480 or full frame</text>
+
+            <!-- Color Palette Swatches at Bottom -->
+            <g transform="translate(420, 520)">
+                <rect x="0" y="0" width="65" height="65" rx="14" fill="#f59e0b" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.3))"/>
+                <rect x="75" y="0" width="65" height="65" rx="14" fill="#ec4899" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.3))"/>
+                <rect x="150" y="0" width="65" height="65" rx="14" fill="#8b5cf6" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.3))"/>
+                <rect x="225" y="0" width="65" height="65" rx="14" fill="#3b82f6" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.3))"/>
+                <rect x="300" y="0" width="140" height="65" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)"/>
+                <text x="370" y="38" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Design Tokens</text>
+            </g>
+        </g>
+    </g>
+
+    <!-- ===================================================
+         SAFE ZONES OVERLAY GUIDES (TOGGLE OFF IN FIGMA)
+         =================================================== -->
+    <g id="SAFE-ZONES-OVERLAY-GUIDES" opacity="0.95">
+        <g id="Guide-Top-Left-Badge" transform="translate(36, 36)">
+            <rect width="210" height="46" rx="100" fill="rgba(239, 68, 68, 0.12)" stroke="#f87171" stroke-width="2" stroke-dasharray="6 4"/>
+            <circle cx="24" cy="23" r="5" fill="#f59e0b"/>
+            <text x="38" y="28" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">⚠️ BADGE SAFE ZONE</text>
+        </g>
+
+        <g id="Guide-Top-Right-Year" transform="translate(1080, 36)">
+            <rect width="164" height="42" rx="100" fill="rgba(239, 68, 68, 0.12)" stroke="#f87171" stroke-width="2" stroke-dasharray="6 4"/>
+            <text x="82" y="26" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.5">⚠️ YEAR ZONE</text>
+        </g>
+
+        <g id="Guide-Info-Header" transform="translate(640, 56)">
+            <rect x="-260" y="0" width="520" height="32" rx="16" fill="rgba(0,0,0,0.6)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="0" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+                🎨 1280 × 800 px (16:10) · Graphic &amp; Branding Showcase Template
+            </text>
+        </g>
+    </g>
+</svg>
