@@ -111,7 +111,16 @@ export default function Service() {
 
                             <div className="about-cta-card glass-card" data-aos="zoom-in" data-aos-delay="350">
                                 <Link className="overlay-link" href="/credentials" />
-                                <img src="/assets/images/sign.png" alt="Signature" className="cta-sign-img" />
+                                <div className="cta-inner-cred">
+                                    <div className="cta-cred-icon">
+                                        <i className="iconoir-graduation-cap" />
+                                    </div>
+                                    <div className="cta-cred-info">
+                                        <span className="cta-cred-degree">B.A.Sc (S.Tr.Kom)</span>
+                                        <span className="cta-cred-major">Informatics Engineering</span>
+                                        <span className="cta-cred-school">GPA 3.7 · Polindra</span>
+                                    </div>
+                                </div>
                                 <div className="cta-card-footer">
                                     <div>
                                         <p className="cta-card-sub">more about me</p>

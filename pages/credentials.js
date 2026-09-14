@@ -137,7 +137,7 @@ export default function Credentials() {
                                 {/* Experience */}
                                 <div className="cred-section glass-card" data-aos="fade-up">
                                     <div className="cred-section-header">
-                                        <i className="iconoir-briefcase" />
+                                        <i className="iconoir-large-suitcase" />
                                         <h2>Experience</h2>
                                     </div>
                                     <ul className="cred-timeline">
@@ -182,7 +182,7 @@ export default function Credentials() {
                                 {/* Skills */}
                                 <div className="cred-section glass-card" data-aos="fade-up">
                                     <div className="cred-section-header">
-                                        <i className="iconoir-lightning" />
+                                        <i className="iconoir-flash" />
                                         <h2>Skills</h2>
                                     </div>
                                     <div className="cred-skills-grid">
