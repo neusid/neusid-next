@@ -2446,21 +2446,25 @@ ol {
     text-overflow: ellipsis;
 }
 
-/* Projects Real Preview Banner */
 .project-preview-wrap {
     position: relative;
     width: 100%;
     height: 56px;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     margin-bottom: 12px;
     border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.about-project-box:hover .project-preview-wrap {
+    border-color: rgba(91, 140, 255, 0.35);
+    box-shadow: 0 4px 15px rgba(91, 140, 255, 0.12);
 }
 .project-preview-wrap img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: top center !important;
+    object-position: center center !important;
     display: block !important;
     margin: 0 !important;
     border-radius: 0 !important;

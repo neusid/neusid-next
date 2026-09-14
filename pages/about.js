@@ -20,7 +20,7 @@ const workExperience = [
 ]
 
 const education = [
-    { date: "2021 \u2013 2025", degree: "Bachelor of Applied Science in Software Engineering", gpa: "GPA 3.7", school: "Politeknik Negeri Indramayu" },
+    { date: "2021 \u2013 2025", degree: "Bachelor of Applied Science (S.Tr.Kom) in Informatics Engineering", gpa: "GPA 3.7", school: "Politeknik Negeri Indramayu" },
     { date: "2019 \u2013 2021", degree: "Vocational High School in Software Engineering", gpa: null, school: "SMK Negeri 1 Cirebon" },
 ]
 

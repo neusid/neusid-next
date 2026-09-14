@@ -56,8 +56,8 @@ export default function Home() {
                                                         <i className="iconoir-graduation-cap" />
                                                     </div>
                                                     <div className="cred-badge-meta">
-                                                        <span className="cred-badge-degree">B.App.Sc Software Eng.</span>
-                                                        <span className="cred-badge-tag">GPA 3.7 · Indramayu</span>
+                                                        <span className="cred-badge-degree">B.A.Sc (S.Tr.Kom) · Informatics</span>
+                                                        <span className="cred-badge-tag">GPA 3.7 · Polindra</span>
                                                     </div>
                                                 </div>
                                                 <div className="d-flex align-items-center justify-content-between">
@@ -75,10 +75,10 @@ export default function Home() {
                                             <div className="about-project-box info-box glass-card h-full">
                                                 <Link className="overlay-link" href="/works" />
                                                 <div className="project-preview-wrap">
-                                                    <img src="/assets/images/project2ver3.jpeg" alt="MiERP Flutter App" />
+                                                    <img src="/assets/images/project_showcase_3d.jpg" alt="Projects Showcase" />
                                                     <div className="project-badge-pill">
                                                         <span className="project-pill-dot" />
-                                                        Flutter · Play Store
+                                                        Flutter · Showcase
                                                     </div>
                                                 </div>
                                                 <div className="d-flex align-items-center justify-content-between">

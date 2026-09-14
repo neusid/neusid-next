@@ -42,10 +42,10 @@ const experiences = [
 const education = [
     {
         date: "2021 \u2013 2025",
-        degree: "Bachelor of Applied Science in Software Engineering",
+        degree: "Bachelor of Applied Science (S.Tr.Kom) in Informatics Engineering",
         gpa: "GPA 3.7",
         school: "Politeknik Negeri Indramayu",
-        desc: "Software Engineering graduate with specialization in Flutter mobile development, web development, and UI/UX design. Actively engaged in IoT and machine learning research initiatives.",
+        desc: "Informatics Engineering (D4 Teknik Informatika) graduate with specialization in Flutter mobile development, web development, and UI/UX design. Actively engaged in IoT and machine learning research initiatives.",
     },
     {
         date: "2019 \u2013 2021",
