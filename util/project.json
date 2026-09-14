@@ -4,6 +4,14 @@
         "title": "Mierp (Mini ERP)",
         "img": "project2ver3.jpeg",
         "category": "MOBILE DEVELOPMENT",
+        "badge": "Play Store · Live",
+        "badgeType": "live",
+        "tags": [
+            "Flutter",
+            "Firebase",
+            "ERP"
+        ],
+        "year": "2025 - 2026",
         "clickable": true,
         "background": "project-dt-03.svg",
         "images": [
@@ -14,7 +22,7 @@
         ],
         "data": [
             {
-                "description": "MiERP merupakan aplikasi Android berbasis Flutter yang dirancang untuk membantu pengelolaan operasional bisnis melalui sistem ERP terintegrasi. Aplikasi ini memiliki dua peran utama, yaitu Finance untuk melakukan approval transaksi dan Warehouse untuk mengelola stok serta membuat order. Dengan sistem yang terstruktur, MiERP membantu meningkatkan efisiensi kerja, mempermudah pengelolaan inventaris, serta memastikan proses bisnis berjalan lebih cepat, akurat, dan terorganisir."
+                "description": "MiERP is a Flutter-based enterprise resource planning (ERP) mobile application designed to streamline internal business workflows. The platform features two core user roles: Finance for transaction authorization and fiscal oversight, and Warehouse for real-time inventory management, stock tracking, and purchase order fulfillment. Engineered with clean architecture and Firebase cloud integration, MiERP boosts operational efficiency, mitigates logistical bottlenecks, and guarantees fast, accurate, and transparent business operations."
             },
             {
                 "year": "2025 - January 2026",
@@ -33,6 +41,14 @@
         "title": "Polichili",
         "img": "project1.jpeg",
         "category": "MOBILE DEVELOPMENT",
+        "badge": "IoT Research",
+        "badgeType": "research",
+        "tags": [
+            "Flutter",
+            "IoT",
+            "ML"
+        ],
+        "year": "2024 - 2025",
         "clickable": true,
         "background": "project-dt-01.svg",
         "images": [
@@ -43,12 +59,12 @@
         ],
         "data": [
             {
-                "description": "Policili adalah aplikasi Android berbasis Flutter yang dirancang untuk membantu petani menentukan tanaman pendamping cabai yang optimal dalam sistem polikultur. Aplikasi ini terintegrasi dengan teknologi IoT yang berfungsi untuk mengumpulkan data lingkungan, seperti pH tanah, suhu, serta kelembapan tanah dan udara. Data tersebut kemudian diolah untuk menghasilkan rekomendasi tanaman pendamping yang sesuai dengan kondisi lahan pengguna. \n\nSelain fitur utama rekomendasi, Policili juga menyediakan fitur Sign In/Sign Up untuk autentikasi pengguna, History Rekomendasi untuk melihat hasil sebelumnya, serta Edit Profile agar pengguna dapat menyesuaikan data pribadi dan preferensi mereka. Dengan kombinasi teknologi IoT dan antarmuka modern Flutter, Policili menghadirkan solusi cerdas dan praktis bagi petani dalam mengoptimalkan produktivitas lahan cabai secara berkelanjutan."
+                "description": "Policili is a Flutter-powered smart agriculture mobile system developed to help farmers select optimal companion crops for chili polyculture cultivation. Integrated with custom IoT telemetry hardware, the system gathers real-time soil and ambient parameters including soil pH, temperature, soil moisture, and atmospheric humidity. These sensor data streams are evaluated through a machine learning classifier to deliver scientifically backed companion planting recommendations tailored specifically to the user's field conditions.\n\nAlongside intelligent recommendations, Policili provides secure user authentication, historical analytics records, and personalized account configuration. Combining embedded IoT systems with a sleek Flutter interface, Policili delivers a smart, practical solution to sustainably maximize polyculture crop yields."
             },
             {
-                "year": "2024-2025",
-                "services": "Mobile Development",
-                "stack": "Flutter, Python, C, MySql & Node.js"
+                "year": "2024 - 2025",
+                "services": "Mobile Development & IoT",
+                "stack": "Flutter, Python, C, MySQL & Node.js"
             },
             {
                 "next": "3"
@@ -60,6 +76,14 @@
         "title": "VAS DMS MOBILE",
         "img": "project3.jpeg",
         "category": "MOBILE DEVELOPMENT",
+        "badge": "Enterprise",
+        "badgeType": "enterprise",
+        "tags": [
+            "Flutter",
+            "e-Sign",
+            "Security"
+        ],
+        "year": "2024",
         "clickable": true,
         "background": "project-dt-02.svg",
         "images": [
@@ -70,7 +94,7 @@
         ],
         "data": [
             {
-                "description": "VAS Mobile adalah aplikasi Android berbasis Flutter yang berfungsi sebagai Document Management System (DMS) sekaligus platform untuk melakukan stamping e-Materai, e-Sign, dan tera secara digital. Aplikasi ini dirancang untuk mempermudah pengguna dalam mengelola dokumen penting secara aman, cepat, dan efisien langsung melalui perangkat mobile. Melalui fitur penandatanganan elektronik (e-signature), serta penerapan e-materai dan tera digital, VAS Mobile mendukung proses administrasi tanpa kertas (paperless) dan memastikan keaslian serta legalitas setiap dokumen. Aplikasi ini juga dilengkapi dengan fitur autentikasi pengguna (Sign In/Sign Up), riwayat aktivitas dokumen, dan pengelolaan profil, menjadikan VAS Mobile solusi terpadu untuk kebutuhan manajemen dokumen digital yang modern dan terpercaya."
+                "description": "VAS Mobile is an enterprise-grade Android application developed with Flutter, functioning as a complete Document Management System (DMS) equipped with digital stamping (e-Materai), cryptographic e-Signatures, and official digital verification seals. Built to facilitate compliant and secure administrative procedures on mobile devices, VAS Mobile accelerates paperless digital governance while ensuring legal non-repudiation and document authenticity. The solution incorporates role-based authorization, end-to-end document tracking, transaction histories, and user profile management, delivering a robust, trusted platform for modern corporate operations."
             },
             {
                 "year": "2024",
@@ -87,10 +111,17 @@
         "title": "Scantivo",
         "img": "project4.jpeg",
         "category": "MOBILE DEVELOPMENT",
+        "badge": "Mobile App",
+        "badgeType": "app",
+        "tags": [
+            "Flutter",
+            "Dart"
+        ],
+        "year": "2026",
         "clickable": false,
         "data": [
             {
-                "description": ""
+                "description": "Scantivo is an intelligent mobile scanning and document recognition application built with Flutter, designed for fast edge-device OCR, multi-page document organization, and clean cloud export."
             },
             {
                 "year": 2026,
@@ -104,13 +135,80 @@
         "title": "Vince Ruz Style",
         "img": "project5.jpeg",
         "category": "GRAPHIC DESIGN",
-        "clickable": false
+        "badge": "Graphic Art",
+        "badgeType": "design",
+        "tags": [
+            "Photoshop",
+            "Stylized"
+        ],
+        "year": "2023",
+        "clickable": false,
+        "data": [
+            {
+                "description": "A creative series of stylized digital illustrations and character artworks produced in Adobe Photoshop, showcasing rich palette exploration, dynamic lighting compositions, and meticulous detailing."
+            },
+            {
+                "year": "2023",
+                "services": "Graphic Design & Illustration",
+                "stack": "Adobe Photoshop"
+            }
+        ]
     },
     {
         "id": 6,
         "title": "Vector Style",
         "img": "project6.jpeg",
         "category": "GRAPHIC DESIGN",
-        "clickable": false
+        "badge": "Vector Design",
+        "badgeType": "design",
+        "tags": [
+            "Illustrator",
+            "Vector"
+        ],
+        "year": "2023",
+        "clickable": false,
+        "data": [
+            {
+                "description": "A curated collection of scalable vector graphics, geometric branding assets, and clean visual identity designs crafted using Adobe Illustrator and Figma."
+            },
+            {
+                "year": "2023",
+                "services": "Graphic Design & Vector Art",
+                "stack": "Adobe Illustrator & Figma"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Mingda Absensi",
+        "img": "project-7-mingda-absesnsi-thumb.jpeg",
+        "category": "MOBILE DEVELOPMENT",
+        "badge": "Freelance",
+        "badgeType": "enterprise",
+        "tags": [
+            "Flutter",
+            "Firebase",
+            "BLoC",
+            "Clean Architecture"
+        ],
+        "year": "2026",
+        "clickable": false,
+        "background": "project-dt-01.svg",
+        "images": [
+            "project-7-mingda-absesnsi-thumb.jpeg"
+        ],
+        "data": [
+            {
+                "description": "Mingda Absensi is an enterprise mobile application designed to streamline employee attendance and administrative operations. The app provides comprehensive features for automated attendance check-ins, leave and permission requests, and attendance records integrated directly with the corporate backend. Adapted from the existing web platform with responsive mobile UI/UX, the application delivers a seamless, practical attendance management experience on mobile devices."
+            },
+            {
+                "year": "2026",
+                "services": "Mobile Development",
+                "stack": "Flutter & Firebase"
+            },
+            {
+                "next": "1"
+            }
+        ]
     }
 ]

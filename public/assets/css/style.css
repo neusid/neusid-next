@@ -675,61 +675,243 @@ ol {
     justify-content: center;
     margin-bottom: 25px;
 }
+/* Works Page Modern Glassmorphism Overhaul */
+.works-hero-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.works-hero-sub {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 520px;
+    margin: 12px auto 0;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+}
+.works-filter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.works-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+.works-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border-color: rgba(91, 140, 255, 0.3);
+}
+.works-filter-btn.active {
+    background: linear-gradient(135deg, rgba(91, 140, 255, 0.2), rgba(91, 140, 255, 0.08));
+    border-color: rgba(91, 140, 255, 0.45);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(91, 140, 255, 0.16);
+}
+.filter-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 7px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.3s ease;
+}
+.works-filter-btn.active .filter-count {
+    background: #5b8cff;
+    color: #ffffff;
+}
+
 .projects-area .project-item {
-    margin-bottom: 0;
-    padding: 20px 20px 24px 20px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    padding: 18px 18px 22px 18px;
     height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-area .project-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    border-color: rgba(91, 140, 255, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(91, 140, 255, 0.12);
 }
 .projects-area .project-item .project-img {
-    border-radius: 20px;
+    position: relative;
+    border-radius: 18px;
     margin-bottom: 16px;
     overflow: hidden;
     width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #0d0e15;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 .projects-area .project-item .project-img img {
     display: block;
-    border-radius: 20px;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    object-position: center;
+    border-radius: 17px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-area .project-item:hover .project-img img {
-    transform: scale(1.03);
+    transform: scale(1.05);
+}
+.project-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(15, 15, 22, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #f1f5f9;
+    letter-spacing: 0.2px;
+    pointer-events: none;
+}
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3b82f6;
+}
+.badge-dot.live {
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+}
+.badge-dot.research {
+    background: #54c5f8;
+    box-shadow: 0 0 8px #54c5f8;
+}
+.badge-dot.enterprise {
+    background: #8b5cf6;
+    box-shadow: 0 0 8px #8b5cf6;
+}
+.badge-dot.design {
+    background: #f59e0b;
+    box-shadow: 0 0 8px #f59e0b;
+}
+.project-card-year {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    padding: 3px 8px;
+    background: rgba(15, 15, 22, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    pointer-events: none;
+}
+.project-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+.project-card-tag {
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+}
+.projects-area .project-item:hover .project-card-tag {
+    background: rgba(91, 140, 255, 0.08);
+    border-color: rgba(91, 140, 255, 0.2);
+    color: rgba(255, 255, 255, 0.85);
 }
 .projects-area .project-item .project-info p {
-    color: #BCBCBC;
-    opacity: 0.5;
-    font-size: 13px;
+    color: var(--primary_color);
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 4px;
-    margin-top: 6px;
-    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+    letter-spacing: 1px;
 }
 .projects-area .project-item .project-info h1 {
-    font-size: 20px;
+    font-size: 19px;
     color: #ffffff;
-    opacity: 0.95;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
     line-height: 1.3;
+    letter-spacing: -0.2px;
 }
 .projects-area .project-item .project-btn {
-    opacity: 0.3;
-    transition: .3s;
-    display: inline-block;
+    opacity: 0.35;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     flex-shrink: 0;
 }
 .projects-area .project-item:hover .project-btn {
     opacity: 1;
+    background: var(--primary_color);
+    border-color: var(--primary_color);
+    transform: translate(3px, -3px);
+}
+.projects-area .project-item:hover .project-btn img {
+    filter: brightness(0) invert(1);
 }
 .projects-area .project-item .project-btn.not-clickable {
     cursor: default;
-    opacity: 0.15;
+    opacity: 0.12;
+}
+.projects-area .project-item:hover .project-btn.not-clickable {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: none;
+    opacity: 0.2;
+}
+.project-cta-divider {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 
@@ -3315,6 +3497,304 @@ ol {
     color: #5b8cff !important;
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 24px rgba(91, 140, 255, 0.3) !important;
+}
+
+/* ============================================
+   # Upload Work / Add Project Form (Secret URL)
+   ============================================ */
+.upload-work-area {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+.upload-hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.upload-secret-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background: rgba(91, 140, 255, 0.1);
+    border: 1px solid rgba(91, 140, 255, 0.25);
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #5b8cff;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.upload-hero h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px;
+    letter-spacing: -0.5px;
+}
+.upload-hero p {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+.upload-form-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.upload-section-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.upload-section-title i {
+    color: #5b8cff;
+    font-size: 20px;
+}
+.upload-field-group {
+    margin-bottom: 22px;
+}
+.upload-label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
+}
+.upload-label span.optional {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+    font-size: 11px;
+}
+.upload-input,
+.upload-select,
+.upload-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+.upload-input:focus,
+.upload-select:focus,
+.upload-textarea:focus {
+    border-color: #5b8cff;
+    background: rgba(91, 140, 255, 0.04);
+    box-shadow: 0 0 16px rgba(91, 140, 255, 0.2);
+}
+.upload-select {
+    cursor: pointer;
+}
+.upload-select option {
+    background: #16161f;
+    color: #ffffff;
+}
+.upload-textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.6;
+}
+.upload-dropzone {
+    border: 2px dashed rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.015);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.upload-dropzone:hover {
+    border-color: #5b8cff;
+    background: rgba(91, 140, 255, 0.05);
+}
+.upload-dropzone-icon {
+    font-size: 32px;
+    color: #5b8cff;
+    margin-bottom: 4px;
+}
+.upload-dropzone-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #f1f5f9;
+}
+.upload-dropzone-sub {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.45);
+}
+.upload-preview-box {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0d0e15;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    aspect-ratio: 16 / 10;
+    max-height: 220px;
+}
+.upload-preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.upload-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(15, 15, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ff5e5e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+.upload-remove-btn:hover {
+    background: #ff4757;
+    color: #ffffff;
+    border-color: #ff4757;
+    transform: scale(1.1);
+}
+.gallery-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+.gallery-thumb-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.gallery-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.upload-switch-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+.upload-switch-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #5b8cff;
+    cursor: pointer;
+}
+.upload-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: 1px solid rgba(91, 140, 255, 0.4);
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+.upload-submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #60a5fa, #2563eb);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.5);
+}
+.upload-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.upload-success-modal {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 28px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
+}
+.upload-success-modal h3 {
+    font-size: 18px;
+    color: #34d399;
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+.upload-success-modal p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 16px;
+}
+.upload-success-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.upload-action-btn {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 12.5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.upload-action-btn.primary {
+    background: #10b981;
+    color: #ffffff;
+}
+.upload-action-btn.primary:hover {
+    background: #059669;
+    color: #ffffff;
+}
+.upload-action-btn.secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+.upload-action-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
 }
 
 
