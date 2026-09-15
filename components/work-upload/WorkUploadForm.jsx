@@ -275,7 +275,7 @@ export default function WorkUploadForm({
                                 <div className="upload-dropzone-content">
                                     <i className="iconoir-media-image" />
                                     <p>Click or drag & drop to upload</p>
-                                    <span>PNG, JPG, WebP or SVG up to 10MB</span>
+                                    <span>PNG, JPG, WebP, SVG (All sizes supported)</span>
                                 </div>
                             )}
                         </div>

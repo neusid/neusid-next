@@ -3,7 +3,7 @@ import { StorageRepository } from "@/core/repositories/StorageRepository"
 export const config = {
     api: {
         bodyParser: {
-            sizeLimit: "4mb",
+            sizeLimit: "50mb",
         },
     },
 }

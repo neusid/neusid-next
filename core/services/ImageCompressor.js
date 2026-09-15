@@ -13,11 +13,11 @@ export function compressImageFile(file, maxWidth = 1400, maxHeight = 1400, quali
     return new Promise((resolve, reject) => {
         if (!file) return resolve(null)
 
-        // Keep SVG vector intact without raster conversion
-        if (file.type === "image/svg+xml" || file.name.toLowerCase().endsWith(".svg")) {
-            if (file.size > 3 * 1024 * 1024) {
-                return reject(new Error("File SVG melebihi 3MB. Silakan gunakan file SVG yang lebih ringkas."))
-            }
+        // Keep SVG vector intact without raster conversion if under 3MB; otherwise compress via canvas
+        if (
+            (file.type === "image/svg+xml" || file.name.toLowerCase().endsWith(".svg")) &&
+            file.size <= 3 * 1024 * 1024
+        ) {
             const reader = new FileReader()
             reader.onload = () => resolve({ base64: reader.result, name: file.name })
             reader.onerror = (err) => reject(err)
