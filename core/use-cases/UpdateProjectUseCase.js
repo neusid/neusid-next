@@ -22,20 +22,28 @@ export class UpdateProjectUseCase {
 
         // 1. Process Thumbnail
         let updatedThumbnail = existing.img
-        if (input.thumbnailBase64) {
+        if (input.thumbnailUrl) {
+            updatedThumbnail = input.thumbnailUrl
+        } else if (input.thumbnailBase64) {
             const ext = input.thumbnailName ? path.extname(input.thumbnailName) || ".jpg" : ".jpg"
             const filename = `project-${input.id}-${safeSlug}-thumb-${timestamp}${ext}`
             const uploaded = await StorageRepository.uploadBase64Image(input.thumbnailBase64, filename)
             if (uploaded) updatedThumbnail = uploaded
+        } else if (input.thumbnailName && (input.thumbnailName.startsWith("http") || input.thumbnailName.startsWith("/"))) {
+            updatedThumbnail = input.thumbnailName
         }
 
         // 2. Process Background
         let updatedBg = existing.background || "project-dt-01.svg"
-        if (input.backgroundBase64) {
+        if (input.backgroundUrl) {
+            updatedBg = input.backgroundUrl
+        } else if (input.backgroundBase64) {
             const ext = input.backgroundName ? path.extname(input.backgroundName) || ".svg" : ".svg"
             const filename = `project-${input.id}-${safeSlug}-bg-${timestamp}${ext}`
             const uploaded = await StorageRepository.uploadBase64Image(input.backgroundBase64, filename)
             if (uploaded) updatedBg = uploaded
+        } else if (input.backgroundName && (input.backgroundName.startsWith("http") || input.backgroundName.startsWith("/"))) {
+            updatedBg = input.backgroundName
         }
 
         // 3. Process Gallery
@@ -44,12 +52,16 @@ export class UpdateProjectUseCase {
             const newImages = []
             for (let idx = 0; idx < input.galleryImages.length; idx++) {
                 const imgObj = input.galleryImages[idx]
-                if (imgObj.base64) {
+                if (typeof imgObj === "string") {
+                    newImages.push(imgObj)
+                } else if (imgObj?.url) {
+                    newImages.push(imgObj.url)
+                } else if (imgObj?.base64) {
                     const ext = imgObj.name ? path.extname(imgObj.name) || ".jpg" : ".jpg"
                     const filename = `project-${input.id}-${safeSlug}-screen-${idx + 1}-${timestamp}${ext}`
                     const saved = await StorageRepository.uploadBase64Image(imgObj.base64, filename)
                     if (saved) newImages.push(saved)
-                } else if (imgObj.name) {
+                } else if (imgObj?.name) {
                     newImages.push(imgObj.name)
                 }
             }

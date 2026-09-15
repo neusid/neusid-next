@@ -1,20 +1,23 @@
 /**
  * Client-side Canvas Image Compression Service.
  * Preserves vector data for SVGs, and intelligently resizes/compresses raster images
- * (JPEG, PNG, WebP) to stay well under Vercel Serverless Function payload limits (4.5MB).
+ * (JPEG, PNG, WebP) to WebP format to stay well under Vercel Serverless Function payload limits (4.5MB).
  *
  * @param {File} file - Original file from file input
- * @param {number} maxWidth - Maximum width dimension (default: 1600)
- * @param {number} maxHeight - Maximum height dimension (default: 1600)
- * @param {number} quality - Compression quality 0-1 (default: 0.85)
+ * @param {number} maxWidth - Maximum width dimension (default: 1400)
+ * @param {number} maxHeight - Maximum height dimension (default: 1400)
+ * @param {number} quality - Compression quality 0-1 (default: 0.8)
  * @returns {Promise<{ base64: string, name: string }>}
  */
-export function compressImageFile(file, maxWidth = 1600, maxHeight = 1600, quality = 0.85) {
+export function compressImageFile(file, maxWidth = 1400, maxHeight = 1400, quality = 0.8) {
     return new Promise((resolve, reject) => {
         if (!file) return resolve(null)
 
         // Keep SVG vector intact without raster conversion
         if (file.type === "image/svg+xml" || file.name.toLowerCase().endsWith(".svg")) {
+            if (file.size > 3 * 1024 * 1024) {
+                return reject(new Error("File SVG melebihi 3MB. Silakan gunakan file SVG yang lebih ringkas."))
+            }
             const reader = new FileReader()
             reader.onload = () => resolve({ base64: reader.result, name: file.name })
             reader.onerror = (err) => reject(err)
@@ -42,14 +45,35 @@ export function compressImageFile(file, maxWidth = 1600, maxHeight = 1600, quali
                 canvas.width = width
                 canvas.height = height
                 const ctx = canvas.getContext("2d")
+
+                // Detect optimal output format (WebP preferred, fallback to JPEG)
+                let outputFormat = "image/webp"
+                let targetExt = ".webp"
+
+                let testDataUrl = ""
+                try {
+                    testDataUrl = canvas.toDataURL("image/webp", 0.5)
+                } catch (_) {}
+
+                if (!testDataUrl || !testDataUrl.startsWith("data:image/webp")) {
+                    outputFormat = "image/jpeg"
+                    targetExt = ".jpg"
+                    // Fill white background for JPEG fallback to handle transparent PNGs cleanly
+                    ctx.fillStyle = "#ffffff"
+                    ctx.fillRect(0, 0, width, height)
+                }
+
                 ctx.drawImage(img, 0, 0, width, height)
 
-                const isPng = file.type === "image/png" && file.size < 1024 * 1024
-                const format = isPng ? "image/png" : "image/jpeg"
-                const base64 = canvas.toDataURL(format, quality)
-                resolve({ base64, name: file.name })
+                const base64 = canvas.toDataURL(outputFormat, quality)
+
+                // Adjust output filename extension to match the compressed format
+                const originalBaseName = file.name.replace(/\.[^/.]+$/, "")
+                const cleanName = `${originalBaseName}${targetExt}`
+
+                resolve({ base64, name: cleanName })
             }
-            img.onerror = (err) => reject(err)
+            img.onerror = (err) => reject(new Error("Gagal membaca gambar: " + err.message))
             img.src = e.target.result
         }
         reader.onerror = (err) => reject(err)

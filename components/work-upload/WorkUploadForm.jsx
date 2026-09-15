@@ -43,6 +43,7 @@ export default function WorkUploadForm({
     handleGalleryChange,
     removeGalleryItem,
     submitting,
+    uploadProgressMsg,
     imageCompressing,
     errorMsg,
     handleSubmit,
@@ -376,7 +377,7 @@ export default function WorkUploadForm({
                         ) : submitting ? (
                             <>
                                 <i className="iconoir-restart" style={{ animation: "spin-slow 1s linear infinite" }} />
-                                {isEditMode ? "Saving Changes to Cloud..." : "Publishing Project to Cloud..."}
+                                {uploadProgressMsg || (isEditMode ? "Saving Changes to Cloud..." : "Publishing Project to Cloud...")}
                             </>
                         ) : (
                             <>

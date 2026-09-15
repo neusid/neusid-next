@@ -35,6 +35,7 @@ export function useWorkUploadForm({ initialProjects = [] }) {
     const [gallery, setGallery] = useState([]) // array of { base64, name, preview }
 
     const [submitting, setSubmitting] = useState(false)
+    const [uploadProgressMsg, setUploadProgressMsg] = useState("")
     const [errorMsg, setErrorMsg] = useState("")
     const [successData, setSuccessData] = useState(null)
     const [imageCompressing, setImageCompressing] = useState(false)
@@ -192,6 +193,53 @@ export function useWorkUploadForm({ initialProjects = [] }) {
         setSubmitting(true)
 
         try {
+            const uploadSingleImage = async (base64, filename) => {
+                const res = await fetch("/api/upload-image", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ base64, filename }),
+                })
+                const data = await res.json()
+                if (!res.ok || !data.success) {
+                    throw new Error(data.message || `Gagal mengupload gambar ${filename}`)
+                }
+                return data.url
+            }
+
+            // 1. Process Thumbnail
+            let finalThumbnail = thumbnailName
+            if (thumbnailBase64) {
+                setUploadProgressMsg("Mengupload thumbnail...")
+                finalThumbnail = await uploadSingleImage(thumbnailBase64, thumbnailName || "thumbnail.webp")
+            }
+
+            // 2. Process Background
+            let finalBackground = backgroundName
+            if (backgroundBase64) {
+                setUploadProgressMsg("Mengupload background banner...")
+                finalBackground = await uploadSingleImage(backgroundBase64, backgroundName || "background.webp")
+            }
+
+            // 3. Process Gallery Images
+            let finalGallery = []
+            if (Array.isArray(gallery) && gallery.length > 0) {
+                for (let i = 0; i < gallery.length; i++) {
+                    const item = gallery[i]
+                    if (item.base64) {
+                        setUploadProgressMsg(`Mengupload gambar galeri (${i + 1}/${gallery.length})...`)
+                        const uploadedUrl = await uploadSingleImage(
+                            item.base64,
+                            item.name || `screenshot-${i + 1}.webp`
+                        )
+                        finalGallery.push(uploadedUrl)
+                    } else if (item.name || item.preview) {
+                        finalGallery.push(item.name || item.preview)
+                    }
+                }
+            }
+
+            setUploadProgressMsg("Menyimpan spesifikasi proyek ke cloud...")
+
             const payload = {
                 ...(isEditMode ? { id: editId } : {}),
                 title,
@@ -206,11 +254,11 @@ export function useWorkUploadForm({ initialProjects = [] }) {
                 stack,
                 playstore,
                 github,
-                thumbnailBase64,
-                thumbnailName,
-                backgroundBase64,
-                backgroundName,
-                galleryImages: gallery.map((g) => ({ base64: g.base64, name: g.name })),
+                thumbnailUrl: finalThumbnail,
+                thumbnailName: finalThumbnail,
+                backgroundUrl: finalBackground,
+                backgroundName: finalBackground,
+                galleryImages: finalGallery,
             }
 
             const endpoint = isEditMode ? "/api/edit-work" : "/api/add-work"
@@ -232,6 +280,7 @@ export function useWorkUploadForm({ initialProjects = [] }) {
             setErrorMsg(err.message)
         } finally {
             setSubmitting(false)
+            setUploadProgressMsg("")
         }
     }
 
@@ -257,6 +306,7 @@ export function useWorkUploadForm({ initialProjects = [] }) {
         setBackgroundPreview(null)
         setGallery([])
         setSuccessData(null)
+        setUploadProgressMsg("")
         setErrorMsg("")
     }
 
@@ -310,6 +360,7 @@ export function useWorkUploadForm({ initialProjects = [] }) {
         handleGalleryChange,
         removeGalleryItem,
         submitting,
+        uploadProgressMsg,
         imageCompressing,
         errorMsg,
         setErrorMsg,

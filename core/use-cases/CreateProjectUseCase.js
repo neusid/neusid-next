@@ -18,7 +18,9 @@ export class CreateProjectUseCase {
 
         // 1. Process Thumbnail
         let savedThumbnail = DEFAULT_ASSETS.thumbnail
-        if (input.thumbnailBase64) {
+        if (input.thumbnailUrl) {
+            savedThumbnail = input.thumbnailUrl
+        } else if (input.thumbnailBase64) {
             const ext = input.thumbnailName ? path.extname(input.thumbnailName) || ".jpg" : ".jpg"
             const filename = `project-${newId}-${safeSlug}-thumb${ext}`
             const uploaded = await StorageRepository.uploadBase64Image(input.thumbnailBase64, filename)
@@ -29,7 +31,9 @@ export class CreateProjectUseCase {
 
         // 2. Process Background
         let savedBg = DEFAULT_ASSETS.background
-        if (input.backgroundBase64) {
+        if (input.backgroundUrl) {
+            savedBg = input.backgroundUrl
+        } else if (input.backgroundBase64) {
             const ext = input.backgroundName ? path.extname(input.backgroundName) || ".svg" : ".svg"
             const filename = `project-${newId}-${safeSlug}-bg${ext}`
             const uploaded = await StorageRepository.uploadBase64Image(input.backgroundBase64, filename)
@@ -43,12 +47,16 @@ export class CreateProjectUseCase {
         if (Array.isArray(input.galleryImages) && input.galleryImages.length > 0) {
             for (let idx = 0; idx < input.galleryImages.length; idx++) {
                 const imgObj = input.galleryImages[idx]
-                if (imgObj.base64) {
+                if (typeof imgObj === "string") {
+                    savedGallery.push(imgObj)
+                } else if (imgObj?.url) {
+                    savedGallery.push(imgObj.url)
+                } else if (imgObj?.base64) {
                     const ext = imgObj.name ? path.extname(imgObj.name) || ".jpg" : ".jpg"
                     const filename = `project-${newId}-${safeSlug}-screen-${idx + 1}${ext}`
                     const saved = await StorageRepository.uploadBase64Image(imgObj.base64, filename)
                     if (saved) savedGallery.push(saved)
-                } else if (imgObj.name) {
+                } else if (imgObj?.name) {
                     savedGallery.push(imgObj.name)
                 }
             }
