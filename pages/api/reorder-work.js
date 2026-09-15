@@ -1,4 +1,4 @@
-import { getProjects, saveProjects } from "@/util/projectsData"
+import { ReorderProjectsUseCase } from "@/core/use-cases/ReorderProjectsUseCase"
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -7,37 +7,7 @@ export default async function handler(req, res) {
 
     try {
         const { orderedIds } = req.body
-
-        if (!Array.isArray(orderedIds) || orderedIds.length === 0) {
-            return res.status(400).json({ success: false, message: "orderedIds array is required." })
-        }
-
-        const currentProjects = await getProjects()
-
-        // Create a map by ID for fast lookup
-        const projectMap = new Map()
-        currentProjects.forEach((p) => {
-            projectMap.set(String(p.id), p)
-        })
-
-        // Build new reordered array
-        const reordered = []
-        orderedIds.forEach((id) => {
-            const item = projectMap.get(String(id))
-            if (item) {
-                reordered.push(item)
-                projectMap.delete(String(id))
-            }
-        })
-
-        // Append any remaining items that were not in orderedIds
-        projectMap.forEach((remainingItem) => {
-            reordered.push(remainingItem)
-        })
-
-        // Save updated projects
-        await saveProjects(reordered)
-
+        const reordered = await ReorderProjectsUseCase.execute(orderedIds)
         return res.status(200).json({
             success: true,
             message: "Project sequence successfully reordered and saved!",

@@ -1,4 +1,4 @@
-import { getProjects, saveProjects } from "@/util/projectsData"
+import { DeleteProjectUseCase } from "@/core/use-cases/DeleteProjectUseCase"
 
 export default async function handler(req, res) {
     if (req.method !== "POST" && req.method !== "DELETE") {
@@ -7,26 +7,11 @@ export default async function handler(req, res) {
 
     try {
         const { id } = req.body
-
-        if (!id) {
-            return res.status(400).json({ success: false, message: "Project ID is required." })
-        }
-
-        const projects = await getProjects()
-
-        const initialLength = projects.length
-        const updatedProjects = projects.filter((p) => String(p.id) !== String(id))
-
-        if (updatedProjects.length === initialLength) {
-            return res.status(404).json({ success: false, message: `Project with ID #${id} not found.` })
-        }
-
-        await saveProjects(updatedProjects)
-
+        const result = await DeleteProjectUseCase.execute(id)
         return res.status(200).json({
             success: true,
-            message: `Project #${id} successfully deleted!`,
-            deletedId: id,
+            message: `Project #${result.deletedId} successfully deleted!`,
+            deletedId: result.deletedId,
         })
     } catch (error) {
         console.error("Error deleting project:", error)

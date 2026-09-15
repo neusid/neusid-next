@@ -1,4 +1,4 @@
-import { getProjects } from "@/util/projectsData"
+import { GetProjectsUseCase } from "@/core/use-cases/GetProjectsUseCase"
 
 export default async function handler(req, res) {
     if (req.method !== "GET") {
@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const projects = await getProjects()
+        const projects = await GetProjectsUseCase.execute()
         return res.status(200).json({
             success: true,
             projects,
