@@ -28,14 +28,28 @@ export async function uploadBase64Image(base64Data, filename) {
                 access: "public",
                 contentType,
                 addRandomSuffix: true,
+                token: process.env.BLOB_READ_WRITE_TOKEN,
             })
             return blob.url
         } catch (blobErr) {
             console.error("Vercel Blob upload failed:", blobErr)
             if (process.env.VERCEL) {
-                throw new Error(`Failed to upload image to Vercel Blob: ${blobErr.message}`)
+                if (blobErr.message && blobErr.message.includes("Cannot use public access on a private store")) {
+                    throw new Error(
+                        "Blob Store Anda berjenis 'Private'. Untuk website portfolio, Anda WAJIB menggunakan 'Public Store' di Vercel agar gambar dapat tampil. Silakan buat Blob baru dengan opsi 'Public' di Vercel Storage lalu hubungkan ke project ini."
+                    )
+                }
+                throw new Error(`Gagal mengupload gambar ke Vercel Blob: ${blobErr.message}`)
             }
         }
+    }
+
+    // If running in Vercel serverless environment without a valid blob token,
+    // prevent crashing with EROFS (Read-only file system) and guide the user.
+    if (process.env.VERCEL) {
+        throw new Error(
+            "BLOB_READ_WRITE_TOKEN tidak terdeteksi pada deployment Vercel ini. Pastikan Anda sudah mengklik 'Redeploy' pada Vercel Dashboard setelah menyambungkan Vercel Blob store."
+        )
     }
 
     // Local filesystem fallback (offline development)

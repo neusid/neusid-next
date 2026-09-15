@@ -38,6 +38,8 @@ export default function WorkUpload({ initialProjects = [] }) {
     const [submitting, setSubmitting] = useState(false)
     const [errorMsg, setErrorMsg] = useState("")
     const [successData, setSuccessData] = useState(null)
+    const [blobStatus, setBlobStatus] = useState({ loading: true, status: null, message: "", isVercel: false })
+    const [imageCompressing, setImageCompressing] = useState(false)
 
     const thumbInputRef = useRef(null)
     const bgInputRef = useRef(null)
@@ -105,10 +107,75 @@ export default function WorkUpload({ initialProjects = [] }) {
         }
     }, [router.isReady, editId])
 
-    const fileToBase64 = (file) =>
+    // Check Vercel Blob connection status on mount
+    useEffect(() => {
+        fetch("/api/blob-status")
+            .then((r) => r.json())
+            .then((data) => {
+                setBlobStatus({
+                    loading: false,
+                    status: data.status,
+                    message: data.message,
+                    isVercel: data.isVercel,
+                })
+            })
+            .catch(() => {
+                setBlobStatus({
+                    loading: false,
+                    status: "error",
+                    message: "Gagal memverifikasi status koneksi storage.",
+                    isVercel: false,
+                })
+            })
+    }, [])
+
+    /**
+     * Smart client-side image processor & compressor.
+     * Keeps SVG intact. For raster images (JPEG, PNG, WebP), resizes to max 1600px
+     * and compresses to ~250KB - 400KB to prevent exceeding Vercel 4.5MB Serverless Payload limit.
+     */
+    const compressImageFile = (file, maxWidth = 1600, maxHeight = 1600, quality = 0.85) =>
         new Promise((resolve, reject) => {
+            if (!file) return resolve(null)
+
+            if (file.type === "image/svg+xml" || file.name.toLowerCase().endsWith(".svg")) {
+                const reader = new FileReader()
+                reader.onload = () => resolve({ base64: reader.result, name: file.name })
+                reader.onerror = (err) => reject(err)
+                reader.readAsDataURL(file)
+                return
+            }
+
             const reader = new FileReader()
-            reader.onload = () => resolve(reader.result)
+            reader.onload = (e) => {
+                const img = new Image()
+                img.onload = () => {
+                    let { width, height } = img
+
+                    if (width > maxWidth || height > maxHeight) {
+                        if (width / maxWidth > height / maxHeight) {
+                            height = Math.round((height * maxWidth) / width)
+                            width = maxWidth
+                        } else {
+                            width = Math.round((width * maxHeight) / height)
+                            height = maxHeight
+                        }
+                    }
+
+                    const canvas = document.createElement("canvas")
+                    canvas.width = width
+                    canvas.height = height
+                    const ctx = canvas.getContext("2d")
+                    ctx.drawImage(img, 0, 0, width, height)
+
+                    const isPng = file.type === "image/png" && file.size < 1024 * 1024
+                    const format = isPng ? "image/png" : "image/jpeg"
+                    const base64 = canvas.toDataURL(format, quality)
+                    resolve({ base64, name: file.name })
+                }
+                img.onerror = (err) => reject(err)
+                img.src = e.target.result
+            }
             reader.onerror = (err) => reject(err)
             reader.readAsDataURL(file)
         })
@@ -117,12 +184,16 @@ export default function WorkUpload({ initialProjects = [] }) {
         const file = e.target.files?.[0]
         if (!file) return
         try {
-            const b64 = await fileToBase64(file)
-            setThumbnailBase64(b64)
-            setThumbnailName(file.name)
+            setImageCompressing(true)
+            const result = await compressImageFile(file)
+            setThumbnailBase64(result.base64)
+            setThumbnailName(result.name)
             setThumbnailPreview(URL.createObjectURL(file))
         } catch (err) {
             console.error("Failed to read thumbnail:", err)
+            setErrorMsg("Gagal memproses gambar thumbnail: " + err.message)
+        } finally {
+            setImageCompressing(false)
         }
     }
 
@@ -130,12 +201,16 @@ export default function WorkUpload({ initialProjects = [] }) {
         const file = e.target.files?.[0]
         if (!file) return
         try {
-            const b64 = await fileToBase64(file)
-            setBackgroundBase64(b64)
-            setBackgroundName(file.name)
+            setImageCompressing(true)
+            const result = await compressImageFile(file)
+            setBackgroundBase64(result.base64)
+            setBackgroundName(result.name)
             setBackgroundPreview(URL.createObjectURL(file))
         } catch (err) {
             console.error("Failed to read background:", err)
+            setErrorMsg("Gagal memproses gambar background: " + err.message)
+        } finally {
+            setImageCompressing(false)
         }
     }
 
@@ -143,13 +218,14 @@ export default function WorkUpload({ initialProjects = [] }) {
         const files = Array.from(e.target.files || [])
         if (!files.length) return
 
+        setImageCompressing(true)
         const newGalleryItems = []
         for (const file of files.slice(0, 4 - gallery.length)) {
             try {
-                const b64 = await fileToBase64(file)
+                const result = await compressImageFile(file)
                 newGalleryItems.push({
-                    base64: b64,
-                    name: file.name,
+                    base64: result.base64,
+                    name: result.name,
                     preview: URL.createObjectURL(file),
                 })
             } catch (err) {
@@ -157,6 +233,7 @@ export default function WorkUpload({ initialProjects = [] }) {
             }
         }
         setGallery((prev) => [...prev, ...newGalleryItems])
+        setImageCompressing(false)
     }
 
     const removeGalleryItem = (index) => {
@@ -166,6 +243,11 @@ export default function WorkUpload({ initialProjects = [] }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrorMsg("")
+
+        if (imageCompressing) {
+            setErrorMsg("Sedang memproses dan mengompresi gambar, harap tunggu sebentar...")
+            return
+        }
 
         if (!title.trim()) {
             setErrorMsg("Project Title is required.")
@@ -306,6 +388,95 @@ export default function WorkUpload({ initialProjects = [] }) {
                                     ? `Update case study specifications, live links, or visual assets for "${title || `Project #${editId}`}".`
                                     : "Add a new production showcase, academic research project, or graphic art piece to your portfolio."}
                             </p>
+                        </div>
+
+                        {/* Vercel Blob Cloud Storage Live Status Banner */}
+                        <div style={{ marginBottom: "24px" }} data-aos="fade-up">
+                            {blobStatus.loading ? (
+                                <div style={{
+                                    background: "rgba(255,255,255,0.03)",
+                                    border: "1px solid rgba(255,255,255,0.08)",
+                                    borderRadius: "14px",
+                                    padding: "12px 18px",
+                                    fontSize: "13px",
+                                    color: "rgba(255,255,255,0.5)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "10px"
+                                }}>
+                                    <span style={{ display: "inline-block", width: "8px", height: "8px", borderRadius: "50%", background: "#eab308" }}></span>
+                                    Memeriksa status penyimpanan Vercel Blob...
+                                </div>
+                            ) : blobStatus.status === "connected" ? (
+                                <div style={{
+                                    background: "rgba(34, 197, 94, 0.08)",
+                                    border: "1px solid rgba(34, 197, 94, 0.28)",
+                                    borderRadius: "14px",
+                                    padding: "14px 20px",
+                                    fontSize: "13.5px",
+                                    color: "#86efac",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    flexWrap: "wrap",
+                                    gap: "10px"
+                                }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                        <span style={{ display: "inline-block", width: "9px", height: "9px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 10px #22c55e" }}></span>
+                                        <strong style={{ color: "#fff" }}>Vercel Blob Terhubung & Aktif</strong>
+                                        <span style={{ color: "rgba(255,255,255,0.6)" }}>— Upload gambar dan data akan disimpan permanen di Cloud Blob</span>
+                                    </div>
+                                    <span style={{ fontSize: "11px", fontWeight: 600, background: "rgba(34,197,94,0.18)", padding: "4px 10px", borderRadius: "6px", color: "#4ade80", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                                        Cloud Storage Live
+                                    </span>
+                                </div>
+                            ) : blobStatus.isVercel && blobStatus.status === "missing_token" ? (
+                                <div style={{
+                                    background: "rgba(245, 158, 11, 0.12)",
+                                    border: "1px solid rgba(245, 158, 11, 0.45)",
+                                    borderRadius: "14px",
+                                    padding: "16px 20px",
+                                    fontSize: "13.5px",
+                                    color: "#fde68a"
+                                }}>
+                                    <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                                        <span style={{ fontSize: "20px", lineHeight: "1" }}>⚠️</span>
+                                        <div style={{ flex: 1 }}>
+                                            <div style={{ fontWeight: 700, color: "#fbbf24", marginBottom: "4px", fontSize: "14px" }}>
+                                                Vercel Blob Belum Aktif di Deployment Ini (Perlu Redeploy)
+                                            </div>
+                                            <div style={{ color: "rgba(255,255,255,0.85)", lineHeight: "1.5" }}>
+                                                Anda sudah menghubungkan Vercel Blob di dashboard, tetapi Vercel <strong>wajib di-Redeploy</strong> agar environment variable (token) baru disuntikkan ke server Vercel.
+                                            </div>
+                                            <div style={{ marginTop: "10px", padding: "10px 14px", background: "rgba(0,0,0,0.35)", borderRadius: "8px", fontSize: "12.5px", color: "#fef08a" }}>
+                                                👉 <strong>Langkah Cepat:</strong> Buka <strong>Vercel Dashboard</strong> → Pilih Project Anda → Klik tab <strong>Deployments</strong> → Klik titik tiga <strong>(...)</strong> pada deployment teratas → Pilih <strong>Redeploy</strong>.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div style={{
+                                    background: "rgba(59, 130, 246, 0.08)",
+                                    border: "1px solid rgba(59, 130, 246, 0.25)",
+                                    borderRadius: "14px",
+                                    padding: "12px 18px",
+                                    fontSize: "13px",
+                                    color: "#93c5fd",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    flexWrap: "wrap",
+                                    gap: "10px"
+                                }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                        <span style={{ display: "inline-block", width: "8px", height: "8px", borderRadius: "50%", background: "#60a5fa" }}></span>
+                                        <span>Mode Penyimpanan: <strong>Local Offline Fallback</strong></span>
+                                    </div>
+                                    <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
+                                        {blobStatus.message}
+                                    </span>
+                                </div>
+                            )}
                         </div>
 
                         {/* Success Message Banner */}
@@ -739,12 +910,17 @@ export default function WorkUpload({ initialProjects = [] }) {
                                         <button
                                             type="submit"
                                             className="upload-submit-btn"
-                                            disabled={submitting}
+                                            disabled={submitting || imageCompressing}
                                         >
-                                            {submitting ? (
+                                            {imageCompressing ? (
+                                                <>
+                                                    <i className="iconoir-sparks" style={{ animation: "pulse 1s infinite" }} />
+                                                    Processing & Optimizing Images...
+                                                </>
+                                            ) : submitting ? (
                                                 <>
                                                     <i className="iconoir-restart" style={{ animation: "spin-slow 1s linear infinite" }} />
-                                                    {isEditMode ? "Saving Changes..." : "Publishing Project..."}
+                                                    {isEditMode ? "Saving Changes to Cloud..." : "Publishing Project to Cloud..."}
                                                 </>
                                             ) : (
                                                 <>

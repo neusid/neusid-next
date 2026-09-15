@@ -18,7 +18,11 @@ export async function getProjects() {
 
     if (hasBlobToken) {
         try {
-            const { blobs } = await list({ prefix: BLOB_PROJECTS_PATH, limit: 1 })
+            const { blobs } = await list({
+                prefix: BLOB_PROJECTS_PATH,
+                limit: 1,
+                token: process.env.BLOB_READ_WRITE_TOKEN,
+            })
             const projectBlob = blobs.find((b) => b.pathname === BLOB_PROJECTS_PATH) || blobs[0]
 
             if (projectBlob && projectBlob.url) {
@@ -74,18 +78,31 @@ export async function saveProjects(projects) {
                 contentType: "application/json",
                 allowOverwrite: true,
                 addRandomSuffix: false,
+                token: process.env.BLOB_READ_WRITE_TOKEN,
             })
             savedToBlob = true
         } catch (blobErr) {
             console.error("Failed to save projects to Vercel Blob:", blobErr)
             if (process.env.VERCEL) {
-                throw new Error(`Failed to save projects to Vercel Blob: ${blobErr.message}`)
+                if (blobErr.message && blobErr.message.includes("Cannot use public access on a private store")) {
+                    throw new Error(
+                        "Blob Store Anda berjenis 'Private'. Untuk website portfolio, Anda WAJIB menggunakan 'Public Store' di Vercel agar file dapat diakses publik. Silakan buat Blob baru dengan opsi 'Public' di Vercel Storage lalu hubungkan ke project ini."
+                    )
+                }
+                throw new Error(`Gagal menyimpan database ke Vercel Blob: ${blobErr.message}`)
             }
         }
     }
 
-    // Sync to local filesystem if not running inside Vercel serverless
-    if (!process.env.VERCEL || !hasBlobToken) {
+    // If on Vercel and not saved to Blob, inform the user clearly
+    if (process.env.VERCEL && !savedToBlob) {
+        throw new Error(
+            "BLOB_READ_WRITE_TOKEN belum aktif pada deployment Vercel ini. Silakan klik 'Redeploy' pada Vercel Dashboard setelah menghubungkan Vercel Blob store."
+        )
+    }
+
+    // Sync to local filesystem only when not running inside Vercel serverless environment
+    if (!process.env.VERCEL) {
         try {
             const localPath = path.join(process.cwd(), "util", "project.json")
             fs.writeFileSync(localPath, jsonString, "utf8")

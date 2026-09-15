@@ -15,6 +15,28 @@ export default function WorkAdmin({ initialProjects = [] }) {
     const [draggedIndex, setDraggedIndex] = useState(null)
     const [dragOverIndex, setDragOverIndex] = useState(null)
     const [saveStatus, setSaveStatus] = useState(null) // null | "saving" | "saved"
+    const [blobStatus, setBlobStatus] = useState({ loading: true, status: null, message: "", isVercel: false })
+
+    useEffect(() => {
+        fetch("/api/blob-status")
+            .then((r) => r.json())
+            .then((data) => {
+                setBlobStatus({
+                    loading: false,
+                    status: data.status,
+                    message: data.message,
+                    isVercel: data.isVercel,
+                })
+            })
+            .catch(() => {
+                setBlobStatus({
+                    loading: false,
+                    status: "error",
+                    message: "Gagal memverifikasi status koneksi storage.",
+                    isVercel: false,
+                })
+            })
+    }, [])
 
     const filteredProjects = projects.filter((item) => {
         if (activeFilter === "mobile") return item.category === "MOBILE DEVELOPMENT"
@@ -178,6 +200,37 @@ export default function WorkAdmin({ initialProjects = [] }) {
                                 </Link>
                             </div>
                         </div>
+
+                        {/* Vercel Blob Missing Token Warning Banner */}
+                        {blobStatus.isVercel && blobStatus.status === "missing_token" && (
+                            <div
+                                style={{
+                                    background: "rgba(245, 158, 11, 0.12)",
+                                    border: "1px solid rgba(245, 158, 11, 0.45)",
+                                    borderRadius: "14px",
+                                    padding: "16px 20px",
+                                    fontSize: "13.5px",
+                                    color: "#fde68a",
+                                    marginBottom: "24px",
+                                }}
+                                data-aos="fade-up"
+                            >
+                                <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                                    <span style={{ fontSize: "20px", lineHeight: "1" }}>⚠️</span>
+                                    <div style={{ flex: 1 }}>
+                                        <div style={{ fontWeight: 700, color: "#fbbf24", marginBottom: "4px", fontSize: "14px" }}>
+                                            Vercel Blob Belum Aktif di Deployment Ini (Perlu Redeploy)
+                                        </div>
+                                        <div style={{ color: "rgba(255,255,255,0.85)", lineHeight: "1.5" }}>
+                                            Perubahan urutan, edit, atau upload tidak dapat disimpan permanen ke cloud sebelum Anda melakukan <strong>Redeploy</strong> di Vercel Dashboard agar token Blob terbaca oleh serverless function.
+                                        </div>
+                                        <div style={{ marginTop: "10px", padding: "10px 14px", background: "rgba(0,0,0,0.35)", borderRadius: "8px", fontSize: "12.5px", color: "#fef08a" }}>
+                                            👉 <strong>Solusi:</strong> Buka <strong>Vercel Dashboard</strong> → Pilih Project Anda → Klik tab <strong>Deployments</strong> → Klik titik tiga <strong>(...)</strong> pada deployment teratas → Pilih <strong>Redeploy</strong>.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
                         {/* Notifications */}
                         {notification && (
