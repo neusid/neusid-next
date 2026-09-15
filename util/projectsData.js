@@ -1,27 +1,29 @@
 import fs from "fs"
 import path from "path"
 import { list, put } from "@vercel/blob"
+import { getBlobToken } from "./blobStorage"
 import fallbackProjects from "./project.json"
 
 const BLOB_PROJECTS_PATH = "data/projects.json"
 
 /**
  * Retrieves the projects list.
- * 1. Checks Vercel Blob if BLOB_READ_WRITE_TOKEN is set.
+ * 1. Checks Vercel Blob if Blob token is set.
  * 2. If found, fetches and returns the latest JSON.
  * 3. Falls back to local util/project.json if not found or during local development.
  *
  * @returns {Promise<Array>} Array of project objects
  */
 export async function getProjects() {
-    const hasBlobToken = Boolean(process.env.BLOB_READ_WRITE_TOKEN)
+    const blobToken = getBlobToken()
+    const hasBlobToken = Boolean(blobToken)
 
     if (hasBlobToken) {
         try {
             const { blobs } = await list({
                 prefix: BLOB_PROJECTS_PATH,
                 limit: 1,
-                token: process.env.BLOB_READ_WRITE_TOKEN,
+                token: blobToken,
             })
             const projectBlob = blobs.find((b) => b.pathname === BLOB_PROJECTS_PATH) || blobs[0]
 
@@ -67,7 +69,8 @@ export async function saveProjects(projects) {
         throw new Error("Projects must be an array")
     }
 
-    const hasBlobToken = Boolean(process.env.BLOB_READ_WRITE_TOKEN)
+    const blobToken = getBlobToken()
+    const hasBlobToken = Boolean(blobToken)
     const jsonString = JSON.stringify(projects, null, 4)
     let savedToBlob = false
 
@@ -78,7 +81,7 @@ export async function saveProjects(projects) {
                 contentType: "application/json",
                 allowOverwrite: true,
                 addRandomSuffix: false,
-                token: process.env.BLOB_READ_WRITE_TOKEN,
+                token: blobToken,
             })
             savedToBlob = true
         } catch (blobErr) {
@@ -97,7 +100,7 @@ export async function saveProjects(projects) {
     // If on Vercel and not saved to Blob, inform the user clearly
     if (process.env.VERCEL && !savedToBlob) {
         throw new Error(
-            "BLOB_READ_WRITE_TOKEN belum aktif pada deployment Vercel ini. Silakan klik 'Redeploy' pada Vercel Dashboard setelah menghubungkan Vercel Blob store."
+            "Token Vercel Blob (NEUS_BLOB_READ_WRITE_TOKEN / BLOB_READ_WRITE_TOKEN) belum aktif pada deployment Vercel ini. Silakan klik 'Redeploy' pada Vercel Dashboard setelah menghubungkan Vercel Blob store."
         )
     }
 
